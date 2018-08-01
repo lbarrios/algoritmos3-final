@@ -1,16 +1,20 @@
-# Algoritmos
+Algoritmos
+==========
 
-## ¿Qué es un algoritmo?
-Es un conjunto de reglas para resolver un determinado problema.
+¿Qué es un algoritmo?
+---------------------
+    Es un conjunto de reglas para resolver un determinado problema.
 
 Deben cumplir las siguientes características:
 * precisos: todos los pasos están claramente especificados
 * bien definidos: resuelve el problema dado, y para toda ejecución produce el mismo resultado
 * finitos: termina
 
-# Complejidad
+Complejidad
+===========
 
-## Análisis de algoritmos
+Análisis de algoritmos
+----------------------
 
 * Empírico: implementarlos, correrlos y medirlos. Tiene desventajas
     * pérdida de tiempo del programador
@@ -22,7 +26,8 @@ Deben cumplir las siguientes características:
     * instancias relevantes
     * tamaño de la instancias
 
-## Modelo de Cómputo: Máquinas RAM
+Modelo de Cómputo: Máquinas RAM
+-------------------------------
 * Máquina de registros + Acumulador + Direccionamiento Indirecto
 * Permite modelar computadoras en donde la memoria es suficiente y donde los enteros entran en una palabra.
     * Unidad de entrada: Sucesión de celdas numeradas, cada una con un entero de tamaño arbitrario.
@@ -51,7 +56,8 @@ Deben cumplir las siguientes características:
 * En general, para problemas de ordenamiento, problemas sobre grafos, etcétera, utilizaremos como tamaño de la entrada la cantidad de elementos de la instancia de entrada.
 * Para problemas sobre números (como cálculo del factorial) es más apropiado utilizar como tamaño de entrada la cantidad de bits necesarios para representar la entrada en binario.
 
-## Notación O
+Notación O
+----------
 
 Dadas dos funciones f,g: N -> R, decimos que:
 
@@ -59,12 +65,15 @@ Dadas dos funciones f,g: N -> R, decimos que:
 * f(n)=Ω(g(n)) si existen c:R+ y n_0:Nat tales que f(n)≥c*g(n) para todo n≥n0.
 * f(n)=Θ(g(n)) si f=O(g(n)) y f=Ω(g(n)).
 
-## Problema bien resuelto
+Problema bien resuelto
+----------------------
     Un problema está bien resuelto si existe un algoritmo de complejidad polinomial para el problema.
 
-# Técnicas de diseño de algoritmos
+Técnicas de diseño de algoritmos
+================================
 
-## Algoritmos Golosos
+Algoritmos Golosos
+------------------
 * Problema de optimización.
 * Se cuenta con una lista de candidatos.
 * En cada iteración, se van eligiendo algunos candidatos, y descartando otros.
@@ -74,7 +83,8 @@ Dadas dos funciones f,g: N -> R, decimos que:
     * **Función de selección**: indica en cada paso cuál de los candidatos pendientes es el siguiente a elegir.
     * **Función objetivo**: indica el "valor" de una solución representada por un conjunto de candidatos. Es este valor el que se busca optimizar (minimizar, maximizar).
 
-## Recursividad
+Recursividad
+------------
 Es cuando para resolver un problema, se llama a instancias "más simples" del mismo problema. Se requiere contar con al menos un caso base.
 
 Ejemplo:
@@ -83,7 +93,8 @@ Ejemplo:
 
 * Problema(5) = Problema(4)+1 = Problema(3)+1+1 = Problmea(2)1+1+1 = Problema(1)+1+1+1+1 = 1+1+1+1+1 = 5.
 
-## Divide and Conquer
+Divide and Conquer
+------------------
 * Caso base: Si la instancia de entrada es pequeña, utilizar un algoritmo ad-hoc para el problema.
 
 * Caso recursivo sobre instancia L:
@@ -93,7 +104,8 @@ Ejemplo:
 
 * Ejemplo: `Solucion(L)=Combinar(Solucion(L1),Solucion(L2))`, con `L=L1+L2`
 
-## Backtracking
+Backtracking
+------------
 * Recorrer todas las posibles configuraciones del espacio de soluciones.
 
 * Normalmente se usa un vector `a = (a1, a2, ..., an)` para representar una solución candidata, con cada `a_i` perteneciente a un conjunto finito `A_i` (dominio).
@@ -105,7 +117,8 @@ Ejemplo:
     * Factibilidad: ninguna extensión de la solución parcial derivará en una solución del problema.
     * Optimalidad: ninguna extensiónd e la solución parcial derivará en una solución óptima del problema (ej: "existe una solución mejor").
 
-## Programación Dinámica
+Programación Dinámica
+---------------------
 ### Idea:
 * Es aplicada a problemas de optimización.
 * El problema es dividido en subproblemas de tamaño menor. Una vez resueltos estos subproblemas, se combinan para generar una solución al problema original.
@@ -119,7 +132,8 @@ Ejemplo:
 
 * Es condición necesaria para poder usar programación dinámica.
 
-## Algoritmos probabilísticos
+Algoritmos probabilísticos
+--------------------------
 * Cuando un algoritmo de optimización tiene que hacer una elección, lo hace al azar en vez de gastar mucho tiempo buscando la mejor elección.
 
 * Algoritmos numéricos: dan una respuesta aproximada.
@@ -137,7 +151,8 @@ Ejemplo:
 * Algoritmos Sherwood: randomiza un algoritmo determinístico donde hay una gran diferencia entre el peor caso y el caso promedio. Elimina la diferencia entre las buenas y las malas instancias.
     * Ejemplo: quicksort con pivote random.
 
-## Heurísticas
+Heurísticas
+-----------
 
 * Dado un problema Π, un algoritmo heurístico es un algoritmo que intenta obtener soluciones de buena calidad para el problema que quiere resolver pero no necesariamente lo hace en todos los casos.
 * Sea Π un problema de optimización, I una instancia del problema, x'(I) el valor  óptimo de la función a optimizar en dicha instancia.
