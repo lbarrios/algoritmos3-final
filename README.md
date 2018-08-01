@@ -102,7 +102,7 @@ Bibliografía
 ### Bibliografía de consulta
 6. -- Aho A.,Hopcroft J.E. and Ullman J.D., The design and analysis of computer algorithms, Addison-Wesley, 1974. (a),(c) (hay edición en castellano)
 7. Aho A.,Hopcroft J.E. and Ullman J.D., Data Structures and algorithms,Addison-Wesley, 1983. (a),(c) (hay edición en castellano)
-8. Aho A.,Hopcroft J.E. and Ullman J.D., Foundations of Computer Science, Computer Science Press, 1995.
+8. [Aho A.,Hopcroft J.E. and Ullman J.D., Foundations of Computer Science, Computer Science Press, 1995.](bibliografia/aho-ullman_foundations-of-computer-science.pdf)
 9. Albertson M.O., Hutchinson J.P., Discrete Mathematics with Algorithms, Wiley, 1988.(a),(c) * 10. Baum G., Complejidad, Kapeluz (I EBAI), 1986. (c)
 11. Berge C.,The theory of graphs and applications, Wiley, 1958. (a)
 12. Berge C., Graphs, North-Holland, 1985. (b)
