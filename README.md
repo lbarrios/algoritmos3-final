@@ -93,11 +93,11 @@ Bibliografía
 * (c) están en la Infoteca del Departamento de Computación
 
 ### Bibliografía básica
-1. Brassard G., Bratley P., "Fundamental of Algorithmics",Prentice Hall,1996. (c)
-2. Cormen, T.,Leiserson, C.,Rivest,R.,Stein, C.,"Introduction to Algorithms", The MIT Press, McGraw-Hill,2001.
-3. Garey M.R. and Johnson D.S., "Computers and intractability: a guide to the theory of NP- Completeness", W. Freeman and Co., 1979. (a),(c)
-4. Gross J., and Yellen J. , "Graph theory and its applications", CRC, 1999, (c)
-5. Harary F., "Graph theory", Addison-Wesley, 1969, (a) (hay una reedición de 1996)
+1. [Brassard G., Bratley P., "Fundamental of Algorithmics",Prentice Hall,1996. (c)](bibliografia/brassard_fundamental-of-algorithmics.pdf)
+2. [Cormen, T.,Leiserson, C.,Rivest,R.,Stein, C.,"Introduction to Algorithms", The MIT Press, McGraw-Hill,2001.](bibliografia/cormen_introduction-to-algorithms_3rd-edition.pdf)
+3. [Garey M.R. and Johnson D.S., "Computers and intractability: a guide to the theory of NP- Completeness", W. Freeman and Co., 1979. (a),(c)](bibliografia/garey-johnson_computers-and-intractability-a-guide-to-the-theory-of-NP-completeness.pdf)
+4. [Gross J., and Yellen J. , "Graph theory and its applications", CRC, 1999, (c)](bibliografia/gross-yellen-zhang_handbook-of-graph-theory_2nd-edition.pdf)
+5. [Harary F., "Graph theory", Addison-Wesley, 1969, (a) (hay una reedición de 1996)](bibliografia/harary_graph-theory.pdf)
 
 ### Bibliografía de consulta
 6. -- Aho A.,Hopcroft J.E. and Ullman J.D., The design and analysis of computer algorithms, Addison-Wesley, 1974. (a),(c) (hay edición en castellano)
