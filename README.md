@@ -1,13 +1,105 @@
-# Algoritmos y Estructuras de Datos 3
+Algoritmos y Estructuras de Datos 3
+===================================
 
-## Bibliografía básica
+Programa
+--------
+
+### Algoritmos
+* Definición de algoritmo. 
+* Modelos de computación: modelo RAM, Máquina de Turing.
+* Complejidad, definición, complejidad en el peor caso, en el caso promedio.
+	* Algoritmos de tiempo polinomial y no polinomial. 
+	* Límite inferior. Ejemplo: análisis de algoritmos de ordenamiento.
+* Algoritmos recursivos.
+	* Análisis de la complejidad de algoritmos recursivos.
+* Técnicas de diseño de algoritmos.
+	* Dividir y Conquistar 
+	* Backtracking
+	* Algoritmos Golosos
+	* Programación Dinámica.
+
+### Grafos
+* Definiciones básicas
+	* Adyacencia
+	* Grado de un nodo
+	* Isomorfismos
+	* Caminos
+	* Conexión
+	* Etc. 
+* Grafos bipartitos. 
+* Arboles
+	* Caracterización
+	* Arboles orientados
+	* Arbol generador
+* Enumeración. 
+* Grafos eulerianos y hamiltonianos. 
+* Planaridad. 
+* Coloreo. 
+* Número cromático. 
+* Matching, conjunto independiente, recubrimiento. 
+* Recubrimiento de aristas y vértices.
+
+### Algoritmos en grafos y aplicaciones
+* Representación de un grafo en la computadora 
+	* Matrices de incidencia
+	* Matrices de adyacencia
+	* Listas
+* Algoritmos de búsqueda en grafos 
+	* BFS
+	* DFS
+	* A* 
+* Mínimo árbol generador 
+	* Algoritmos de Prim y Kruskal. 
+* Arboles ordenados 
+	* Códigos unívocamente descifrables. 
+* Algoritmos para detección de circuitos. 
+* Algoritmos para encontrar el camino mínimo en un grafo 
+	* Dijkstra
+	* Ford
+	* Dantzig. 
+* Planificación de procesos
+	* PERT/CPM.
+* Algoritmos heurísticos: ejemplos. 
+* Nociones de evaluación de heurísticas y de técnicas metaheurísticas. 
+* Algoritmos aproximados. 
+* Heurísticas para el problema del viajante de comercio. 
+* Algoritmos para detectar planaridad. 
+* Algoritmos para coloreo de grafos. 
+* Algoritmos para encontrar el flujo máximo en una red 
+	* Ford y Fulkerson. 
+* Matching: algoritmos para correspondencias máximas en grafos bipartitos. 
+* Otras aplicaciones.
+
+### Problemas NP-completos
+* Problemas tratables e intratables.
+* Problemas de decisión.
+* P y NP.
+* Maquinas de Turing no determinísticas.
+* Problemas NP-completos.
+* Relación entre P y NP.
+* Problemas de grafos NP-completos
+	* Coloreo de grafos
+	* Grafos hamiltonianos 
+	* Recubrimiento mínimo de las aristas
+	* Corte máximo
+	* Etc.
+
+Bibliografía
+------------
+
+### Marcas:
+* (a) están en la biblioteca central (Pabellón II)
+* (b) están en la Hemeroteca del Dpto de Matemática (segundo piso del Pabellón I)
+* (c) están en la Infoteca del Departamento de Computación
+
+### Bibliografía básica
 1. Brassard G., Bratley P., "Fundamental of Algorithmics",Prentice Hall,1996. (c)
 2. Cormen, T.,Leiserson, C.,Rivest,R.,Stein, C.,"Introduction to Algorithms", The MIT Press, McGraw-Hill,2001.
 3. Garey M.R. and Johnson D.S., "Computers and intractability: a guide to the theory of NP- Completeness", W. Freeman and Co., 1979. (a),(c)
 4. Gross J., and Yellen J. , "Graph theory and its applications", CRC, 1999, (c)
 5. Harary F., "Graph theory", Addison-Wesley, 1969, (a) (hay una reedición de 1996)
 
-## Bibliografía de consulta
+### Bibliografía de consulta
 6. -- Aho A.,Hopcroft J.E. and Ullman J.D., The design and analysis of computer algorithms, Addison-Wesley, 1974. (a),(c) (hay edición en castellano)
 7. Aho A.,Hopcroft J.E. and Ullman J.D., Data Structures and algorithms,Addison-Wesley, 1983. (a),(c) (hay edición en castellano)
 8. Aho A.,Hopcroft J.E. and Ullman J.D., Foundations of Computer Science, Computer Science Press, 1995.
