@@ -126,3 +126,6 @@ Bibliografía
 30. Szwarcfiter J.L.: Grafos e algoritmos computacionais, Editora Campus, Rio de Janeiro, 1987.
 31. Tarjan R., Data structures and network algorithms, Society for Industrial and Applied Mathematics,1993 (a)
 32. Tucker A., Applied Combinatorics, John Wiley and Sons, 1984. (c)
+
+## Otra Bibliografía
+33. [R. Ahuja, T. Magnanti and J. Orlin, Network Flows: Theory, Algorithms, and Applications, Prentice-Hall, 1993.](bibliografia/ahuja-magnanti-orlin_network-flows-theory-algorithms-and-applications.pdf)
