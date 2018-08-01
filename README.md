@@ -129,3 +129,4 @@ Bibliografía
 
 ## Otra Bibliografía
 33. [R. Ahuja, T. Magnanti and J. Orlin, Network Flows: Theory, Algorithms, and Applications, Prentice-Hall, 1993.](bibliografia/ahuja-magnanti-orlin_network-flows-theory-algorithms-and-applications.pdf)
+34. [David Joyner, Minh Van Nguyen, David Phillips, Algorithmic Graph Theory and Sage, 2013 May 10.](bibliografia/joyner-nguyen-cohen_algorithmic-graph-theory.pdf)
