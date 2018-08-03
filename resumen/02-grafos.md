@@ -1,11 +1,11 @@
 Grafos
 ======
 
-* Un grafo `G = (V, E)` son dos conjuntos
-    * V un conjunto de nodos, vértices o puntos.
-        * n = |V|
-    * E un conjunto de aristas, ejes o arcos.
-        * m = |E|
+* Un grafo `G = (V, E)` o `G = (V, X)` son dos conjuntos
+    * `V` un conjunto de nodos, vértices o puntos.
+        * `n = |V|`
+    * `E` o `X` un conjunto de aristas, ejes o arcos.
+        * `m = |E|`
 
 * Una arista `e = (u,v)` es un par no ordenado de nodos.
 
@@ -63,3 +63,89 @@ e5 \      |        / e3
      --> v4 <-----
 
 ```
+
+* El **grado** de un nodo `v` (`d(v)`), es la cantidad de aristas incidentes a `v`.
+
+* Un grafo `K` se dice **completo** (`K_n`) si todos los nodos son adyacentes entre sí.
+  * Obs: un `K_n` tiene `2*n` aristas.
+
+* Dado un grafo `G = (V, E)`, el grafo complemento tiene el mismo conjunto de nodos y para cada par de nodos en `G'` son adyacentes si y solo si no son adyacentes en `G`. Notación: `G'`, `G^c` o `G^_` es el grafo complemento de `G`.
+  * Obs: Si `G` tiene `n` nodos y `m` aristas, `G'` tiene `n` nodos y `(2n-m)` aristas.
+
+* Un **camino** en un grafo es una sucesión de aristas `e1 e2 ... ek` tal que un extremo de ei coincide con uno de `ei−1` y el otro con uno de `ei+1` para `i=2,...,k-1`.
+  * Un camino simple es un camino que no pasa dos veces por el mismo nodo.
+  * Un circuito es un camino que empieza y termina en el mismo nodo.
+  * Un circuito simple es un circuito de 3 o más nodos que no pasa dos veces por el mismo nodo.
+
+* La longitud de un camino es la cantidad de aristas que tiene ese camino.
+
+* La distancia entre dos nodos `v` y `w` (`d(v,w)`) se define como la longitud del camino más corto de `v` a `w`.
+
+* Para todo nodo `v`, `d(v,v) = 0`.
+
+* Si no existe camino entre `v` y `w`, se dice que `d(v,w)=∞` (distancia infinita).
+
+* Un grafo se dice conexo si existe un camino entre todo par de nodos.
+
+* Dado un grafo `G = (V, X)`, un subgrafo de G es un grafo `H = (V0, X0)` tal que `V0 ⊆ V` y `X0 ⊆ X ∩ (V0 × V0)`.
+
+* Un subgrafo `H = (V0, X0)` de `G = (V, X)`, es un subgrafo inducido si para todo par de nodos `u, v ∈ V0`, `(u, v) ∈ X ⇐⇒ (u, v) ∈ X0`.
+
+* Una componente conexa de un grafo `G` es un subgrafo conexo maximal de `G`.
+
+* Un grafo `G = (V, X)` se dice bipartito si existe una partición V1, V2 del conjunto de nodos V tal que:
+  * `V = V1 ∪ V2`
+  * `V1 ∩ V2 = ∅`
+  * `V1 != ∅` 
+  * `V2 != ∅`
+  * Todas las aristas de `G` tienen un extremo en `V1` y otro en `V2`.
+
+* Un grafo bipartito con partición `V1, V2`, es biparito completo si todo nodo en `V1` es adyacente a todo nodo en `V2`.
+
+
+* Dados dos grafos `G = (V, X)` y `G0 = (V0, X0)` se dicen isomorfos si existe una función biyectiva `f : V → V0` tal que para todo `v, w ∈ V`: `(v,w) ∈ X ⇐⇒ (f (v), f (w)) ∈ X0`.
+
+Si dos grafos `G = (V, X)` y `G0 = (V0, X0)` son isomorfos, entonces
+  * tienen el mismo número de nodos,
+    * para todo `k`, `0 ≤ k ≤ n − 1`, tienen el mismo número de nodos de grado `k`,
+  * tienen el mismo número de aristas,
+    * para todo `k`, `1 ≤ k ≤ n − 1`, tienen el mismo número de caminos simples de longitud `k`.
+  * tienen el mismo número de componentes conexas,
+
+* Matriz de adyacencia: `A ∈ R^{n×n}`, donde los elementos `a_ij` de `A` se definen como `1` si `G` tiene una aristas entre los nodos `i` y `j`, o `0` si no.
+
+* Matriz de incidencia: `B ∈ R^{m×n}`, donde los elementos `b_ij` de `B` se definen como `1` si la arista `i` es incidente al nodo `j`, o `0` si no.
+
+* Un grafo orientado o digrafo `G = (V, X)` es un par de conjuntos `V` y `X` donde `V` es el conjunto de puntos, nodos o vértices y `X` es un subconjunto del conjunto de los pares
+ordenados de elementos distintos de V.
+  * El grado de entrada `din(v)` de un nodo `v` de un grafo
+orientado es la cantidad de arcos que llegan a `v`. Es decir, la
+cantidad de arcos que tienen a `v` como segundo elemento.
+  * El grado de salida `dout(v)` de un nodo `v` de un grafo
+orientado es la cantidad de arcos que salen de `v`. Es decir, la
+cantidad de arcos que tienen a `v` como primer elemento.
+
+* Un camino orientado en un grafo orientado es una sucesión de arcos `e1 e2 ... ek` tal que el primer elemento del par `ei` coincide con el segundo de `ei−1` y el segundo elemento de `ei` con el primero de `ei+1`, para `i = 2,..., k − 1`.
+  * Un cicuito orientado en un grafo orientado es un camino orientado que comienza y termina en el mismo nodo.
+  * Un digrafo se dice fuertemente conexo si para todo par de nodos `u, v` existe un camino orientado de `u` a `v` y otro de `v` a `u`.
+
+Teoremas sobre Grafos
+=====================
+
+### Grado
+* La suma de los grados de los nodos de un grafo es igual a 2 veces el número de aristas.
+
+### Distancia
+* Si un camino P entre v y w tiene longitud d(v,w), P debe ser un camino simple.
+
+* La función de distancia cumple las siguientes propiedades para todo u, v, w pertenecientes a V:
+  * d(u, v) ≥ 0 y d(u, v) = 0 si y sólo si u = v.
+  * d(u, v) = d(v, u).
+  * d(u, w) ≤ d(u, v) + d(v, w).
+
+### Bipartitos
+* Un grafo G con 2 o más nodos es bipartito si y sólo si no tiene circuitos simples de longitud impar.
+
+### Matriz de Adyacencia
+* Si `A` es la matriz de adyacencia del grafo `G`, el elemento `a^{k}_{ij}` de `A^k` es igual a la cantidad de caminos de longitud `k` entre los nodos `i` y `j`.
+  * Corolario: `a^{2}_{ii} = d(vi)`.
