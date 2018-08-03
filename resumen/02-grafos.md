@@ -138,22 +138,28 @@ Teoremas sobre Grafos
 ### Grado
 * La suma de los grados de los nodos de un grafo es igual a 2 veces el número de aristas.
 
-    Sea G=(V,X) un grafo. Sea m=|X|. Quiero probar que sum(v∈V) d(v) = 2m.
-    Voy a hacer inducción sobre la cantidad de aristas.
+    Sea G=(V,X) un grafo. Sea m=|X|. Quiero probar que sum(v∈V) d(v) = 2m. Voy a hacer inducción sobre la cantidad de aristas.
     
     P(m): sum(v∈V) d(v) = 2m para todo m natural.
     
     Caso base: P(1): sum(v∈V) d(v) = 2
+
+    ```
       Grafo:
                 e1
             v1 ---- v2
-      
-      d(v1) + d(v2) = 2
+    ```
+    
+    luego d(v1) + d(v2) = 2
 
     Supongo que vale P(m): sum(v∈V) d(v) = 2m, qvq vale P(m+1): sum(v∈V) d(v) = 2(m+1).
+
     Sea G' = (V,X') tal que |X'|=m+1.
+
     Sea G = (V,X), tal que X = X'\e con e=(v1,v2)∈X', y |X| = m.
+
     Aplicando HI, se obtiene que sum(v∈V) d(v) = 2m en G.
+
     Dado que e no pertenece a X, en particular v1 y v2 no son adyacentes en G, por lo que cada uno suma 1 a su grado en la sumatoria. Luego, sum(v∈V) d(v) = 2m + 2 en G'.
 
 ### Distancia
