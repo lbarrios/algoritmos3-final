@@ -138,46 +138,46 @@ Teoremas sobre Grafos
 ### Grado
 * La suma de los grados de los nodos de un grafo es igual a 2 veces el número de aristas.
 
-        Sea G=(V,X) un grafo. Sea m=|X|. Quiero probar que sum(v∈V) d(v) = 2m.
-        Voy a hacer inducción sobre la cantidad de aristas.
-        
-        P(m): sum(v∈V) d(v) = 2m para todo m natural.
-        
-        Caso base: P(1): sum(v∈V) d(v) = 2
-          Grafo:
-                    e1
-                v1 ---- v2
-          
-          d(v1) + d(v2) = 2
+    Sea G=(V,X) un grafo. Sea m=|X|. Quiero probar que sum(v∈V) d(v) = 2m.
+    Voy a hacer inducción sobre la cantidad de aristas.
+    
+    P(m): sum(v∈V) d(v) = 2m para todo m natural.
+    
+    Caso base: P(1): sum(v∈V) d(v) = 2
+      Grafo:
+                e1
+            v1 ---- v2
+      
+      d(v1) + d(v2) = 2
 
-        Supongo que vale P(m): sum(v∈V) d(v) = 2m, qvq vale P(m+1): sum(v∈V) d(v) = 2(m+1).
-        Sea G' = (V,X') tal que |X'|=m+1.
-        Sea G = (V,X), tal que X = X'\e con e=(v1,v2)∈X', y |X| = m.
-        Aplicando HI, se obtiene que sum(v∈V) d(v) = 2m en G.
-        Dado que e no pertenece a X, en particular v1 y v2 no son adyacentes en G, por lo que cada uno suma 1 a su grado en la sumatoria. Luego, sum(v∈V) d(v) = 2m + 2 en G'.
+    Supongo que vale P(m): sum(v∈V) d(v) = 2m, qvq vale P(m+1): sum(v∈V) d(v) = 2(m+1).
+    Sea G' = (V,X') tal que |X'|=m+1.
+    Sea G = (V,X), tal que X = X'\e con e=(v1,v2)∈X', y |X| = m.
+    Aplicando HI, se obtiene que sum(v∈V) d(v) = 2m en G.
+    Dado que e no pertenece a X, en particular v1 y v2 no son adyacentes en G, por lo que cada uno suma 1 a su grado en la sumatoria. Luego, sum(v∈V) d(v) = 2m + 2 en G'.
 
 ### Distancia
 * Si un camino P entre v y w tiene longitud d(v,w), P debe ser un camino simple.
 
-        Sea G(V,X) un grafo, sean v,w ∈ V, sea (v u1 ... uk-1 w) algún camino mínimo de v a w, de largo d(v,w)=k. Sea P un camino entre v y w de longitud k (es decir, es un camino mínimo), quiero ver que es un camino simple.
+    Sea G(V,X) un grafo, sean v,w ∈ V, sea (v u1 ... uk-1 w) algún camino mínimo de v a w, de largo d(v,w)=k. Sea P un camino entre v y w de longitud k (es decir, es un camino mínimo), quiero ver que es un camino simple.
 
-        Supongo que P no es un camino simple, luego existe en el recorrido de P un circuito simple C ⊆ P, con |C|>=1, que en particular comienza y termina en un nodo ux, de forma tal que P = P1 U C U P2, en donde P1 es un camino que comienza en v y termina en ux, y P2 es un camino que comienza en ux y termina en w.
+    Supongo que P no es un camino simple, luego existe en el recorrido de P un circuito simple C ⊆ P, con |C|>=1, que en particular comienza y termina en un nodo ux, de forma tal que P = P1 U C U P2, en donde P1 es un camino que comienza en v y termina en ux, y P2 es un camino que comienza en ux y termina en w.
 
-        Sea P' = P\C el resultado de sacar las aristas de C en P. Luego, P' = P1 U P2 = (v ... ux ... w)es un camino de v a w de largo |P'| = |P1| + |P2| < |P| = k, es decir, un camino menor al mínimo. Lo cual es una contradicción surgida de suponer que P no es un camino simple.
+    Sea P' = P\C el resultado de sacar las aristas de C en P. Luego, P' = P1 U P2 = (v ... ux ... w)es un camino de v a w de largo |P'| = |P1| + |P2| < |P| = k, es decir, un camino menor al mínimo. Lo cual es una contradicción surgida de suponer que P no es un camino simple.
 
 ### Bipartitos
 * Un grafo G con 2 o más nodos es bipartito si y sólo si no tiene circuitos simples de longitud impar.
     
-        Sea G=(V,X) un grafo con |V|>=2:
+    Sea G=(V,X) un grafo con |V|>=2:
 
-        =>) Supongo que G es bipartito, con {V1, V2} la partición de nodos definida por el grafo. Quiero ver que G no tiene circuitos simples de longitud impar.
-        Supongo que existe C=(v w1 ... w_k v) con k>=2 y k par un circuito simple de longitud impar en G. Sin pérdida de generalidad, asumo que v pertenece a V1. Luego, por definición del grafo, debe valer que w1 pertenece a V2, w2 pertenece a V1, y en general para cada w_i, este pertenece a V1 si i es par, y a V2 si i es impar. En particular, como k es par w_k pertenece a V1. Luego, v pertenece a V2, lo cual es absurdo, y surge de suponer que existe un circuito simple de longitud impar.
+    =>) Supongo que G es bipartito, con {V1, V2} la partición de nodos definida por el grafo. Quiero ver que G no tiene circuitos simples de longitud impar.
+    Supongo que existe C=(v w1 ... w_k v) con k>=2 y k par un circuito simple de longitud impar en G. Sin pérdida de generalidad, asumo que v pertenece a V1. Luego, por definición del grafo, debe valer que w1 pertenece a V2, w2 pertenece a V1, y en general para cada w_i, este pertenece a V1 si i es par, y a V2 si i es impar. En particular, como k es par w_k pertenece a V1. Luego, v pertenece a V2, lo cual es absurdo, y surge de suponer que existe un circuito simple de longitud impar.
 
-        <=) Supongo que G no tiene circuitos simples de longitud impar. Quiero ver que G es bipartito, es decir, puedo formar {V1, V2} una partición de nodos tal que los nodos de cada partición no sean adyacentes entre sí.
-        
-        Sin pérdida de generalidad, asumo que G es conexo (si G no es conexo, aplico el mismo procedimiento para cada componente conexa, formando V1 = U_i V1_i y V2 = U_i v2_i). 
+    <=) Supongo que G no tiene circuitos simples de longitud impar. Quiero ver que G es bipartito, es decir, puedo formar {V1, V2} una partición de nodos tal que los nodos de cada partición no sean adyacentes entre sí.
+    
+    Sin pérdida de generalidad, asumo que G es conexo (si G no es conexo, aplico el mismo procedimiento para cada componente conexa, formando V1 = U_i V1_i y V2 = U_i v2_i). 
 
-        Tomo un nodo arbitrario u. Defino los conjuntos {V1, V2} mediante el siguiente proceso. Tomo un nodo u, y lo agrego a V1. Luego agrego todos los vecinos de u a V2. Luego agrego todos los vecinos de estos a V1, y así hasta terminar. Como el grafo es finito, este procedimiento termina. Para ver que V1 y V2 forman una bipartición de G, restaría ver que para todo para todo v, o bien pertenece a v1, o bien pertenece a v2. Supongo que existe w tal que w pertenece a V1 y w pertenece a V2. En particular, existe un camino de u a w, de longitud par, y un camino distinto de u a w, de longitud impar, y la unión de ambos caminos contiene un circuito simple de longitud impar, lo cual es absurdo y surge de suponer que existe un nodo que pertenece a ambos conjuntos; luego, el grafo es bipartito.
+    Tomo un nodo arbitrario u. Defino los conjuntos {V1, V2} mediante el siguiente proceso. Tomo un nodo u, y lo agrego a V1. Luego agrego todos los vecinos de u a V2. Luego agrego todos los vecinos de estos a V1, y así hasta terminar. Como el grafo es finito, este procedimiento termina. Para ver que V1 y V2 forman una bipartición de G, restaría ver que para todo para todo v, o bien pertenece a v1, o bien pertenece a v2. Supongo que existe w tal que w pertenece a V1 y w pertenece a V2. En particular, existe un camino de u a w, de longitud par, y un camino distinto de u a w, de longitud impar, y la unión de ambos caminos contiene un circuito simple de longitud impar, lo cual es absurdo y surge de suponer que existe un nodo que pertenece a ambos conjuntos; luego, el grafo es bipartito.
 
 ### Matriz de Adyacencia
 * Si `A` es la matriz de adyacencia del grafo `G`, el elemento `a^{k}_{ij}` de `A^k` es igual a la cantidad de caminos de longitud `k` entre los nodos `i` y `j`.
