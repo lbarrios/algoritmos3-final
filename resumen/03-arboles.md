@@ -31,20 +31,31 @@ Teoremas sobre árboles
 * Lema 1: Sea `G = (V, X)` un grafo conexo y `e ∈ X`. `G∖e` es conexo si y solo si `e` pertenece a un circuito simple de `G`.
 * Lema 2: La concatenación de dos caminos distintos entre un par de vértices contiene un circuito simple.
 
-### Definición de Árbol
+Definición de Árbol
+-------------------
 * Dado un grafo `G = (V, X)`, son equivalentes:
-	* (1) **Árbol**: `G` es un árbol.
+	* (1) **Árbol**: `G` es conexo y sin circuitos simples.
 	* (2) **Sin circuitos maximal**: `G` es un grafo sin circuitos simples, pero si se agrega una arista `e` a `G` resulta un grafo con exactamente un circuito simple que pasa por `e`.
 	* (3) **Exactamente un camino**: Existe exactamente un camino simple entre todo par de nodos.
 	* (4) **Conexo minimal**: `G` es conexo, pero si se quita cualquier arista a `G` queda un grafo no conexo.
 
-### Definición de Árbol (2)
+Definición de Árbol (2)
+-----------------------
 * Dado un grafo G son equivalentes:
 	* (1) **Árbol**: `G` es un árbol.
 	* (5) **Sin circuitos y cantidad de aristas**: `G` es un grafo sin circuitos simples y `m = n − 1`.
 	* (6) **Conexo y cantidad de aristas**: `G` es conexo y `m = n − 1`.
 
-### Cantidad de aristas de un Árbol
+* Lema 3: Todo árbol no trivial tiene al menos dos hojas.
+
+* Lema 4: Sea `G = (V, X)` un árbol. Entonces `m = n − 1`.
+
+* Corolario 1: Sea `G = (V, X)` sin circuitos simples y `c` componentes conexas. Entonces `m = n − c`.
+
+* Corolario 2: Sea `G = (V, X)` con `c` componentes conexas. Entonces `m ≥ n − c`.
+
+Cantidad de aristas de un Árbol
+-------------------------------
 * Sea `G = (V, X)` arbol, entonces `m = n − 1`.
 	
 	Demostración: inducción en n.
@@ -53,7 +64,18 @@ Teoremas sobre árboles
 
 	. n>1: tomo un arbol de tamaño n y le saco una hoja; por HI el árbol resultante tiene m'=(n-1)-1, luego vuelvo a agregar la hoja que saqué, m = (n-1)-1+1 = n-1
 
-### Árboles m-arios
+Árboles m-arios
+---------------
 * Un árbol m-ario de altura `h` tiene a lo sumo `m*h` hojas.
 * Un árbol m-ario con `l` hojas tiene `h ≥ techo[log_m(l)]`.
 * Si T es un árbol exactamente m-ario balanceado entonces `h = techo[log_m(l)]`.
+
+Algoritmo de Prim
+-----------------
+
+* Lema: Sea `T = (V, XT)` un árbol generador de `G = (V, X)`. Si `e ∈ X`,
+`e no pertenece a XT` y `f ∈ XT` una arista del ciclo de `T + e`. Entonces `T' = (V, XT ∪ {e} \ {f })` es un árbol generador de G.
+
+* Proposición: Sea `G = (V,X)` un grafo conexo. Sea `Tk = (VTk , XTk)` el árbol que el algoritmo de Prim determina en la iteración `k`, para `0 ≤ k ≤ n − 1`. `Tk` es un subárbol de un árbol generador mínimo de `G`.
+
+* Teorema: El algoritmo de Prim es correcto, es decir dado un grafo `G` conexo determina un árbol generador mínimo de `G`.
