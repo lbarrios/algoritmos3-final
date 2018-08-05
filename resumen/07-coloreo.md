@@ -29,6 +29,8 @@ Cotas para χ
 * **Proposición**: Para cualquier grafo `G`, `χ(G) ≥ ω(G)`.
     * ¿Es buena esta cota?
 
+    ![cota-numero-cromatico](img/07-coloreo-cota-numero-cromatico.png)
+
 Grafos de Mycielski
 -------------------
 Definición (por inducción):
@@ -38,10 +40,13 @@ Definición (por inducción):
     * Si `Mᵢ` tiene `p` nodos, `v₁, ..., vₚ`, `Mᵢ₊₁` tendrá `2p+1` nodos, `v₁, ..., vₚ, u₁, ..., uₚ, w`, donde `uᵢ` es copia de `vᵢ`.
     * El conjunto de aristas de `Mᵢ₊₁` tendrá todas las aristas de `Mᵢ` las aristas uniendo `uᵢ` con los vecinos de `vᵢ` en `Mᵢ` y las aristas uniendo `w` con cada `uᵢ`.
 
-* ¿Cuál es el número cromático de `Mᵢ`?
-    * `χ(Mᵢ) = i`
-* ¿Cuál es la clique máxima de `Mᵢ`?
-    * `ω(Mᵢ) = 2`
+    ![mycielski](img/07-coloreo-mycielski.png)
+
+* Preguntas frecuentes:
+    * ¿Cuál es el número cromático de `Mᵢ`?
+        * `χ(Mᵢ) = i`
+    * ¿Cuál es la clique máxima de `Mᵢ`?
+        * `ω(Mᵢ) = 2`
 
 Cotas para χ
 ------------
