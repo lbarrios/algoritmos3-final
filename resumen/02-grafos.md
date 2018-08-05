@@ -7,6 +7,17 @@ Grafos
         * Una arista `e = (u,v)` es un par no ordenado de nodos.
         * `m = |E|`
 
+* Dado `G=(V,E)`, `u,v,w ∈ V`, `e=(u,v),f=(v,w) ∈ E`, entonces
+    ```
+    Grafo G:
+
+        e       f
+    u ----- v ----- w
+    ```
+    * al estar unidos por `e`, `u` y `v` son **nodos adyacentes**
+    * `e` es **incidente** a `u` y `v`
+    * al compartir el nodo `v`, `e` y `f` son **aristas adyacentes**
+
 Tipos de Grafos
 ---------------
 
@@ -26,17 +37,6 @@ Tipos de Grafos
                        v3
 
     ```
-
-* Dado `G=(V,E)`, `u,v,w ∈ V`, `e=(u,v),f=(v,w) ∈ E`, entonces
-    ```
-    Grafo G:
-
-        e       f
-    u ----- v ----- w
-    ```
-    * al estar unidos por `e`, `u` y `v` son **nodos adyacentes**
-    * `e` es **incidente** a `u` y `v`
-    * al compartir el nodo `v`, `e` y `f` son **aristas adyacentes**
 
 * Un **multigrafo** es un grafo en el que pueden haber varias aristas entre sí.
 
@@ -93,10 +93,12 @@ Definiciones
 * Un grafo `K` se dice **completo** (`Kₙ`) si todos los nodos son adyacentes entre sí.
   * Obs: un `Kₙ` tiene `∑{i=1⋯n} i = n(n-1)/2` aristas.
 
-  ![GrafosCompleto](img/02-grafos-completos.jpg)
+  ![GrafoCompleto](img/02-grafos-completos.jpg)
 
-* Dado un grafo `G = (V, E)`, el grafo complemento tiene el mismo conjunto de nodos y para cada par de nodos en `Gᶜ` son adyacentes si y solo si no son adyacentes en `G`. Notación: `Gᶜ`, `G^c` o `G^_` es el grafo complemento de `G`.
-  * Obs: Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(2n-m)` aristas.
+* Dado un grafo `G = (V, E)`, el **grafo complemento** tiene el mismo conjunto de nodos y para cada par de nodos en `Gᶜ` son adyacentes si y solo si no son adyacentes en `G`. Notación: `Gᶜ`, `G^c` o `G^_` es el grafo complemento de `G`.
+  * Obs: Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(n-1)n/2 - m` aristas.
+
+  ![GrafoComplemento](img/02-grafos-complemento.png)
 
 * Un **camino** en un grafo es una sucesión de aristas `e₁ e₂ ... eₖ` tal que un extremo de ei coincide con uno de `eᵢ−₁` y el otro con uno de `eᵢ+₁` para `i=2,...,k-1`.
   * Un camino simple es un camino que no pasa dos veces por el mismo nodo.
@@ -162,8 +164,11 @@ Teoremas sobre Grafos
 
 ### Grado
 * La suma de los grados de los nodos de un grafo es igual a 2 veces el número de aristas.
+    Sea `G=(V,X)` un grafo. Quiero probar que `∑{v∈V} d(v) = 2m`.
 
-    Sea G=(V,X) un grafo. Sea m=|X|. Quiero probar que sum(v∈V) d(v) = 2m. Voy a hacer inducción sobre la cantidad de aristas.
+    **Demostración 1)** por definición, el grado de un nodo es la cantidad de aristas que inciden en el mismo. Cada arista incide en dos nodos, está sumando 1 a dos de los nodos de la sumatoria; está sumando 2 al total. Luego, la sumatoria de los grados de todos los nodos es igual al doble de la cantidad de aristas.
+
+    **Demostración 2)** inducción sobre la cantidad de aristas.
     
     P(m): sum(v∈V) d(v) = 2m para todo m natural.
     
@@ -187,12 +192,26 @@ Teoremas sobre Grafos
 
     Dado que e no pertenece a X, en particular v1 y v2 no son adyacentes en G, por lo que cada uno suma 1 a su grado en la sumatoria. Luego, sum(v∈V) d(v) = 2m + 2 en G'.
 
-### Grafo Completo
-* Un `Kₙ` tiene `∑{i=1⋯n} i = n(n-1)/2` aristas.
+### Grafo Completo (Kₙ)
+* Un `Kₙ=(V,E)` tiene `∑{i=1 ⋯ n-1} i = (n-1)n/2` aristas.
     
-    Inducción en n.
+    **Demostración 1)** Inducción en n.
     * Caso base: `n=1`, vale.
-    * Paso inductivo: `n=>n+1`, tomo un grafo `Kₙ=(V,E)` de `n` nodos para el que vale la HI, es decir que `m = n(n-1)/2`. Agrego un nodo, con una arista desde cada otro nodo para formar un `Kₙ₊₁`. En total estoy agregando `n` aristas, por lo que `m = n(n-1)/2 + n = (n(n-1) + 2n)/2 = (n(n-1+2))/2 = ((n+1)n)/2`.
+    * Paso inductivo: `n=>n+1`, sea `Kₙ`, asumo que vale la HI para `n`, es decir que `m = n(n-1)/2`. Agrego un nodo, con una arista desde cada otro nodo para formar un `Kₙ₊₁`. En total estoy agregando `n` aristas, por lo que `m = n(n-1)/2 + n = (n(n-1) + 2n)/2 = (n(n-1+2))/2 = n(n+1)/2`. Luego, la propiedad vale para `n+1`.
+
+    **Demostración 2)** Sea `Kₙ=(V,E)`, aplico la propiedad `∑{v∈V} d(v) = 2m`. Como el grafo es completo, vale `d(v)=n-1 ∀ v∈V`, luego `∑{v∈V} d(v) = n(n-1) = 2m`. Finalmente, `m = n(n-1)/2`.
+
+### Grafo Complemento (Gᶜ)
+* Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(n-1)n/2 - m` aristas.
+    
+    **Demostración 1)** 
+    * Dado `G=(V,X)` un grafo de `n` nodos. Sea `Kₙ=(V,XK)` el grafo completo de `n` nodos.
+    * Definimos `Xᶜ = XK \ X` el conjunto de aristas tal que `e∈Xᶜ ⟺ e∈XK ∧ e∉X`.
+        * Luego el grafo complemento es `Gᶜ=(V,Xᶜ)`.
+    * Sea `mᶜ = |Xᶜ| = |XK \ X|`.
+        * Dado que `X∈XK`, vale que `mᶜ = |XK|-|X| = |XK| - m`.
+        * Sea `|XK|=(n-1)n/2` por ser un grafo completo.
+        * Luego `mᶜ = (n-1)n/2 - m`.
 
 ### Distancia
 * Si un camino P entre v y w tiene longitud d(v,w), P debe ser un camino simple.
