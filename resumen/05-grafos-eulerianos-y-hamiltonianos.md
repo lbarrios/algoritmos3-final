@@ -59,6 +59,8 @@ retornar Z
     * Tampoco se conocen algoritmos `ϵ-aproximados` polinomiales para el TSP general (si se conocen cuando las distancias son euclideanas).
     * Es el problema de optimización combinatoria más estudiado.
 
+# TODO: 05-grafos-eulerianos-y-hamiltonianos.pdf página 3/8
+
 Teoremas sobre Grafos Eulerianos y Hamiltonianos
 ================================================
 
