@@ -77,10 +77,23 @@ Tipos de Grafos
 
     ```
 
+Definiciones
+------------
+
 * El **grado** de un nodo `v` (`d(v)`), es la cantidad de aristas incidentes a `v`.
 
+    ```
+    v1 ---> v2 ---> v4          d(1) = 2
+     \                          d(2) = 2
+      \                         d(3) = 1
+       \                        d(4) = 1
+        --> v3
+    ```
+
 * Un grafo `K` se dice **completo** (`Kₙ`) si todos los nodos son adyacentes entre sí.
-  * Obs: un `Kₙ` tiene `2*n` aristas.
+  * Obs: un `Kₙ` tiene `∑{i=1⋯n} i = n(n-1)/2` aristas.
+
+  ![GrafosCompleto](img/02-grafos-completos.jpg)
 
 * Dado un grafo `G = (V, E)`, el grafo complemento tiene el mismo conjunto de nodos y para cada par de nodos en `Gᶜ` son adyacentes si y solo si no son adyacentes en `G`. Notación: `Gᶜ`, `G^c` o `G^_` es el grafo complemento de `G`.
   * Obs: Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(2n-m)` aristas.
@@ -174,6 +187,13 @@ Teoremas sobre Grafos
 
     Dado que e no pertenece a X, en particular v1 y v2 no son adyacentes en G, por lo que cada uno suma 1 a su grado en la sumatoria. Luego, sum(v∈V) d(v) = 2m + 2 en G'.
 
+### Grafo Completo
+* Un `Kₙ` tiene `∑{i=1⋯n} i = n(n-1)/2` aristas.
+    
+    Inducción en n.
+    * Caso base: `n=1`, vale.
+    * Paso inductivo: `n=>n+1`, tomo un grafo `Kₙ=(V,E)` de `n` nodos para el que vale la HI, es decir que `m = n(n-1)/2`. Agrego un nodo, con una arista desde cada otro nodo para formar un `Kₙ₊₁`. En total estoy agregando `n` aristas, por lo que `m = n(n-1)/2 + n = (n(n-1) + 2n)/2 = (n(n-1+2))/2 = ((n+1)n)/2`.
+
 ### Distancia
 * Si un camino P entre v y w tiene longitud d(v,w), P debe ser un camino simple.
 
@@ -198,5 +218,9 @@ Teoremas sobre Grafos
     Tomo un nodo arbitrario u. Defino los conjuntos {V1, V2} mediante el siguiente proceso. Tomo un nodo u, y lo agrego a V1. Luego agrego todos los vecinos de u a V2. Luego agrego todos los vecinos de estos a V1, y así hasta terminar. Como el grafo es finito, este procedimiento termina. Para ver que V1 y V2 forman una bipartición de G, restaría ver que para todo para todo v, o bien pertenece a v1, o bien pertenece a v2. Supongo que existe w tal que w pertenece a V1 y w pertenece a V2. En particular, existe un camino de u a w, de longitud par, y un camino distinto de u a w, de longitud impar, y la unión de ambos caminos contiene un circuito simple de longitud impar, lo cual es absurdo y surge de suponer que existe un nodo que pertenece a ambos conjuntos; luego, el grafo es bipartito.
 
 ### Matriz de Adyacencia
-* Si `A` es la matriz de adyacencia del grafo `G`, el elemento `a^{k}ᵢⱼ` de `Aᵏ` es igual a la cantidad de caminos de longitud `k` entre los nodos `i` y `j`.
+* Para un grafo no dirigido, la matriz de adyacencia es simétrica.
+    
+    Una matriz es simétrica si `∀i,j Aᵢⱼ = Aⱼᵢ`. Esto en una matriz de adyacencia vale si dado un grafo `G=(V,E)`, `∀i,j∈V: ady(i,j)⟺ady(j,i)`. Luego, dado que el grafo no es dirigido, esto vale.
+
+* Si `A` es la matriz de adyacencia del grafo `G`, el elemento `aᵏᵢⱼ ∈ Aᵏ` es igual a la cantidad de caminos de longitud `k` entre los nodos `i` y `j`.
   * Corolario: `a²ᵢᵢ = d(vi)`.
