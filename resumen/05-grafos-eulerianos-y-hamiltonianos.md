@@ -1,4 +1,5 @@
-# Grafo Eulerianos y Hamiltonianos
+Grafo Eulerianos y Hamiltonianos
+================================
 
 Definiciones
 ------------

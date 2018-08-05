@@ -1,4 +1,6 @@
-# Matching - Conjunto Independiente - Recubrimientos
+Matching - Conjunto Independiente - Recubrimientos
+==================================================
+
 Dado un grafo `G = (V, X)`
 
 * Un **matching o correspondencia** entre los nodos de `G` es un conjunto `M ⊆ X` de aristas de `G` tal que para todo `v∈V`, `v` es incidente a lo sumo a una arista `e∈M`.

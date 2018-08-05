@@ -1,4 +1,5 @@
-# Coloreo de Grafos
+Coloreo de Grafos
+=================
 
 * Un coloreo (válido) de los nodos de un grafo `G = (V, X)` es una asignación `f : V → C`, tal que `f(v) ≠ f (u), ∀(u, v) ∈ E`.
 
