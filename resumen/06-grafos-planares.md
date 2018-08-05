@@ -52,13 +52,13 @@ Algoritmo de Demoucron, Malgrange y Pertuiset
 ---------------------------------------------
 
 ```
-R := una representaci´on planar de cualquier ciclo de G
+R := una representación planar de cualquier ciclo de G
 
-mientras R no sea una representaci´on planar de G hacer
+mientras R no sea una representación planar de G hacer
     para cada parte p de G relativa a R calcular F(p)
-        si para alg´un p, F(p) es vac´ıo entonces
+        si para algún p, F(p) es vacío entonces
             retornar FALSO
-        si para alg´un p, F(p) = {f } entonces
+        si para algún p, F(p) = {f} entonces
             elegir p y f
         sino
             elegir cualquier p y f ∈ F(p)
