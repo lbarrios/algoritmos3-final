@@ -8,7 +8,7 @@ Sea `G = (V, X)` un grafo y `l : X → R` una función de longitud/peso para las
 
 * La longitud de un camino `C` entre dos nodos `v` y `u` es la suma de las longitudes de las aristas del camino: `l(C) = sum{e∈C} l(e)`
 
-* Un camino mínimo `C^0` entre `u` y `v` es un camino entre `u` y `v` tal que `l(C^0) = min{l(C)|C es un camino entre u y v}`, es decir, para todo camino `C'`, `l(C^0) <= l(C')`.
+* Un camino mínimo `C⁰` entre `u` y `v` es un camino entre `u` y `v` tal que `l(C⁰) = min{l(C)|C es un camino entre u y v}`, es decir, para todo camino `C'`, `l(C⁰) <= l(C')`.
 
 * Pueden haber varios caminos mínimos.
 
@@ -22,7 +22,7 @@ Sea `G = (V, X)` un grafo y `l : X → R` una función de longitud/peso para las
 
 * **Circuitos**: Un camino mínimo no puede contener circuitos.
 
-* **Propiedad de subestructura óptima de un camino mínimo**: Dado un digrafo `G = (V, X)` con una función de peso `l : X → R`, sea `P : v1 ... vk` un camino mínimo de `v1` a `vk`. Entonces `∀1 ≤ i ≤ j ≤ k`, el subcamino `P[vi,vj]` es un camino mínimo desde `vi` a `vj`.
+* **Propiedad de subestructura óptima de un camino mínimo**: Dado un digrafo `G = (V, X)` con una función de peso `l : X → R`, sea `P : v1 ... vk` un camino mínimo de `v₁` a `vₖ`. Entonces `∀1 ≤ i ≤ j ≤ k`, el subcamino `P[vᵢ,vⱼ]` es un camino mínimo desde `vᵢ` a `vⱼ`.
 
 Definición problema: "Camino Mínimo"
 ------------------------------------
@@ -117,40 +117,40 @@ Algoritmos Matriciales
 ----------------------
 * Sea `G=({1,..., n}, X)` un digrafo y `l:X→R` una función de longitud/peso para las aristas de `G`.
     Definimos las siguientes matrices: 
-    * `L ∈ R^{n×n}`, donde los elementos `l_ij` de `L` se definen como:
-        * `l_{ij} = 0` si `i=j`
+    * `L ∈ R^{n×n}`, donde los elementos `lᵢⱼ` de `L` se definen como:
+        * `lᵢⱼ = 0` si `i=j`
         * `l(i→j)` si `i→j ∈ X`
         * `∞` si `i→j ∉ X`
-    * `D ∈ R^{n×n}`, donde los elementos `d_ij` de `D` se definen como:
-        * `d_{ij} = longitud del camino mínimo orientado de i a j` si existe alguno
+    * `D ∈ R^{n×n}`, donde los elementos `dᵢⱼ` de `D` se definen como:
+        * `dᵢⱼ = longitud del camino mínimo orientado de i a j` si existe alguno
         * `∞` si no
 * D es llamada matriz de distancias de G.
 
 ### Algoritmo de Floyd
 Llamamos `v1,...,vn` a los nodos de `G`. El algoritmo de Floyd se basa en lo siguiente:
 
-1. Si `L^0 = L` y calculamos `L^1` como
-    * `l^1_{ij} = min(l^0_{ij}, l^0_{i1} + l^0_{1j})`
-    `l^1_{ij}` es la longitud de un camino mínimo de `i` a `j` con nodo intermedio `v_1` o directo.
+1. Si `L⁰ = L` y calculamos `L¹` como
+    * `l¹ᵢⱼ = min(l⁰ᵢⱼ, l⁰ᵢ₁ + l⁰₁ⱼ)`
+    `l¹ᵢⱼ` es la longitud de un camino mínimo de `i` a `j` con nodo intermedio `v_1` o directo.
 
-2. Si calculamos `L^k` a partir de `L^{k−1}` como
-    * `l^k_{ij}= min(l^{k−1}_{ij}, l^{k−1}{ik} + l^{k−1}_{kj})`
+2. Si calculamos `Lᵏ` a partir de `Lᵏ−¹` como
+    * `lᵏᵢⱼ= min(lᵏ−¹ᵢⱼ, lᵏ−¹ᵢₖ + lᵏ−¹ₖⱼ)`
 
-    `l^k_{ij}` es la longitud del camino mínimo de `i` a `j` cuyos nodos intermedios están en `{v1, ..., vk}`
+    `lᵏᵢⱼ` es la longitud del camino mínimo de `i` a `j` cuyos nodos intermedios están en `{v1, ..., vk}`
 
-3. `D = L^n`
+3. `D = Lⁿ`
 
 ```
-L^0 := L
+L⁰ := L
 
 para k desde 1 a n hacer
     para i desde 1 a n hacer
-        si i ≠ k y l^{k−1}_{ik} ≠ ∞ entonces
-            si l^{k-1}_{ik} + l^{k−1}_{ki} < 0 entonces
+        si i ≠ k y l^{k−1}ᵢₖ ≠ ∞ entonces
+            si l^{k-1}ᵢₖ + l^{k−1}ₖᵢ < 0 entonces
                 retornar "Hay circuitos negativos."
             fin si
             para j desde 1 a n (si j ≠ k y j ≠ i) hacer
-                l^k_{ij} := min(l^{k−1}_{ij}, l^{k-1}_{ik} + l^{k-1}_{kj})
+                lᵏᵢⱼ := min(l^{k−1}ᵢⱼ, l^{k-1}ᵢₖ + l^{k-1}ₖⱼ)
             fin para
         fin si
     fin para
@@ -188,7 +188,7 @@ Teoremas sobre Camino Mínimo
 ============================
 
 ### Dijkstra
-* **Lema**: Dado un grafo orientado `G` con pesos positivo en las aristas, al finalizar la iteración `k` el algoritmo de Dijkstra determina el camino mínimo entre el nodo `v` y los nodos de `Sk` (donde `Sk` es el conjunto `S` al finalizar la iteración `k`).
+* **Lema**: Dado un grafo orientado `G` con pesos positivo en las aristas, al finalizar la iteración `k` el algoritmo de Dijkstra determina el camino mínimo entre el nodo `v` y los nodos de `Sₖ` (donde `Sₖ` es el conjunto `S` al finalizar la iteración `k`).
 
 * **Teorema**: Dado un grafo orientado `G` con pesos positivos en las aristas, el algoritmo de Dijkstra determina el camino mínimo entre el nodo `v` y el resto de los nodos de `G`.
 

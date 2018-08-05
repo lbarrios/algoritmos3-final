@@ -20,6 +20,7 @@ Análisis de algoritmos
     * pérdida de tiempo del programador
     * pérdida de tiempo de cómputo
     * conjunto de instancias acotado
+
 * Teórico: determinar matemáticamente la cantidad de tiempo que va a llevar su ejecución. Requiere definir
     * modelo de cómputo
     * lenguaje sobre este modelo
@@ -50,10 +51,13 @@ Modelo de Cómputo: Máquinas RAM
     Dada una instancia I, se define |I| como el número de símbolos de un alfabeto finito necesarios para codificar I.
 
 * Depende del alfabeto y de la base.
-    * Para almacenar un n:Natural se necesitan L(n) = piso(log2(n))+1 dígitos binarios.
-    * Para almacenar una lista de m enteros, se necesitan L(m) + mL(N) dígitos binarios, en donde N es el valor máximo de la lista.
+    * Para almacenar un `n:ℕ` se necesitan `L(n) = ⎣log₂(n)⎦ + 1` dígitos binarios.
+    * Para almacenar una lista de `m` enteros, se necesitan `L(m) + m*L(N)` dígitos binarios, en donde `N` es el valor máximo de la lista.
+
 * Depende del problema que se esté analizando.
+
 * En general, para problemas de ordenamiento, problemas sobre grafos, etcétera, utilizaremos como tamaño de la entrada la cantidad de elementos de la instancia de entrada.
+
 * Para problemas sobre números (como cálculo del factorial) es más apropiado utilizar como tamaño de entrada la cantidad de bits necesarios para representar la entrada en binario.
 
 Notación O
@@ -61,9 +65,9 @@ Notación O
 
 Dadas dos funciones f,g: N -> R, decimos que:
 
-* f(n)=O(g(n)) si existen c:R+ y n_0:Nat tales que f(n)≤c*g(n), para todo n≥n0.
-* f(n)=Ω(g(n)) si existen c:R+ y n_0:Nat tales que f(n)≥c*g(n) para todo n≥n0.
-* f(n)=Θ(g(n)) si f=O(g(n)) y f=Ω(g(n)).
+* `f(n)=O(g(n))` si existen `c:R⁺` y `n₀:ℕ` tales que `f(n)≤c*g(n)` para todo `n≥n₀`.
+* `f(n)=Ω(g(n))` si existen `c:R⁺` y `n₀:ℕ` tales que `f(n)≥c*g(n)` para todo `n≥n₀`.
+* `f(n)=Θ(g(n))` si `f=O(g(n))` y `f=Ω(g(n))`.
 
 Problema bien resuelto
 ----------------------
@@ -98,22 +102,25 @@ Divide and Conquer
 * Caso base: Si la instancia de entrada es pequeña, utilizar un algoritmo ad-hoc para el problema.
 
 * Caso recursivo sobre instancia L:
-    * Dividir L en subinstancias más pequeñas: L1, L2, ... Lk.
+    * Dividir L en subinstancias más pequeñas: L₁, L₂, ... Lₖ.
     * Resolver recursivamente las k subinstancias.
     * Combinar las soluciones de las k subinstancias, para obtener una solución para L.
 
-* Ejemplo: `Solucion(L)=Combinar(Solucion(L1),Solucion(L2))`, con `L=L1+L2`
+* Ejemplo: `Solucion(L)=Combinar(Solucion(L₁),Solucion(L₂))`, con `L=L₁+L₂`
 
 Backtracking
 ------------
 * Recorrer todas las posibles configuraciones del espacio de soluciones.
 
-* Normalmente se usa un vector `a = (a1, a2, ..., an)` para representar una solución candidata, con cada `a_i` perteneciente a un conjunto finito `A_i` (dominio).
-* El espacio de soluciones es el producto cartesiano `A1 x ... x An`.
-* En cada paso se extienden las soluciones parciales `a = (a1, ..., ak)` con `k < n`.
-    * Se extiende agregando al final del vector `a` un elemento `a_(k+1) ∈ S_(k+1) ⊆ A_(k+1)`.
+* Normalmente se usa un vector `a = (a₁, a₂, ..., aₙ)` para representar una solución candidata, con cada `aᵢ` perteneciente a un conjunto finito `Aᵢ` (dominio).
+
+* El espacio de soluciones es el producto cartesiano `A₁ x ... x Aₙ`.
+
+* En cada paso se extienden las soluciones parciales `a = (a₁, ..., aₖ)` con `k < n`.
+    * Se extiende agregando al final del vector `a` un elemento `aₖ+₁ ∈ Sₖ+₁ ⊆ Aₖ+₁`.
     * Estas soluciones parciales son sucesoras de la anterior.
-* **PODA**: Si `S_(k+1)` es vacío (o sea, ya no hay soluciones sucesoras posibles), esa rama no se continúa explorando.
+
+* **PODA**: Si `Sₖ+₁` es vacío (o sea, ya no hay soluciones sucesoras posibles), esa rama no se continúa explorando.
     * Factibilidad: ninguna extensión de la solución parcial derivará en una solución del problema.
     * Optimalidad: ninguna extensiónd e la solución parcial derivará en una solución óptima del problema (ej: "existe una solución mejor").
 
@@ -145,7 +152,7 @@ Algoritmos probabilísticos
     * Ejemplo: determinar la existencia de un arreglo de un elemento mayor a un valor dado.
 
 * Algoritmos de Las Vegas: si da una respuesta es correcta, pero puede no darla.
-    * Más tiempo proceso => más probabilida de que el algoritmo de una respuesta.
+    * Más tiempo proceso => más probabilidad de que el algoritmo de una respuesta.
     * Ejemplo: problema de las n reinas.
 
 * Algoritmos Sherwood: randomiza un algoritmo determinístico donde hay una gran diferencia entre el peor caso y el caso promedio. Elimina la diferencia entre las buenas y las malas instancias.
@@ -154,8 +161,11 @@ Algoritmos probabilísticos
 Heurísticas
 -----------
 
-* Dado un problema Π, un algoritmo heurístico es un algoritmo que intenta obtener soluciones de buena calidad para el problema que quiere resolver pero no necesariamente lo hace en todos los casos.
-* Sea Π un problema de optimización, I una instancia del problema, x'(I) el valor  óptimo de la función a optimizar en dicha instancia.
+* Dado un problema `Π`, un algoritmo heurístico es un algoritmo que intenta obtener soluciones de buena calidad para el problema que quiere resolver pero no necesariamente lo hace en todos los casos.
+
+* Sea `Π` un problema de optimización, `I` una instancia del problema, `x⁺(I)` el valor óptimo de la función a optimizar en dicha instancia.
     * Un algoritmo heurístico obtiene una solución con un valor que se espera sea cercano a ese óptimo pero no necesariamente el óptimo.
-* Si H es un algoritmo heurístico para un problema de optimización llamamos x'H(I) al valor que devuelve la heurística.
-* H es un algoritmo ε – aproximado para el problema Π si para algún ε > 0, `|xH(I) − x^(I)| ≤ ε|x^(I)|`
+
+* Si H es un algoritmo heurístico para un problema de optimización llamamos `xᴴ(I)` al valor que devuelve la heurística.
+
+* `H` es un algoritmo `ε–aproximado` para el problema `Π` si para algún `ε > 0`, `|xᴴ(I) − x⁺(I)| ≤ ε|x⁺(I)|`

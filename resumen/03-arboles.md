@@ -62,20 +62,20 @@ Cantidad de aristas de un Árbol
 
 	. n=1: trivial
 
-	. n>1: tomo un arbol de tamaño n y le saco una hoja; por HI el árbol resultante tiene m'=(n-1)-1, luego vuelvo a agregar la hoja que saqué, m = (n-1)-1+1 = n-1
+	. n>1: tomo un arbol de tamaño `n` y le saco una hoja; por HI el árbol resultante tiene `m'=(n-1)-1`, luego vuelvo a agregar la hoja que saqué, `m = (n-1)-1+1 = n-1`
 
 Árboles m-arios
 ---------------
 * Un árbol m-ario de altura `h` tiene a lo sumo `m*h` hojas.
-* Un árbol m-ario con `l` hojas tiene `h ≥ techo[log_m(l)]`.
-* Si T es un árbol exactamente m-ario balanceado entonces `h = techo[log_m(l)]`.
+* Un árbol m-ario con `l` hojas tiene `h ≥ techo[logₘ(l)]`.
+* Si T es un árbol exactamente m-ario balanceado entonces `h = techo[logₘ(l)]`.
 
 Algoritmo de Prim
 -----------------
 
 * Lema: Sea `T = (V, XT)` un árbol generador de `G = (V, X)`. Si `e ∈ X`,
-`e no pertenece a XT` y `f ∈ XT` una arista del ciclo de `T + e`. Entonces `T' = (V, XT ∪ {e} \ {f })` es un árbol generador de G.
+`e ∉ a XT` y `f ∈ XT` una arista del ciclo de `T + e`. Entonces `T' = (V, XT ∪ {e} \ {f})` es un árbol generador de G.
 
-* Proposición: Sea `G = (V,X)` un grafo conexo. Sea `Tk = (VTk , XTk)` el árbol que el algoritmo de Prim determina en la iteración `k`, para `0 ≤ k ≤ n − 1`. `Tk` es un subárbol de un árbol generador mínimo de `G`.
+* Proposición: Sea `G = (V,X)` un grafo conexo. Sea `Tk = (VTₖ , XTₖ)` el árbol que el algoritmo de Prim determina en la iteración `k`, para `0 ≤ k ≤ n − 1`. `Tₖ` es un subárbol de un árbol generador mínimo de `G`.
 
 * Teorema: El algoritmo de Prim es correcto, es decir dado un grafo `G` conexo determina un árbol generador mínimo de `G`.
