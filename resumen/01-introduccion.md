@@ -1,6 +1,8 @@
 Algoritmos
 ==========
 
+![CuadroConceptual](img/01-introduccion-cuadroconceptual.png)
+
 ¿Qué es un algoritmo?
 ---------------------
     Es un conjunto de reglas para resolver un determinado problema.
