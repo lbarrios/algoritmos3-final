@@ -104,30 +104,36 @@ Definiciones
 
     ![GrafoCamino](img/02-grafos-camino-circuito.png)
 
-    * Un camino simple es un camino que no pasa dos veces por el mismo nodo.
-    * Un circuito es un camino que empieza y termina en el mismo nodo.
-    * Un circuito simple es un circuito de 3 o más nodos que no pasa dos veces por el mismo nodo.
+    * Un **camino simple** es un camino que no pasa dos veces por el mismo nodo.
+    * Un **circuito** es un camino que empieza y termina en el mismo nodo.
+    * Un **circuito simple** es un circuito de 3 o más nodos que no pasa dos veces por el mismo nodo.
 
     * Obs: Un circuito es, o bien un circuito simple, o bien una unión disjunta de circuitos simples.
 
-* La longitud de un camino es la cantidad de aristas que tiene ese camino.
+* La **longitud de un camino** es la cantidad de aristas que tiene ese camino.
 
-* La distancia entre dos nodos `v` y `w` (`d(v,w)`) se define como la longitud del camino más corto de `v` a `w`.
+* La **distancia entre dos nodo**s `v` y `w` (`d(v,w)`) se define como la longitud del camino más corto de `v` a `w`.
     * Para todo nodo `v`, `d(v,v) = 0`.
-    * Si no existe camino entre `v` y `w`, se dice que `d(v,w)=∞` (distancia infinita).
+    * Si no existe camino entre `v` y `w`, se dice que `d(v,w) = ∞` (distancia infinita).
 
 * La función de distancia cumple las siguientes propiedades para todo `u`, `v`, `w` pertenecientes a `V`:
     * `d(u, v)` = `0` si y sólo si `u = v`.
     * `d(u, v)` = `d(v, u)`.
     * `d(u, w)` ≤ `d(u, v) + d(v, w)`.
 
-* Un grafo se dice conexo si existe un camino entre todo par de nodos.
+* Un grafo se dice **conexo** si existe un camino entre todo par de nodos.
 
-* Dado un grafo `G = (V, X)`, un subgrafo de G es un grafo `H = (V', X')` tal que `V' ⊆ V` y `X' ⊆ X ∩ (V' × V')`.
+* Dado un grafo `G = (V, X)`, un **subgrafo de G** es un grafo `H = (V', X')` tal que `V' ⊆ V` y `X' ⊆ X ∩ (V' × V')`.
+    
+    ![Subgrafo](img/02-grafos-subgrafo.png)
 
 * Un subgrafo `H = (V', X')` de `G = (V, X)`, es un subgrafo inducido si para todo par de nodos `u, v ∈ V'`, `(u, v) ∈ X ⇐⇒ (u, v) ∈ X'`.
 
+    ![SubgrafoInducido](img/02-grafos-subgrafo-inducido.png)
+
 * Una componente conexa de un grafo `G` es un subgrafo conexo maximal de `G`.
+
+    ![ComponentesConexas](img/02-grafos-componentes-conexas.png)
 
 * Un grafo `G = (V, X)` se dice bipartito si existe una partición `V₁`, `V₂` del conjunto de nodos `V` tal que:
   * `V = V₁ ∪ V₂`
@@ -235,11 +241,11 @@ Teoremas sobre Grafos
 ### Distancia
 * Si un camino P entre v y w tiene longitud d(v,w), P debe ser un camino simple.
 
-    Sea G(V,X) un grafo, sean v,w ∈ V, sea (v u1 ... uk-1 w) algún camino mínimo de v a w, de largo d(v,w)=k. Sea P un camino entre v y w de longitud k (es decir, es un camino mínimo), quiero ver que es un camino simple.
+    Sea `G(V,X)` un grafo, sean `v,w ∈ V`, sea `(v u1 ... uk-1 w)` algún camino mínimo de `v` a `w`, de largo `d(v,w)=k`. Sea `P` un camino entre `v` y `w` de longitud `k` (es decir, es un camino mínimo), quiero ver que `P` es un camino simple.
 
-    Supongo que P no es un camino simple, luego existe en el recorrido de P un circuito simple C ⊆ P, con |C|>=1, que en particular comienza y termina en un nodo ux, de forma tal que P = P1 U C U P2, en donde P1 es un camino que comienza en v y termina en ux, y P2 es un camino que comienza en ux y termina en w.
+    Supongo que `P` no es un camino simple, luego existe en el recorrido de `P` un circuito simple `C ⊆ P`, con `|C|>=1`, que en particular comienza y termina en un nodo `ux`, de forma tal que `P = P1 U C U P2`, en donde `P1` es un camino que comienza en `v` y termina en `ux`, y `P2` es un camino que comienza en `ux` y termina en `w`.
 
-    Sea P' = P\C el resultado de sacar las aristas de C en P. Luego, P' = P1 U P2 = (v ... ux ... w)es un camino de v a w de largo |P'| = |P1| + |P2| < |P| = k, es decir, un camino menor al mínimo. Lo cual es una contradicción surgida de suponer que P no es un camino simple.
+    Sea `P' = P\C` el resultado de sacar las aristas de `C` en `P`. Luego, `P'` = `P1 U P2 = (v ... ux ... w)` es un camino de `v` a `w` de largo `|P'| = |P1| + |P2| < |P| = k`, es decir, un camino menor al mínimo. Lo cual es una contradicción surgida de suponer que `P` no es un camino simple.
 
 ### Bipartitos
 * Un grafo G con 2 o más nodos es bipartito si y sólo si no tiene circuitos simples de longitud impar.
