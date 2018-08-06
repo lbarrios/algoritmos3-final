@@ -91,19 +91,24 @@ Definiciones
     ```
 
 * Un grafo `K` se dice **completo** (`Kₙ`) si todos los nodos son adyacentes entre sí.
-  * Obs: un `Kₙ` tiene `∑{i=1⋯n} i = n(n-1)/2` aristas.
+    * Obs: un `Kₙ` tiene `∑{i=1⋯n} i = n(n-1)/2` aristas.
 
-  ![GrafoCompleto](img/02-grafos-completos.jpg)
+    ![GrafoCompleto](img/02-grafos-completos.jpg)
 
 * Dado un grafo `G = (V, E)`, el **grafo complemento** tiene el mismo conjunto de nodos y para cada par de nodos en `Gᶜ` son adyacentes si y solo si no son adyacentes en `G`. Notación: `Gᶜ`, `G^c` o `G^_` es el grafo complemento de `G`.
-  * Obs: Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(n-1)n/2 - m` aristas.
+    * Obs: Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(n-1)n/2 - m` aristas.
 
-  ![GrafoComplemento](img/02-grafos-complemento.png)
+    ![GrafoComplemento](img/02-grafos-complemento.png)
 
 * Un **camino** en un grafo es una sucesión de aristas `e₁ e₂ ... eₖ` tal que un extremo de ei coincide con uno de `eᵢ−₁` y el otro con uno de `eᵢ+₁` para `i=2,...,k-1`.
-  * Un camino simple es un camino que no pasa dos veces por el mismo nodo.
-  * Un circuito es un camino que empieza y termina en el mismo nodo.
-  * Un circuito simple es un circuito de 3 o más nodos que no pasa dos veces por el mismo nodo.
+
+    ![GrafoCamino](img/02-grafos-camino-circuito.png)
+
+    * Un camino simple es un camino que no pasa dos veces por el mismo nodo.
+    * Un circuito es un camino que empieza y termina en el mismo nodo.
+    * Un circuito simple es un circuito de 3 o más nodos que no pasa dos veces por el mismo nodo.
+
+    * Obs: Un circuito es, o bien un circuito simple, o bien una unión disjunta de circuitos simples.
 
 * La longitud de un camino es la cantidad de aristas que tiene ese camino.
 
@@ -204,7 +209,7 @@ Teoremas sobre Grafos
 ### Grafo Complemento (Gᶜ)
 * Si `G` tiene `n` nodos y `m` aristas, `Gᶜ` tiene `n` nodos y `(n-1)n/2 - m` aristas.
     
-    **Demostración 1)** 
+    **Demostración** 
     * Dado `G=(V,X)` un grafo de `n` nodos. Sea `Kₙ=(V,XK)` el grafo completo de `n` nodos.
     * Definimos `Xᶜ = XK \ X` el conjunto de aristas tal que `e∈Xᶜ ⟺ e∈XK ∧ e∉X`.
         * Luego el grafo complemento es `Gᶜ=(V,Xᶜ)`.
@@ -212,6 +217,20 @@ Teoremas sobre Grafos
         * Dado que `X∈XK`, vale que `mᶜ = |XK|-|X| = |XK| - m`.
         * Sea `|XK|=(n-1)n/2` por ser un grafo completo.
         * Luego `mᶜ = (n-1)n/2 - m`.
+
+### Circuito
+* Un circuito es, o bien un circuito simple, o bien una concatenación de circuitos simples.
+    
+    **Demostración**: Sea `C = (v₁ v₂) ⋯ (vₖ v₁)` un circuito que comienza y termina en el nodo `v₁`. `C` puede ser simple, o no. 
+    * En el caso en que `C` es un circuito simple, la propiedad vale trivialmente. 
+    * Supongo que el circuito no es simple, quiero ver que entonces es una concatenación de circuitos simples. 
+        * Dado que `C` no es simple, pasa más de una vez por `v₁`, es decir que `v₁` aparece al menos una vez en el trayecto de `C`. 
+        * En particular, existe `C₁ = (v₁ v₂) ⋯ (vⱼ v₁)` un circuito simple tal que `C₁⊆C`, surgido de recorrer `C` hasta la primera aparición de `v₁`. 
+        * Sea `C₂ = (v₁ vⱼ₊₁) ⋯ (vₖ v₁)` el circuito surgido de sacarle a `C` todas las aristas de `C₁`, tal que `C = C₁ + C₂ = (v₁ v₂) ⋯ (vⱼ v₁) + (v₁ vⱼ₊₁) ⋯ (vₖ v₁)`.
+        * Restaría ver que `C₂` es, o bien un circuito simple, o bien una concatenación de circuitos simples. Para ello, se puede aplicar la misma lógica:
+            * o bien `C₂` es un circuito simple,
+            * o bien `C₂` se puede desarmar en `C₃ + C₄`, en donde `C₃` es un circuito simple.
+    * Dado que el procedimiento anterior termina resultando en una reducción a casos más simples, y que la longitud de `C` es finita, se puede demostrar aplicando inducción en el tamaño del circuito.
 
 ### Distancia
 * Si un camino P entre v y w tiene longitud d(v,w), P debe ser un camino simple.
