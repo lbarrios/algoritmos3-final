@@ -127,31 +127,38 @@ Definiciones
     
     ![Subgrafo](img/02-grafos-subgrafo.png)
 
-* Un subgrafo `H = (V', X')` de `G = (V, X)`, es un subgrafo inducido si para todo par de nodos `u, v ∈ V'`, `(u, v) ∈ X ⇐⇒ (u, v) ∈ X'`.
+* Un subgrafo `H = (V', X')` de `G = (V, X)`, es un **subgrafo inducido** si para todo par de nodos `u, v ∈ V'`, `(u, v) ∈ X ⇐⇒ (u, v) ∈ X'`.
 
     ![SubgrafoInducido](img/02-grafos-subgrafo-inducido.png)
 
-* Una componente conexa de un grafo `G` es un subgrafo conexo maximal de `G`.
+* Una **componente conexa** de un grafo `G` es un subgrafo conexo maximal de `G`.
 
     ![ComponentesConexas](img/02-grafos-componentes-conexas.png)
 
-* Un grafo `G = (V, X)` se dice bipartito si existe una partición `V₁`, `V₂` del conjunto de nodos `V` tal que:
-  * `V = V₁ ∪ V₂`
-  * `V₁ ∩ V₂ = ∅`
-  * `V₁ != ∅` 
-  * `V₂ != ∅`
-  * Todas las aristas de `G` tienen un extremo en `V₁` y otro en `V₂`.
+* Un grafo `G = (V, X)` se dice **bipartito** si existe una partición `V₁`, `V₂` del conjunto de nodos `V` tal que:
+    * `V = V₁ ∪ V₂`
+    * `V₁ ∩ V₂ = ∅`
+    * `V₁ != ∅` 
+    * `V₂ != ∅`
+    * Todas las aristas de `G` tienen un extremo en `V₁` y otro en `V₂`.
 
-* Un grafo bipartito con partición `V₁, V₂`, es biparito completo si todo nodo en `V₁` es adyacente a todo nodo en `V₂`.
+    ![Bipartito](img/02-grafos-bipartito.png)
 
-* Dados dos grafos `G = (V, X)` y `G0 = (V', X')` se dicen isomorfos si existe una función biyectiva `f : V → V'` tal que para todo `v, w ∈ V`: `(v,w) ∈ X ⇐⇒ (f (v), f (w)) ∈ X'`.
+* Un grafo bipartito con partición `V₁, V₂`, es **biparito completo** si todo nodo en `V₁` es adyacente a todo nodo en `V₂`.
+    - Un bipartito completo con `|V₁|=a` y `|V₂|=e` se denota `Kₐ,ₑ`
 
-Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces
-  * tienen el mismo número de nodos,
-    * para todo `k`, `0 ≤ k ≤ n − 1`, tienen el mismo número de nodos de grado `k`,
-  * tienen el mismo número de aristas,
-    * para todo `k`, `1 ≤ k ≤ n − 1`, tienen el mismo número de caminos simples de longitud `k`.
-  * tienen el mismo número de componentes conexas,
+    ![BipartitoCompleto](img/02-grafos-bipartito-completo.png)
+
+* Dados dos grafos `G = (V, X)` y `G0 = (V', X')` se dicen **isomorfos** si existe una función biyectiva `f : V → V'` tal que para todo `v, w ∈ V`: `(v,w) ∈ X ⇐⇒ (f (v), f (w)) ∈ X'`.
+
+    ![Isomorfismo](img/02-grafos-isomorfismo.png)
+
+    **Obs:** Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
+    * tienen el **mismo número de nodos**,
+        * para todo `k`, `0 ≤ k ≤ n − 1`, tienen el mismo número de nodos de grado `k`,
+    * tienen el **mismo número de aristas**,
+        * para todo `k`, `1 ≤ k ≤ n − 1`, tienen el mismo número de caminos simples de longitud `k`.
+    * tienen el **mismo número de componentes conexas**,
 
 * Matriz de adyacencia: `A ∈ R^{n×n}`, donde los elementos `aᵢⱼ` de `A` se definen como `1` si `G` tiene una aristas entre los nodos `i` y `j`, o `0` si no.
 
@@ -260,6 +267,17 @@ Teoremas sobre Grafos
     Sin pérdida de generalidad, asumo que G es conexo (si G no es conexo, aplico el mismo procedimiento para cada componente conexa, formando V1 = U_i V1_i y V2 = U_i v2_i). 
 
     Tomo un nodo arbitrario u. Defino los conjuntos {V1, V2} mediante el siguiente proceso. Tomo un nodo u, y lo agrego a V1. Luego agrego todos los vecinos de u a V2. Luego agrego todos los vecinos de estos a V1, y así hasta terminar. Como el grafo es finito, este procedimiento termina. Para ver que V1 y V2 forman una bipartición de G, restaría ver que para todo para todo v, o bien pertenece a v1, o bien pertenece a v2. Supongo que existe w tal que w pertenece a V1 y w pertenece a V2. En particular, existe un camino de u a w, de longitud par, y un camino distinto de u a w, de longitud impar, y la unión de ambos caminos contiene un circuito simple de longitud impar, lo cual es absurdo y surge de suponer que existe un nodo que pertenece a ambos conjuntos; luego, el grafo es bipartito.
+
+### Isomorfismo
+
+* Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
+    * Tienen el **mismo número de nodos**.
+        * `∀k, 0 ≤ k ≤ n − 1`, tienen el mismo número de nodos de grado `k`,
+
+    * Tienen el **mismo número de aristas**.
+        * `∀k, 1 ≤ k ≤ n − 1`, tienen el mismo número de caminos simples de longitud `k`.
+
+    * Tienen el **mismo número de componentes conexas**
 
 ### Matriz de Adyacencia
 * Para un grafo no dirigido, la matriz de adyacencia es simétrica.
