@@ -160,22 +160,36 @@ Definiciones
         * para todo `k`, `1 ≤ k ≤ n − 1`, tienen el mismo número de caminos simples de longitud `k`.
     * tienen el **mismo número de componentes conexas**,
 
-* Matriz de adyacencia: `A ∈ R^{n×n}`, donde los elementos `aᵢⱼ` de `A` se definen como `1` si `G` tiene una aristas entre los nodos `i` y `j`, o `0` si no.
+* **Matriz de adyacencia**: `A ∈ R^{n×n}`, donde los elementos `aᵢⱼ` de `A` se definen como `1` si `G` tiene una aristas entre los nodos `i` y `j`, o `0` si no.
 
-* Matriz de incidencia: `B ∈ R^{m×n}`, donde los elementos `bᵢⱼ` de `B` se definen como `1` si la arista `i` es incidente al nodo `j`, o `0` si no.
+    ![MatrizAdyacencia](img/02-grafos-matriz-adyacencia.png)
 
-* Un grafo orientado o digrafo `G = (V, X)` es un par de conjuntos `V` y `X` donde `V` es el conjunto de puntos, nodos o vértices y `X` es un subconjunto del conjunto de los pares
+* **Matriz de incidencia**: `B ∈ R^{m×n}`, donde los elementos `bᵢⱼ` de `B` se definen como `1` si la arista `i` es incidente al nodo `j`, o `0` si no.
+    
+    ![MatrizIncidencia](img/02-grafos-matriz-incidencia.png)
+
+* Un **grafo orientado o digrafo** `G = (V, X)` es un par de conjuntos `V` y `X` donde `V` es el conjunto de puntos, nodos o vértices y `X` es un subconjunto del conjunto de los pares
 ordenados de elementos distintos de V.
-  * El grado de entrada `din(v)` de un nodo `v` de un grafo
+    * El **grado de entrada** `din(v)` de un nodo `v` de un grafo
 orientado es la cantidad de arcos que llegan a `v`. Es decir, la
 cantidad de arcos que tienen a `v` como segundo elemento.
-  * El grado de salida `dout(v)` de un nodo `v` de un grafo
+    * El **grado de salida** `dout(v)` de un nodo `v` de un grafo
 orientado es la cantidad de arcos que salen de `v`. Es decir, la
 cantidad de arcos que tienen a `v` como primer elemento.
 
-* Un camino orientado en un grafo orientado es una sucesión de arcos `e₁ e₂ ... eₖ` tal que el primer elemento del par `eᵢ` coincide con el segundo de `eᵢ−₁` y el segundo elemento de `eᵢ` con el primero de `eᵢ+₁`, para `i = 2,..., k − 1`.
-  * Un cicuito orientado en un grafo orientado es un camino orientado que comienza y termina en el mismo nodo.
-  * Un digrafo se dice fuertemente conexo si para todo par de nodos `u, v` existe un camino orientado de `u` a `v` y otro de `v` a `u`.
+    ![Digrafos](img/02-grafos-digrafos.png)
+
+* Un **camino orientado** en un grafo orientado es una sucesión de arcos `e₁ e₂ ... eₖ` tal que el primer elemento del par `eᵢ` coincide con el segundo de `eᵢ−₁` y el segundo elemento de `eᵢ` con el primero de `eᵢ+₁`, para `i = 2,..., k − 1`.
+
+    ![CaminoOrientado](img/02-grafos-camino-orientado.png)
+
+    * Un **circuito orientado** en un grafo orientado es un camino orientado que comienza y termina en el mismo nodo.
+        
+        ![CircuitoOrientado](img/02-grafos-circuito-orientado.png)
+
+    * Un digrafo se dice **fuertemente conexo** si para todo par de nodos `u, v` existe un camino orientado de `u` a `v` y otro de `v` a `u`.
+
+        ![CircuitoOrientado](img/02-grafos-digrafo-fuertemente-conexo.png)
 
 Teoremas sobre Grafos
 =====================
@@ -269,15 +283,25 @@ Teoremas sobre Grafos
     Tomo un nodo arbitrario u. Defino los conjuntos {V1, V2} mediante el siguiente proceso. Tomo un nodo u, y lo agrego a V1. Luego agrego todos los vecinos de u a V2. Luego agrego todos los vecinos de estos a V1, y así hasta terminar. Como el grafo es finito, este procedimiento termina. Para ver que V1 y V2 forman una bipartición de G, restaría ver que para todo para todo v, o bien pertenece a v1, o bien pertenece a v2. Supongo que existe w tal que w pertenece a V1 y w pertenece a V2. En particular, existe un camino de u a w, de longitud par, y un camino distinto de u a w, de longitud impar, y la unión de ambos caminos contiene un circuito simple de longitud impar, lo cual es absurdo y surge de suponer que existe un nodo que pertenece a ambos conjuntos; luego, el grafo es bipartito.
 
 ### Isomorfismo
+Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
 
-* Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
-    * Tienen el **mismo número de nodos**.
-        * `∀k, 0 ≤ k ≤ n − 1`, tienen el mismo número de nodos de grado `k`,
+1. Tienen el **mismo número de nodos**.
+    
+    Por definición, dado que f es biyectiva, debe valer `|V| = |V'|`
 
-    * Tienen el **mismo número de aristas**.
-        * `∀k, 1 ≤ k ≤ n − 1`, tienen el mismo número de caminos simples de longitud `k`.
+2. `∀k, 0 ≤ k ≤ n−1`, tienen el mismo número de nodos de grado `k`,
+    
+    Para todo `k`, sea `Vₖ⊆V` el conjunto de nodos de grado `k` de `V`, y `V'ₖ⊆V'` el respectivo de `V'`. Para todo `v∈Vₖ`, existe por definición un único `v' = f(v)` tal que por cada arista en `X` que incide en `v` existe una arista en `X'` que incide en `v'`, y viceversa, por lo que `d(v)=d(v')`. Similarmente, para todo `v'∈V'ₖ` existe un único `v` tal que `f(v) = v'`, y vale que `d(v')=d(v)`. Luego, `|Vₖ| = |V'ₖ|`.
 
-    * Tienen el **mismo número de componentes conexas**
+3. Tienen el **mismo número de aristas**.
+    
+    Por definición, dado que f es biyectiva, que valga `∀(v,w)∈V² (v,w)∈X⟺(f(v),f(w))∈X'` significa que por cada elemento de `X` hay un elemento unívoco correspondiente en `X'`, y viceversa, por lo que necesariamente debe valer `|X| = |X'|`.
+
+4. `∀k, 1≤k≤n−1`, tienen el mismo número de caminos simples de longitud `k`.
+
+    Basta ver que para cada camino simple en `G`, de forma `P = (v₁ v₂) ⋯ (vₖ₋₁ vₖ)` existe un único camino simple `P' = (f(v₁) f(v₂)) ⋯ (f(vₖ₋₁) f(vₖ))` correspondiente en `G'`. Que existe un camino vale por definición (basta aplicar f a todos los nodos del camino), y es simple porque la función es biyectiva, por lo que si hubiera algún nodo `v'ᵢ` con `1≤i≤k` por el que `P'` pasara dos veces, en particular existiría también un `vᵢ` tal que `f(vᵢ) = v'ᵢ`, por el que `P` pasaría dos veces.
+
+5. Tienen el **mismo número de componentes conexas**
 
 ### Matriz de Adyacencia
 * Para un grafo no dirigido, la matriz de adyacencia es simétrica.
