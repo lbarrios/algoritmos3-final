@@ -1,29 +1,29 @@
 Árboles
 =======
 
-* Un árbol es un grafo conexo sin circuitos simples.
+* Un **árbol** es un grafo conexo sin circuitos simples.
 
-* Una hoja es un nodo de grado 1.
+* Una **hoja** es un nodo de grado 1.
 
-* Un árbol orientado es un grafo orientado G tal que:
+* Un **árbol orientado** es un grafo orientado G tal que:
 	1. Es un grafo acíclico dirigido.
 	2. El grafo no orientado subyacente es un árbol.
 	3. En G existe un nodo r tal que existe un camino orientado desde r a todos los demás nodos (cualquier nodo es alcanzable desde r por un camino orientado).
 
-* En un árbol no orientado podemos definir un nodo cualquiera como raíz.
-	* El nivel de un nodo de un árbol es la distancia de ese nodo a la raíz.
-	* La altura `h` de un árbol es la longitud desde la raíz al nodo más lejano.
+* En un **árbol no orientado** podemos definir un nodo cualquiera como raíz.
+	* El **nivel de un nodo** de un árbol es la distancia de ese nodo a la raíz.
+	* La **altura** `h` de un árbol es la longitud desde la raíz al nodo más lejano.
 	* Un árbol se dice (exactamente) m-ario si todos sus nodos, salvo las hojas y la raíz tienen grado (exactamente) a lo sumo `m + 1` y la raíz (exactamente) a lo sumo `m`.
-	* Un árbol se dice balanceado si todas sus hojas están a nivel `h` o `h − 1`.
-	* Un árbol se dice balanceado completo si todas sus hojas están a nivel `h`.
+	* Un árbol se dice **balanceado** si todas sus hojas están a nivel `h` o `h − 1`.
+	* Un árbol se dice **balanceado completo** si todas sus hojas están a nivel `h`.
 
-* Los nodos internos de un árbol son aquellos que no son ni hojas ni la raíz.
+* Los **nodos internos** de un árbol son aquellos que no son ni hojas ni la raíz.
 
-* Dado un grafo `G`, un árbol generador de `G` es un subgrafo de `G` que es un árbol y tiene el mismo conjunto de nodos que `G`.
+* Dado un grafo `G`, un **árbol generador** de `G` es un subgrafo de `G` que es un árbol y tiene el mismo conjunto de nodos que `G`.
 
-* Sea `T = (V, X)` un árbol y `l : X → R` una función que asigna longitudes (o pesos) a las aristas de `T`. Se define la longitud de `T` como `l(T) = sumatoria{e∈T} l(e)`
+* Sea `T = (V, X)` un árbol y `l : X → R` una función que asigna longitudes (o pesos) a las aristas de `T`. Se define la **longitud** de `T` como `l(T) = ∑{e∈T} l(e)`
 
-* Dado un grafo `G = (V, X)`, `T` un árbol generador mínimo de `G` es un árbol generador de `G` de mínima longitud, es decir, `l(T) ≤ l(T')` para todo `T'` árbol generador de `G`.
+* Dado un grafo `G = (V, X)`, `T` un **árbol generador mínimo** de `G` es un árbol generador de `G` de mínima longitud, es decir, `l(T) ≤ l(T')` para todo `T'` árbol generador de `G`.
 
 Teoremas sobre árboles
 ======================

@@ -6,11 +6,11 @@ Definiciones
 
 Sea `G = (V, X)` un grafo y `l : X → R` una función de longitud/peso para las aristas de `G`.
 
-* La longitud de un camino `C` entre dos nodos `v` y `u` es la suma de las longitudes de las aristas del camino: `l(C) = sum{e∈C} l(e)`
+* La **longitud de un camino** `C` entre dos nodos `v` y `u` es la suma de las longitudes de las aristas del camino: `l(C) = ∑{e∈C} l(e)`
 
-* Un camino mínimo `C⁰` entre `u` y `v` es un camino entre `u` y `v` tal que `l(C⁰) = min{l(C)|C es un camino entre u y v}`, es decir, para todo camino `C'`, `l(C⁰) <= l(C')`.
+* Un **camino mínimo** `C⁰` entre `u` y `v` es un camino entre `u` y `v` tal que `l(C⁰) = min{l(C)|C es un camino entre u y v}`, es decir, `∀C': camino entre u y v, l(C⁰) <= l(C')`.
 
-* Pueden haber varios caminos mínimos.
+    * Pueden haber varios caminos mínimos.
 
 * Se pueden definir tres variantes de problemas:
     * **Unico origen - único destino**: Determinar un camino mínimo entre dos vértices específicos, `v` y `u`.

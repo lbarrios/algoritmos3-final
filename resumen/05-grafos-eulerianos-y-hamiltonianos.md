@@ -5,8 +5,8 @@ Definiciones
 ------------
 
 ### Circuito Euleriano
-* Un circuito `C` en un grafo (o multigrafo) `G` es un circuito euleriano si `C` pasa por todos las aristas de `G` una y sólo una vez.
-* Un grafo euleriano es un grafo que tiene un circuito euleriano (o multigrafo).
+* Un circuito `C` en un grafo (o multigrafo) `G` es un **circuito euleriano** si `C` pasa por todos las aristas de `G` una y sólo una vez.
+* Un **grafo euleriano** es un grafo que tiene un circuito euleriano (o multigrafo).
 
 ```
 Entrada: G = (V, X) conexo con todos los nodos de grado par.
@@ -24,8 +24,8 @@ retornar Z
 ¿Cuál es la complejidad de este algoritmo?
 
 ### Camino Euleriano
-* Un camino euleriano en un grafo (o multigrafo) `G` es un camino que pasa por cada arista de `G` una y sólo una vez.
-* Un grafo orientado o digrafo, se dice euleriano si tiene un circuito orientado que pasa por cada arco de `G` una y sólo una vez.
+* Un **camino euleriano** en un grafo (o multigrafo) `G` es un camino que pasa por cada arista de `G` una y sólo una vez.
+* Un **digrafo euleriano** es un grafo orientado que tiene un circuito orientado que pasa por cada arco de `G` una y sólo una vez.
 
 ### Problema del Cartero Chino (Guan, 1962)
 * Definición: Dado un grafo `G=(V,X)` con longitudes asignadas a sus aristas, `l: X → (R≥0)`, el problema del cartero chino consiste en encontrar un circuito que pase por cada arista de `G` al menos una vez de longitud mínima.
@@ -34,8 +34,8 @@ retornar Z
     * Pero no se conocen algoritmos polinomiales (el problema no está computacionalmente resuelto) si el grafo es mixto (algunas aristas orientados y otros no).
 
 ### Grafos Hamiltonianos
-* Un circuito en un grafo `G` es un circuito hamiltoniano si pasa por cada nodo de G una y sólo una vez.
-* Un grafo se dice hamiltoniano si tiene un circuito hamiltoniano.
+* Un circuito en un grafo `G` es un **circuito hamiltoniano** si pasa por cada nodo de G una y sólo una vez.
+* Un **grafo hamiltoniano** es aquel que tiene un circuito hamiltoniano.
     * No se conocen buenas caracterizaciones para grafos hamiltonianos.
     * ¿Cómo intentar construir un circuito hamiltoniano?
     * No se conocen algoritmos polinomiales para decidir si un grafo es hamiltoniano o no.
