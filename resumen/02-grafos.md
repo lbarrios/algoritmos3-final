@@ -62,9 +62,11 @@ cantidad de arcos que tienen a `v` como primer elemento.
     
     ![Subgrafo](img/02-grafos-subgrafo.png)
 
-* Un subgrafo `H = (V', X')` de `G = (V, X)`, es un **subgrafo inducido** si para todo par de nodos `u, v ∈ V'`, `(u, v) ∈ X ⇐⇒ (u, v) ∈ X'`.
+* Un subgrafo `H = (V', X')` de `G = (V, X)`, es un **subgrafo inducido** (por nodos) si para todo par de nodos `u, v ∈ V'`, `(u, v) ∈ X ⇐⇒ (u, v) ∈ X'`.
 
     ![SubgrafoInducido](img/02-grafos-subgrafo-inducido.png)
+
+    - Es decir, es el subgrafo `H` maximal tal que `V'⊆V`.
 
 * Dados dos grafos `G = (V, X)` y `G0 = (V', X')` se dicen **isomorfos** si existe una función biyectiva `f : V → V'` tal que para todo `v, w ∈ V`: `(v,w) ∈ X ⇐⇒ (f (v), f (w)) ∈ X'`.
 
@@ -174,22 +176,6 @@ Caminos
 
 * El **diámetro de un grafo** es la longitud del máximo camino mínimo entre todo par de nodos.
 
-Conectividad
-------------
-* Dado `G=(V,X)`, `u,v∈V`, `v` **es alcanzable desde** `u` si existe un camino desde `u` hasta `v`.
-
-* Un grafo se dice **conexo** si existe un camino entre todo par de nodos, es decir, si todos los nodos son alcanzables entre sí.
-
-* Un digrafo se dice **débilmente conexo** (o simplemente **conexo**) si el grafo no dirigido subyacente es **conexo**.
-
-* Un digrafo se dice **fuertemente conexo** si para todo par de nodos `u, v` existe un camino orientado de `u` a `v` y otro de `v` a `u`.
-
-    ![CircuitoOrientado](img/02-grafos-digrafo-fuertemente-conexo.png)
-
-* Una **componente conexa** de un grafo `G` es un subgrafo conexo maximal de `G`.
-
-    ![ComponentesConexas](img/02-grafos-componentes-conexas.png)
-
 Bipartitos
 ----------
 * Un grafo `G = (V, X)` se dice **bipartito** si existe una partición `V₁`, `V₂` del conjunto de nodos `V` tal que:
@@ -206,18 +192,14 @@ Bipartitos
 
     ![BipartitoCompleto](img/02-grafos-bipartito-completo.png)
 
-Representación
---------------
-* **Matriz de adyacencia**: `A ∈ R^{n×n}`, donde los elementos `aᵢⱼ` de `A` se definen como `1` si `G` tiene una aristas entre los nodos `i` y `j`, o `0` si no.
-
-    ![MatrizAdyacencia](img/02-grafos-matriz-adyacencia.png)
-
-* **Matriz de incidencia**: `B ∈ R^{m×n}`, donde los elementos `bᵢⱼ` de `B` se definen como `1` si la arista `i` es incidente al nodo `j`, o `0` si no.
-    
-    ![MatrizIncidencia](img/02-grafos-matriz-incidencia.png)
-
 Operaciones
 -----------
+* Dado un grafo `G=(V,X)`, el resultado de **remover una arista** `e∈X` es un grafo `G−e = G' = (V, X')` tal que `X' = X \ e`.
+
+* Dado un grafo `G=(V,X)`, el resultado de **remover un nodo** `v∈V` es un grafo `G−v = G' = (V',X')` tal que `V' = V \ v` y `X'⊆X` tal que `∀e∈X`, si `e` es incidente en `v`, entonces `e∉X'`.
+    - Es decir, `G'` es el subgrafo que surge de remover el nodo y todas las aristas adyacentes al mismo.
+    - O, lo que es lo mismo, `G'` es el subgrafo inducido por nodos tal que `V' = V \ v`.
+
 * La **unión de dos grafos** `G₁=(V₁, X₁), G₂=(V₂, X₂)`, denotada `G₁ ∪ G₂`, consiste en armar un `G = (V, X)` tal que `V = V₁ ∪ V₂` y `X = X₁ ∪ X₂`.
 
     ![UnionGrafos](img/02-grafos-union.png)
@@ -229,6 +211,36 @@ Operaciones
     - El grafo bipartito `Kₘₙ = Kₘᶜ ∪ Kₙᶜ` es la unión de los complementos de los completos `Kₘ` y `Kₙ`.
 
         ![GrafoBipartitoSuma](img/02-grafos-suma-bipartito.png)
+
+Conectividad
+------------
+* Dado `G=(V,X)`, `u,v∈V`, `v` **es alcanzable desde** `u` si existe un camino desde `u` hasta `v`.
+
+* Un grafo se dice **conexo** si existe un camino entre todo par de nodos, es decir, si todos los nodos son alcanzables entre sí.
+
+* Un digrafo se dice **débilmente conexo** (o simplemente **conexo**) si el grafo no dirigido subyacente es **conexo**.
+
+* Un digrafo se dice **fuertemente conexo** si para todo par de nodos `u, v` existe un camino orientado de `u` a `v` y otro de `v` a `u`.
+
+    ![CircuitoOrientado](img/02-grafos-digrafo-fuertemente-conexo.png)
+
+* Una **componente conexa** de un grafo `G` es un subgrafo conexo maximal de `G`.
+
+    ![ComponentesConexas](img/02-grafos-componentes-conexas.png)
+
+* Dado un grafo `G=(V,X)`, un **nodo de corte** `v∈V` es aquel tal que al removerlo la cantidad de componentes conexas del grafo aumenta.
+
+* Dado un grafo `G=(V,X)`, una **arista puente** `e∈X` es aquella tal queal removerla la cantidad de componentes conexas del grafo aumenta.
+
+Representación
+--------------
+* **Matriz de adyacencia**: `A ∈ R^{n×n}`, donde los elementos `aᵢⱼ` de `A` se definen como `1` si `G` tiene una aristas entre los nodos `i` y `j`, o `0` si no.
+
+    ![MatrizAdyacencia](img/02-grafos-matriz-adyacencia.png)
+
+* **Matriz de incidencia**: `B ∈ R^{m×n}`, donde los elementos `bᵢⱼ` de `B` se definen como `1` si la arista `i` es incidente al nodo `j`, o `0` si no.
+    
+    ![MatrizIncidencia](img/02-grafos-matriz-incidencia.png)
 
 Teoremas sobre Grafos
 =====================
