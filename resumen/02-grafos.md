@@ -216,6 +216,20 @@ Representación
     
     ![MatrizIncidencia](img/02-grafos-matriz-incidencia.png)
 
+Operaciones
+-----------
+* La **unión de dos grafos** `G₁=(V₁, X₁), G₂=(V₂, X₂)`, denotada `G₁ ∪ G₂`, consiste en armar un `G = (V, X)` tal que `V = V₁ ∪ V₂` y `X = X₁ ∪ X₂`.
+
+    ![UnionGrafos](img/02-grafos-union.png)
+
+* La **suma de dos grafos** `G₁=(V₁, X₁), G₂=(V₂, X₂)`, denotada `G₁ + G₂`, consiste en armar un `G = (V, X)` tal que `V = V₁ ∪ V₂` y `X = X₁ ∪ X₂ ∪ X₁₂`, en donde `X₁₂` son todas las aristas que van desde `V₁` hasta `V₂`.
+
+    ![SumaGrafos](img/02-grafos-suma.png)
+
+    - El grafo bipartito `Kₘₙ = Kₘᶜ ∪ Kₙᶜ` es la unión de los complementos de los completos `Kₘ` y `Kₙ`.
+
+        ![GrafoBipartitoSuma](img/02-grafos-suma-bipartito.png)
+
 Teoremas sobre Grafos
 =====================
 
