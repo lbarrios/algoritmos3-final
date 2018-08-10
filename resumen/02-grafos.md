@@ -407,6 +407,17 @@ Teoremas sobre Grafos
 
         Demostración: TODO
 
+* Sea `G=(V,X)` conexo con al menos tres nodos, son equivalentes:
+    1. `G` es un bloque.
+    2. Para cada par de nodos de `G`, existe un circuito que los contiene.
+    3. Para cada nodo de `G`, para cada arista de `G`, existe en `G` un circuito que los contiene.
+    4. Para cada par de aristas de `G`, existe un circuito que las contiene.
+    5. Dados dos nodos `u,v ∈ V` y una arista `e ∈ X` de `G`, existe un camino `P` entre `u` y `v`, tal que `e∈P`.
+    6. Para cada terna de nodos distintos `u,v,w ∈ V`, existe un camino uniendo `u` con `w`, que contiene a `v`.
+    7. Para cada terna de nodos distintos `u,v,w ∈ V`, existe un camino uniendo `u` con `w`, que no contiene a `v`.
+
+        Demostración: TODO
+
 ### Isomorfismo
 Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
 
