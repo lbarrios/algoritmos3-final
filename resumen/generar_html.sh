@@ -5,6 +5,8 @@ rm -f 999-todo_junto.md 999-todo_junto.pre.html
 echo -e "[TOC]\n" > 999-todo_junto.md
 cat 01-introduccion.md <(echo) <(echo) 02-grafos.md <(echo) <(echo) 03-arboles.md <(echo) <(echo) 04-camino-minimo.md <(echo) <(echo) 05-grafos-eulerianos-y-hamiltonianos.md <(echo) <(echo) 06-grafos-planares.md <(echo) <(echo) 07-coloreo.md <(echo) <(echo) 08-matching-conjunto-independiente-recubrimientos.md <(echo) <(echo) 09-flujo-maximo.md <(echo) <(echo) 10-complejidad-problemas-np-completos.md <(echo) <(echo) >> 999-todo_junto.md
 
+sed -i 's/[ ]*```/```/g' 999-todo_junto.md
+
 markdown_py -q -o "html5" -x markdown.extensions.toc -x markdown.extensions.tables -x markdown.extensions.fenced_code -x markdown.extensions.codehilite -x pymdownx.mark 999-todo_junto.md > 999-todo_junto.pre.html
 #pygmentize -S default -f html > codehilite.css
 
@@ -16,6 +18,7 @@ echo "
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" href="./css/codehilite.css">
 	<link rel="stylesheet" type="text/css" href="./css/github-markdown.css">
+	<link rel="stylesheet" type="text/css" href="./css/custom.css">
 	<style>
 		.markdown-body {
 			box-sizing: border-box;
