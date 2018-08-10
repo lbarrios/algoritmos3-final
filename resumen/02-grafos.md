@@ -17,18 +17,17 @@ Definiciones
         * `m = |E|`
 
 * Dado `G=(V,E)`, `u,v,w ∈ V`, `e=(u,v),f=(v,w) ∈ E`, entonces
+    * al estar unidos por `e`, `u` y `v` son **nodos adyacentes**
+    * `e` es **incidente** a `u` y `v`
+    * al compartir el nodo `v`, `e` y `f` son **aristas adyacentes**
     ```
     Ejemplo grafo G:
 
         e       f
     u ----- v ----- w
     ```
-    * al estar unidos por `e`, `u` y `v` son **nodos adyacentes**
-    * `e` es **incidente** a `u` y `v`
-    * al compartir el nodo `v`, `e` y `f` son **aristas adyacentes**
 
 * El **grado** de un nodo `v` (`d(v)`), es la cantidad de aristas incidentes a `v`.
-
     ```
     v1 ---> v2 ---> v4          d(1) = 2
      \                          d(2) = 2
@@ -196,7 +195,7 @@ Operaciones
 -----------
 * Dado un grafo `G=(V,X)`, el resultado de **remover una arista** `e∈X` es un grafo `G−e = G' = (V, X')` tal que `X' = X \ e`.
 
-* Dado un grafo `G=(V,X)`, el resultado de **remover un nodo** `v∈V` es un grafo `G−v = G' = (V',X')` tal que `V' = V \ v` y `X'⊆X` tal que `∀e∈X`, si `e` es incidente en `v`, entonces `e∉X'`.
+* Dado un grafo `G=(V,X)`, el resultado de **remover un nodo** `v∈V` es un grafo `G−v = G' = (V',X')` tal que `V' = V \ v` y `X'⊆X` tal que `∀e∈X`, si `e` no es incidente en `v`, entonces `e∈X'`.
     - Es decir, `G'` es el subgrafo que surge de remover el nodo y todas las aristas adyacentes al mismo.
     - O, lo que es lo mismo, `G'` es el subgrafo inducido por nodos tal que `V' = V \ v`.
 
@@ -211,6 +210,19 @@ Operaciones
     - El grafo bipartito `Kₘₙ = Kₘᶜ ∪ Kₙᶜ` es la unión de los complementos de los completos `Kₘ` y `Kₙ`.
 
         ![GrafoBipartitoSuma](img/02-grafos-suma-bipartito.png)
+
+* El **producto de dos grafos** `G₁=(V₁, X₁), G₂=(V₂, X₂)`, denotado `G₁ × G₂`, consiste en armar un `G = (V, X)` tal que `V = V₁ × V₂` y dados `u=(u₁, u₂)` y `v=(v₁, v₂)` en `V`, vale que `(u,v) ∈ X ⟺ [u₁=v₁ ∧ (u₂,v₂)∈X₂] ∨ [u₂=v₂ ∧ (u₁,v₁)∈X₁]`.
+
+* La **composición de dos grafos** `G₁=(V₁, X₁), G₂=(V₂, X₂)`, denotada `G₁[G₂]`, consiste en armar un `G = (V, X)` tal que `V = V₁ × V₂` y dados `u=(u₁, u₂)` y `v=(v₁, v₂)` en `V`, vale que `(u,v) ∈ X ⟺ [u₁=v₁] ∨ [u₂=v₂ ∧ (u₁,v₁)∈X₁]`.
+
+### Comparación de Operaciones
+
+| Operación     | Número de nodos   | Número de aristas |
+| :-----------: | :---------------: | :---------------: |
+| Unión         | n₁ + n₂           | m₁ + m₂           |
+| Suma          | n₁ + n₂           | m₁ + m₂ + n₁⋅n₂   |
+| Producto      | n₁⋅n₂             | n₁⋅m₂ + n₂⋅m₁     |
+| Composición   | n₁⋅n₂             | n₁⋅m₂ + (n₂)²⋅m₁  |
 
 Conectividad
 ------------
@@ -230,7 +242,20 @@ Conectividad
 
 * Dado un grafo `G=(V,X)`, un **nodo de corte** `v∈V` es aquel tal que al removerlo la cantidad de componentes conexas del grafo aumenta.
 
+* **Teorema**: Sea `v` un nodo de `G=(V,X)` conexo, son equivalentes:
+    - `v` es un nodo de corte de `G`.
+    - Existen puntos `u,w ∈ V, u≠v, w≠v` tales que `v` está en cada camino de `u` a `w`.
+    - Existe una partición `U,W ⊆ V−{v}` del conjunto de nodos en subconjuntos tales que `∀u∈U ∀w∈W`, `v` está en todo camino de `u` a `w`.
+
 * Dado un grafo `G=(V,X)`, una **arista puente** `e∈X` es aquella tal queal removerla la cantidad de componentes conexas del grafo aumenta.
+
+* **Teorema**: Sea `e` una arista de `G=(V,X)` conexo, son equivalentes:
+    - `e` es un puente de `G`.
+    - `e` no está en ningún ciclo de `G`.
+    - Existen puntos `u,v ∈ V` tales que la arista `e` está en cada camino de `u` a `v`.
+    - Existe una partición `U,W ⊆ V` tal que `∀u∈U ∀w∈W`, la arista `e` se encuentra en todo camino desde `u` hasta `w`.
+
+* Dado un grafo `G=(V,X)`, un **bloque** es un subgrafo `F⊆G` maximal: conexo, no trivial, y sin nodos de corte.
 
 Representación
 --------------
@@ -361,6 +386,26 @@ Teoremas sobre Grafos
 
     **Proof 2)** if G is a bigraph, then its point set V can be partitioned into two sets V₁ and V₂ so that every line of G joins a point of V₁ with a point of V₂. Thus every cycle v₁v₂⋯vₙv₁ in G necessarily has its oddly subscripted points in V₁, say, and the others in V₂, so that its length n is even.
     For the converse, we assume, without loss of generality, that G is connected (for otherwise we can consider the components of G separately). Take any point v₁∈V, and let V₁ consist of v₁ and all points at even distance from v₁, while V₂ = V - V₁. Since all the cycles of G are even, every line of G joins a point of V₁ with a point of V. For suppose there is a line uv joining two points of V₁. Then the union of geodesics from v₁to v and from v₁ to u together with the line uv contains an odd cycle, a contradiction.
+
+### Bloques − Nodos de Corte − Aristas Puente
+* Sea `v` un nodo de `G=(V,X)` conexo, son equivalentes:
+    1. `v` es un nodo de corte de `G`.
+    2. Existen puntos `u,w ∈ V, u≠v, w≠v` tales que `v` está en cada camino de `u` a `w`.
+    3. Existe una partición `U,W ⊆ V−{v}` del conjunto de nodos en subconjuntos tales que `∀u∈U ∀w∈W`, `v` está en todo camino de `u` a `w`.
+
+        1=>3) Supongo que vale 1. Dado que v es un punto de corte de G, G−v es no conexo, y en particular tiene al menos dos componentes conexas. Sea U⊆V una de esas componentes, y sea W⊆V el resto de los nodos, esto conforma una partición U,W ⊆ V-{v}, y es claro que no existe ningún camino desde cualquier nodo de U hacia cualquier nodo de W. Luego, trasladando esa partición a G, el único camino posible entre cualquier nodo de U y cualquier nodo de W pasa necesariamente por v. Luego, vale 3.
+
+        3=>2) Supongo que vale 3. Luego existe una partición U,W ⊆ V−{v} tal que para todo u∈U, w∈W, v se encuentra en todo camino de u a w. Tomo entonces cualesquiera u∈U y w∈W. Luego, vale 2.
+
+        2=>1) Supongo que vale 2. Existen puntos u,w ∈ V distintos de v, tales que v se encuentra en todo camino de u a w. Eso significa que no pueden haber caminos entre u y w en G'=G−v. Luego, G' no es conexo, y en particular tiene al menos dos componentes conexas (una en donde esta u, y otra en donde está v). Por lo tanto, v es un nodo de corte de G. Luego, vale 1.
+
+* Sea `e` una arista de `G=(V,X)` conexo, son equivalentes:
+    1. `e` es un puente de `G`.
+    2. `e` no está en ningún ciclo de `G`.
+    3. Existen puntos `u,v ∈ V` tales que la arista `e` está en cada camino de `u` a `v`.
+    4. Existe una partición `U,W ⊆ V` tal que `∀u∈U ∀w∈W`, la arista `e` se encuentra en todo camino desde `u` hasta `w`.
+
+        Demostración: TODO
 
 ### Isomorfismo
 Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
