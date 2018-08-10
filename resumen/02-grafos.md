@@ -368,7 +368,6 @@ Teoremas sobre Grafos
     Sea el camino `P₃' = P₁ + P₂` entre `u` y `w`, formado por la concatenacioń de esos dos caminos, el largo es `|P₃| = |P₁| + |P₂| = d(u,v) + d(v,w)`. 
 
     Luego existe un camino de menor largo al mínimo. Absurdo, surgido de suponer que puede valer `d(u,w) > d(u,v) + d(v,w)`, luego `d(u,w) ≤ d(u,v) + d(v,w)`.
-    
 
 ### Bipartitos
 * Un grafo G con 2 o más nodos es bipartito si y sólo si no tiene circuitos simples de longitud impar.
@@ -405,14 +404,20 @@ Teoremas sobre Grafos
     3. Existen puntos `u,v ∈ V` tales que la arista `e` está en cada camino de `u` a `v`.
     4. Existe una partición `U,W ⊆ V` tal que `∀u∈U ∀w∈W`, la arista `e` se encuentra en todo camino desde `u` hasta `w`.
 
-        Demostración: TODO
+        4=>3) Supongo que vale 4. Dada la partición U,W ⊆ V, se que ∀u∈U ∀w∈W la arista e se encuentra en todo camino de u hasta w. Tomo cualquier par u∈U, w∈W arbitrario, vale que e se encuentra en cada camino de u a w. Luego, vale 3.
+
+        3=>2) Supongo que vale 3. Sean u, v ∈ V tales que e está en cada camino de u a v. Sean w₁, w₂ ∈ G los nodos sobre los que incide e. Dado que e pertenece a todo camino de u a v, en particular todo camino de u a v está compuesto por un camino de u a w₁, un camino de w₁ a w₂ y un camino de w₂ a v. Supongo que e está en algún ciclo de G, esto significa que w₁ y w₂ están en ese ciclo, lo que significa que existen al menos dos caminos distintos de w₁ a w₂, uno conteniendo a e, y el otro no. Sea el camino formado por la concatenación de los caminos de u a w₁, el camino de w₁ a w₂ que no contiene a e, y w₂ a v. Luego, en particular, existe un camino de u a v que no contiene a e, lo cual es absurdo y surge de suponer que e pertenece a algún ciclo de G. Luego, vale 2.
+
+        2=>1) Supongo que vale 2. La arista e=(w₁, w₂) no pertenece a ningún ciclo de G. Esto quiere decir que no existe ningún camino P de w₁ a w₂ distinto de e, ya que si lo hubiese, existiría el ciclo C=P+e. Entonces, si remuevo a e de G, no existe ningún camino de w₁ a w₂, es decir que ambos pertenecen a distintas componentes conexas. Luego G−e tiene al menos dos componentes conexas, y como G es conexo, eso significa que e es una arista puente. Luego vale 1.
+
+        1=>4) Supongo que vale 1. Sea e una arista puente de G. Esto significa que G−e tiene menos componentes conexas que G. En particular, como G es conexo, G−e tiene al menos 2 componentes conexas. Tomo U⊆V una de las componentes conexas surgidas de hacer G−e, y W=V−U. Por definición de componente conexa, ∀u∈U, ∀w∈W en G−e no existe un camino entre u y w. Luego, e se encuentra necesariamente en todo camino de u a w.
 
 * Sea `G=(V,X)` conexo con al menos tres nodos, son equivalentes:
     1. `G` es un bloque.
     2. Para cada par de nodos de `G`, existe un circuito que los contiene.
     3. Para cada nodo de `G`, para cada arista de `G`, existe en `G` un circuito que los contiene.
     4. Para cada par de aristas de `G`, existe un circuito que las contiene.
-    5. Dados dos nodos `u,v ∈ V` y una arista `e ∈ X` de `G`, existe un camino `P` entre `u` y `v`, tal que `e∈P`.
+    5. Dados dos nodos `u,v ∈ V` y una arista `e ∈ X` de `G`, existe un camino `P` entre `u` y `v`, tal que `e ∈ P`.
     6. Para cada terna de nodos distintos `u,v,w ∈ V`, existe un camino uniendo `u` con `w`, que contiene a `v`.
     7. Para cada terna de nodos distintos `u,v,w ∈ V`, existe un camino uniendo `u` con `w`, que no contiene a `v`.
 
