@@ -247,13 +247,19 @@ Conectividad
     - Existen puntos `u,w ∈ V, u≠v, w≠v` tales que `v` está en cada camino de `u` a `w`.
     - Existe una partición `U,W ⊆ V−{v}` del conjunto de nodos en subconjuntos tales que `∀u∈U ∀w∈W`, `v` está en todo camino de `u` a `w`.
 
-* Dado un grafo `G=(V,X)`, una **arista puente** `e∈X` es aquella tal queal removerla la cantidad de componentes conexas del grafo aumenta.
+* Dado un grafo `G=(V,X)`, una **arista puente** `e∈X` es aquella tal que al removerla la cantidad de componentes conexas del grafo aumenta.
 
 * **Teorema**: Sea `e` una arista de `G=(V,X)` conexo, son equivalentes:
     - `e` es un puente de `G`.
     - `e` no está en ningún ciclo de `G`.
     - Existen puntos `u,v ∈ V` tales que la arista `e` está en cada camino de `u` a `v`.
     - Existe una partición `U,W ⊆ V` tal que `∀u∈U ∀w∈W`, la arista `e` se encuentra en todo camino desde `u` hasta `w`.
+
+* Dado un grafo `G=(V,X)`, una **arista de ciclo** `e∈X` es aquella tal que forma parte de al menos un ciclo del grafo.
+
+* **Proposición**: Una arista es puente si y sólo sí no es arista de ciclo.
+
+* **Proposición**: Dado un grafo `G=(V,X)`, `e∈X`, sea `c` la cantidad de componentes conexas de `G`, la cantidad de componentes conexas de `G−e` es `c` si `e` es una arista de ciclo, y `c+1` en cualquier otro caso.
 
 * Dado un grafo `G=(V,X)`, un **bloque** es un subgrafo `F⊆G` maximal: conexo, no trivial, y sin nodos de corte.
 
