@@ -23,7 +23,9 @@
 * Los **nodos internos** de un árbol son aquellos que no son ni hojas ni la raíz.
 
 * Dado un grafo `G`, un **árbol generador** de `G` es un subgrafo de `G` que es un árbol y tiene el mismo conjunto de nodos que `G`.
-
+	- **Proposición**: Un árbol es conexo sí y sólo sí contiene un árbol generador.
+	- **Proposición**: Dado un grafo `G` conexo, todo subgrafo `H⊆G` sin ciclos se encuentra contenido en al menos un Árbol Generador.
+	
 * Sea `T = (V, X)` un árbol y `l : X → R` una función que asigna longitudes (o pesos) a las aristas de `T`. Se define la **longitud** de `T` como `l(T) = ∑{e∈T} l(e)`
 
 * Dado un grafo `G = (V, X)`, `T` un **árbol generador mínimo** de `G` es un árbol generador de `G` de mínima longitud, es decir, `l(T) ≤ l(T')` para todo `T'` árbol generador de `G`.
@@ -66,6 +68,11 @@ Cantidad de aristas de un Árbol
 	. n=1: trivial
 
 	. n>1: tomo un arbol de tamaño `n` y le saco una hoja; por HI el árbol resultante tiene `m'=(n-1)-1`, luego vuelvo a agregar la hoja que saqué, `m = (n-1)-1+1 = n-1`
+
+Árbol Generador
+---------------
+* Un árbol es conexo sí y sólo sí contiene un árbol generador.
+* Dado un grafo `G` conexo, todo subgrafo `H⊆G` sin ciclos se encuentra contenido en al menos un Árbol Generador.
 
 Árboles m-arios
 ---------------
