@@ -421,52 +421,28 @@ Teoremas sobre Grafos
     6. Para cada terna de nodos distintos `u,v,w ∈ V`, existe un camino uniendo `u` con `w`, que contiene a `v`.
     7. Para cada terna de nodos distintos `u,v,w ∈ V`, existe un camino uniendo `u` con `w`, que no contiene a `v`.
 
-        TODO:
+        Proof: 
+        (1) implies (2) Let u and v be distinct points of G, and let U be the set of points different from u which lie on a cycle containing u. Since G has at least three points and no cutpoints, it has no bridges; therefore, every point adjacent to u is in it, so U is not empty.
 
-        Proof (1) implies (2) Let u and v be distinct points of G, and let U be the set of
-        points different from u which lie on a cycle containing u. Since G has at
-        least three points and no cutpoints, it has no bridges; therefore, every point
-        adjacent to u is in 17, so U is not empty.
-        (a)
-        Fig. 3.2. Paths in blocks.
-        Suppose v is not in U. Let w be a point in U for which the distance
-        d(w, v) is minimum. Let P0 be a shortest w-v path, and let P x and P2 be the
-        two u-w paths of a cycle containing u and w (see Fig. 3.2a). Since w is not a
-        cutpoint, there is a u-v path P not containing w (see Fig. 3.2b). Let w' be the
-        point nearest u in Pf which is also in Po, and let u' be the last point of the
-        u-w' subpath of P' in either P x or P2. Without loss of generality, we assume
-        u' is in P x.
-        Let Qx be the u-w' path consisting of the u-u' subpath of P x and the
-        u'-w' subpath of P. Let Q2 be the u-w' path consisting of P2 followed by the
-        w-w' subpath of P0. Then Qx and Q2 are disjoint u-w' paths. Together
-        they form a cycle, so w' is in U. Since w' is on a shortest w-v path,
-        d(w\ v) < d(w, v). This contradicts our choice of w, proving that u and v do
-        lie on a cycle.
-        (2) implies (3) Let u be a point and vw a line of G. Let Z be a cycle containing
-        u and v. A cycle Z' containing u and vw can be formed as follows. If w is on
-        Z, then Z' consists of vw together with the v-w path of Z containing u. If w
-        is not on Z, there is a w-u path P not containing v, since otherwise v would be a
-        cutpoint by Theorem 3.1. Let u' be the first point of P in Z. Then Z'consists
-        of vw followed by the w-u' subpath of P and the u'-v path in Z containing u.
+        Suppose v is not in U. Let w be a point in U for which the distance d(w, v) is minimum. Let P0 be a shortest w-v path, and let P x and P2 be the two u-w paths of a cycle containing u and w (see Fig. 3.2a). Since w is not a cutpoint, there is a u-v path P not containing w (see Fig. 3.2b). Let w' be the point nearest u in Pf which is also in Po, and let u' be the last point of the u-w' subpath of P' in either P x or P2. Without loss of generality, we assume u' is in P x.
+        
+        Let Qx be the u-w' path consisting of the u-u' subpath of P x and the u'-w' subpath of P. Let Q2 be the u-w' path consisting of P2 followed by the w-w' subpath of P0. Then Qx and Q2 are disjoint u-w' paths. 
+
+        Together they form a cycle, so w' is in U. Since w' is on a shortest w-v path, d(w\ v) < d(w, v). This contradicts our choice of w, proving that u and v do lie on a cycle.
+
+        (2) implies (3) Let u be a point and vw a line of G. Let Z be a cycle containing u and v. A cycle Z' containing u and vw can be formed as follows. If w is on Z, then Z' consists of vw together with the v-w path of Z containing u. If w is not on Z, there is a w-u path P not containing v, since otherwise v would be a cutpoint by Theorem 3.1. Let u' be the first point of P in Z. Then Z'consists of vw followed by the w-u' subpath of P and the u'-v path in Z containing u.
+        
         (2) implies (4) This proof is analogous to the preceding one, and the details
         are omitted.
         BLOCK GRAPHS AND CUTPOINT GRAPHS 2 9
-        (4) implies (5) Any two points of G are incident with one line each, which lie on
-        a cycle by (4). Hence any two points of G lie on a cycle, and we have (2), so
-        also (3). Let u and v be distinct points and x a line of G. By statement (3), there
-        are cycles Z t containing u and x, and Z 2 containing v and x. If p is on Z t or
-        u is on Z 2, there is clearly a path joining u and v containing x. Thus, we need
-        only consider the case where v is not on Z t and u is not on Z 2. Begin with
-        u and proceed along Z t until reaching the first point w of Z 2, then take the
-        path on Z 2 joining w and v which contains x. This walk constitutes a path
-        joining u and v that contains x.
-        (5) implies (6) L e t«, v, and w be distinct points of G, and let x be any line incident
-        with w. By (5), there is a path joining u and v which contains x, and
-        hence must contain w.
-        (6) implies (7) Let w, v, and w be distinct points of G. By statement (6), there
-        is a u-w path P containing v. The u-v subpath of P does not contain w.
-        (7) implies (J) By statement (7), for any two points u and p, no point lies on
-        every u-v path. Hence, G must be a block.
+        
+        (4) implies (5) Any two points of G are incident with one line each, which lie on a cycle by (4). Hence any two points of G lie on a cycle, and we have (2), so also (3). Let u and v be distinct points and x a line of G. By statement (3), there are cycles Z t containing u and x, and Z 2 containing v and x. If p is on Z t or u is on Z 2, there is clearly a path joining u and v containing x. Thus, we need only consider the case where v is not on Z t and u is not on Z 2. Begin with u and proceed along Z t until reaching the first point w of Z 2, then take the path on Z 2 joining w and v which contains x. This walk constitutes a path joining u and v that contains x.
+        
+        (5) implies (6) L e t«, v, and w be distinct points of G, and let x be any line incident with w. By (5), there is a path joining u and v which contains x, and hence must contain w.
+        
+        (6) implies (7) Let w, v, and w be distinct points of G. By statement (6), there is a u-w path P containing v. The u-v subpath of P does not contain w.
+
+        (7) implies (J) By statement (7), for any two points u and p, no point lies on every u-v path. Hence, G must be a block.
 
 ### Isomorfismo
 Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
