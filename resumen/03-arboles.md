@@ -1,7 +1,10 @@
 Árboles
 =======
 
+* Un **bosque** es un grafo sin circuitos simples.
+
 * Un **árbol** es un grafo conexo sin circuitos simples.
+	- Equivalentemente, un **árbol** es un bosque conexo.
 
 * Una **hoja** es un nodo de grado 1.
 
