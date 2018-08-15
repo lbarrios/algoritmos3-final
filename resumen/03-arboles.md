@@ -73,9 +73,7 @@ Definición de Árbol
 
 * Lema 3: Todo árbol no trivial tiene al menos dos hojas.
 	
-	¿Inducción en n?
-
-	TODO:
+	Dado que un arbol tiene m=n-1 aristas, la sumatoria de los grados de todos los nodos es 2m = 2n-2. Supongo que no existen hojas, luego todo nodo tiene grado al menos 2, por lo que la sumatoria de los grados de todos los nodos es mayor o igual a 2n, es decir 2n-2≥2n ⟺ 0≥2, absurdo. Supongo que existe una sola hoja, luego la sumatoria de los grados de todos los nodos que no son hojas es mayor o igual a 2(n-1) = 2n-2, por lo que la sumatoria de los grados de todos los nodos es mayor o igual a 2n-2 + 1 = 2n-1, lo cual nuevamenete es absurdo puesto que 2n-2 ≥ 2n-1 ⟺ 0≥1. Luego, la cantidad de hojas de cualquier árbol no trivial es al menos 2.
 
 * Lema 4: Sea `G = (V, X)` un árbol. Entonces `m = n − 1`.
 	
