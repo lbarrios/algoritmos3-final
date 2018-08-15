@@ -63,20 +63,36 @@ Definición de Árbol
 
 	Supongo que no existe un camino entre u y v, entonces u y v pertenecen a distintas componentes conexas de G, luego el grafo surgido de agregar una arista uniendo u y v no tiene un circuito que pase por esta arista, ya que sería una arista puente (uniendo dos componentes conexas distintas). Absurdo, ya que G es un grafo tal que al agregar e debe tener exactamente un circuito simple, que pase por e.
 
-	Supongo que existe más de un camino entre u y v en G. Por LEMA 2, la concatenación de estos caminos contiene un circuito simple. Absurdo, ya que G no tiene circutos simples.
+	Supongo que existe más de un camino entre u y v en G. Por LEMA 2, la concatenación de estos caminos contiene un circuito simple. Absurdo, ya que G no tiene circuitos simples.
 
 	Luego, existe exactamente un camino simple entre todo par de nodos de G.
+
+	3 => 4) Sea G tal que existe exactamente un camino simple entre todo par de nodos. Quiero ver que G es conexo, pero si se le quita cualquier arista deja de serlo. Que G es conexo vale trivialmente. Supongo que existe una arista e=(u,v) tal que al G−e sigue siendo conexo. En particular, eso significa que existe en G−e un camino simple entre u y v. Este camino es distinto al camino formado por la arista e, luego existirían en G dos caminos simples distintos entre u y v. Absurdo surgido de suponer que existe una arista tal que al removerla G sigue siendo conexo.
+
+	4 => 1) Sea G conexo tal que para cualquier e, G−e no es conexo. Quiero ver que G es conexo y sin circuitos simples. Que G es conexo vale trivialmente. Supongo entonces que G tiene algún circuito simple, llamemoslo C. Sea e=(u,v) una arista de ese circuito, luego por LEMA 1 G−e es conexo. Absurdo, luego G no puede tener circuitos simples.
+
+* Lema 3: Todo árbol no trivial tiene al menos dos hojas.
+	
+	¿Inducción en n?
+
+	TODO:
+
+* Lema 4: Sea `G = (V, X)` un árbol. Entonces `m = n − 1`.
+	
+	Inducción en n.
+
+	Para n=1,2,3 vale.
+
+	Quiero ver que si vale para menos de n vértices, entonces vale para n: sea T un árbol de n vértices. Sea eₖ=(vᵢ vⱼ) una arista que conecta los nodos vᵢ y vⱼ. Dado que G es un árbol, existe exactamente un camino simple entre todo par de nodos, luego en particular eₖ es el único camino simple entre vᵢ y vⱼ, por lo que es una arista puente (al removerla, la cantidad de componentes conexas aumenta). Luego, T−eₖ es un grafo con dos componentes conexas, y dado que T al ser un árbol no tiene circuitos simples, cada una de ellas no tiene circuitos simples, luego cada una es un árbol. Cada una de esas componentes conexas tiene menos de n nodos, por lo que para cada una de ellas vale la hipótesis inductiva: el número de aristas de cada una es uno menos que el número de nodos. Sean n₁ y n₂ tal que n=n₁+n₂, el número de vértices de cada componente conexa, luego el número de aristas de T−eₖ es (n₁-1)+(n₂-1) = (n₁+n₂)+(-2) = n-2. Finalmente, dado que T−eₖ tiene n-2 aristas, T tiene m=n-1 aristas.
 
 Definición de Árbol (2)
 -----------------------
 * Dado un grafo G son equivalentes:
-	* (1) **Árbol**: `G` es un árbol.
+	* (1) **Árbol**: `G` es un árbol (`G` es conexo y sin circuitos simples).
 	* (5) **Sin circuitos y cantidad de aristas**: `G` es un grafo sin circuitos simples y `m = n − 1`.
 	* (6) **Conexo y cantidad de aristas**: `G` es conexo y `m = n − 1`.
 
-* Lema 3: Todo árbol no trivial tiene al menos dos hojas.
-
-* Lema 4: Sea `G = (V, X)` un árbol. Entonces `m = n − 1`.
+	1 => 5) Sea G un árbol. Quiero ver que G no tiene circuitos simples, y que m = n - 1. Que no tiene circuitos simples vale trivialmente.
 
 * Corolario 1: Sea `G = (V, X)` sin circuitos simples y `c` componentes conexas. Entonces `m = n − c`.
 
