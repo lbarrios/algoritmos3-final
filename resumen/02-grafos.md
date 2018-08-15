@@ -478,3 +478,15 @@ Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
 
 * Si `A` es la matriz de adyacencia del grafo `G`, el elemento `aᵏᵢⱼ ∈ Aᵏ` es igual a la cantidad de caminos de longitud `k` entre los nodos `i` y `j`.
   * Corolario: `a²ᵢᵢ = d(vi)`.
+
+### Cantidad de Aristas
+
+* Un grafo conexo no trivial tiene m≥n-1.
+    
+    Por inducción en n.
+
+    Caso n=2 vale.
+
+    Quiero ver que si vale para menos de n, entonces vale para n: sea G=(V,X) un grafo conexo de n nodos. Sea v∈V, H=G−v el subgrafo resultante de sacar v a G, con n-1 nodos. H no necesariamente es conexo, en particular tiene k≥1 componentes conexas, llamemoslas Zᵢ, cada una con nᵢ≤n-1 nodos. La hipótesis inductiva vale para cada Zᵢ, luego mᵢ≥nᵢ-1 ⟹ m ≥ ∑ₖ(nᵢ-1) + d(v) = (∑ₖnᵢ) - (∑ₖ1) + d(v) = (n-1) - k + d(v). Para que G sea conexo, v debe tener en G al menos una arista a cada una de las componentes conexas de H, luego d(v)≥k. Finalmente, m ≥ n-1-k+k ⟹ m≥n-1.
+
+* Un grafo sin ciclos no trivial tiene m<=n-1
