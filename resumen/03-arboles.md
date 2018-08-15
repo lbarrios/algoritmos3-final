@@ -41,9 +41,13 @@ Teoremas sobre árboles
 
 * Lema 2: La concatenación de dos caminos distintos entre un par de vértices contiene un circuito simple.
 
-	Sean los vértices u, v ∈ V, tal que u≠v, y los caminos P₁, P₂, ambos entre u y v, tal que P₁≠P₂. Quiero ver que P₁+P₂ contiene un circuito simple.
+	Sean los vértices u,v ∈ V, tal que u≠v, y los caminos P₁, P₂, ambos entre u y v, tal que P₁≠P₂. Quiero ver que P₁+P₂ contiene un circuito simple.
 
-	TODO:
+	Si P₁∩P₂ no coinciden en ningún nodo (excepto u y v), entonces P₁+P₂ es un circuito simple.
+
+	En caso contrario, entonces en particular existe un subcamino en P₁, Q = (u ⋯ wₙ) formado por todos los nodos y aristas de P₁ desde u, hasta el primer nodo wₙ que exista en P₂. Asimismo, existe un subcamino en P₂, R = (u ⋯ wₙ) formado desde u hasta ese mismo nodo wₙ. Luego, Q+R es un circuito simple.
+
+	Finalmente, la concatenación de P₁ y P₂ dos caminos distintos entre u y v, contiene un circuito simple.
 
 Definición de Árbol
 -------------------
@@ -52,6 +56,16 @@ Definición de Árbol
 	* (2) **Sin circuitos maximal**: `G` es un grafo sin circuitos simples, pero si se agrega una arista `e` a `G` resulta un grafo con exactamente un circuito simple que pasa por `e`.
 	* (3) **Exactamente un camino**: Existe exactamente un camino simple entre todo par de nodos.
 	* (4) **Conexo minimal**: `G` es conexo, pero si se quita cualquier arista a `G` queda un grafo no conexo.
+
+	1 => 2) Sea G conexo y sin circuitos simples. Quiero ver que esto equivale a que G+e tenga exactamente un circuito simple, que pasa por e. Por LEMA 1, (G+e)−e = G es conexo ssi e pertenece a un circuito simple en G+e. Luego, como G no tiene circuitos simples, G+e tiene exactamente uno, y además pasa por e.
+
+	2 => 3) Supongo que G es un grafo sin circuitos simples tal que G+e tiene exactamente un circuito simple que pasa por e. Supongo que no existe exactamente un camino simple entre todo par de nodos de G. En particular, existen dos nodos u,v tal que o bien no existe un camino, o bien existe más de uno. 
+
+	Supongo que no existe un camino entre u y v, entonces u y v pertenecen a distintas componentes conexas de G, luego el grafo surgido de agregar una arista uniendo u y v no tiene un circuito que pase por esta arista, ya que sería una arista puente (uniendo dos componentes conexas distintas). Absurdo, ya que G es un grafo tal que al agregar e debe tener exactamente un circuito simple, que pase por e.
+
+	Supongo que existe más de un camino entre u y v en G. Por LEMA 2, la concatenación de estos caminos contiene un circuito simple. Absurdo, ya que G no tiene circutos simples.
+
+	Luego, existe exactamente un camino simple entre todo par de nodos de G.
 
 Definición de Árbol (2)
 -----------------------
