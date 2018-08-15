@@ -34,7 +34,16 @@ Teoremas sobre árboles
 ======================
 
 * Lema 1: Sea `G = (V, X)` un grafo conexo y `e ∈ X`. `G∖e` es conexo si y solo si `e` pertenece a un circuito simple de `G`.
+
+	=>) Sea G−e conexo, quiero ver que e pertenece a algún circuito simple de G. Supongo que e no pertenece a algún circuito de G. Esto equivale a afirmar que e es una arista puente, por lo que al removerla de G, la cantidad de componentes conexas debería aumentar. Absurdo, ya que como G−e es conexo, luego #c(G−e) = #c(G), y surge de suponer que e no pertenece a algún circuito de G. Luego, en particular, pertenece a algún circuito simple.
+
+	<=) Sea e=(u,v)=eᵤᵥ la arista entre los nodos u y v, que pertenece a un circuito simple Cₑ en G. Quiero ver que G−e es conexo. Para ello, bastaría ver que todo camino simple entre dos nodos cualesquiera en G, que contenga a eᵤᵥ, puede ser reemplazado por otro camino (simple). En particular, dado cualquier camino simple Pᵢⱼ = (eᵢ ⋯ eᵤ eᵤᵥ eᵥ ⋯ eⱼ) = (Pᵢᵤ) + (eᵤᵥ) + (Pᵥⱼ) entre los nodos i,j∈V tal que contiene a eᵤᵥ, es decir está formado por la concatenación de tres caminos: un camino hasta u, la arista eᵤᵥ, y un camino desde v, este puede ser reemplazado por un camino Pᵢⱼ' formado por la concatenación de Pᵢᵤ, Pᵥᵤ y Pᵥⱼ, siendo Pᵥᵤ=Cₑ−eᵤᵥ el camino entre v y u surgido de sacarle la arista eᵤᵥ al circuito simple Cₑ. Es fácil ver que Pᵢⱼ' es un camino entre los nodos i, j.
+
 * Lema 2: La concatenación de dos caminos distintos entre un par de vértices contiene un circuito simple.
+
+	Sean los vértices u, v ∈ V, tal que u≠v, y los caminos P₁, P₂, ambos entre u y v, tal que P₁≠P₂. Quiero ver que P₁+P₂ contiene un circuito simple.
+
+	TODO:
 
 Definición de Árbol
 -------------------
