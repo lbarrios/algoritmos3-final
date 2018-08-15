@@ -481,12 +481,22 @@ Si dos grafos `G = (V, X)` y `G' = (V', X')` son isomorfos, entonces:
 
 ### Cantidad de Aristas
 
-* Un grafo conexo no trivial tiene m≥n-1.
+* Un grafo conexo tiene m≥n-1.
     
     Por inducción en n.
 
-    Caso n=2 vale.
+    Caso n=1 vale.
 
-    Quiero ver que si vale para menos de n, entonces vale para n: sea G=(V,X) un grafo conexo de n nodos. Sea v∈V, H=G−v el subgrafo resultante de sacar v a G, con n-1 nodos. H no necesariamente es conexo, en particular tiene k≥1 componentes conexas, llamemoslas Zᵢ, cada una con nᵢ≤n-1 nodos. La hipótesis inductiva vale para cada Zᵢ, luego mᵢ≥nᵢ-1 ⟹ m ≥ ∑ₖ(nᵢ-1) + d(v) = (∑ₖnᵢ) - (∑ₖ1) + d(v) = (n-1) - k + d(v). Para que G sea conexo, v debe tener en G al menos una arista a cada una de las componentes conexas de H, luego d(v)≥k. Finalmente, m ≥ n-1-k+k ⟹ m≥n-1.
+    Quiero ver que si vale para menos de n, entonces vale para n. Sea G=(V,X) un grafo conexo de n nodos. Sea v∈V, H=G−v el subgrafo resultante de sacar v a G, con n-1 nodos. H no necesariamente es conexo, en particular tiene k≥1 componentes conexas, llamemoslas Zᵢ, cada una con nᵢ≤n-1 nodos. La hipótesis inductiva vale para cada Zᵢ, luego mᵢ≥nᵢ-1 ⟹ m ≥ ∑ₖ(nᵢ-1) + d(v) = (∑ₖnᵢ) - (∑ₖ1) + d(v) = (n-1) - k + d(v). Para que G sea conexo, v debe tener en G al menos una arista a cada una de las componentes conexas de H, luego d(v)≥k. Finalmente, m ≥ n-1-k+k ⟹ m≥n-1.
 
-* Un grafo sin ciclos no trivial tiene m<=n-1
+* Un grafo sin ciclos tiene m<=n-1.
+
+    Si X=∅ m=0, la propiedad vale trivialmente. Supongo X≠∅.
+
+    Por inducción en n.
+
+    Caso n=1 vale.
+
+    Quiero ver que si vale para menos de n, entonces vale para n. Sea G=(V,X) un grafo sin ciclos de n nodos. Tomo algún e=(u,v)∈X. Dado que e no está en ningún ciclo de G, e es un puente, lo que significa que H=G−e=(V,X−e) tiene exactamente una componente conexa más que G. En particular, por propiedad de arista puente existe al menos una partición V₁, V₂ tal que V₁≠∅, V₂≠∅ y no existen en H caminos entre los nodos de V₁ y V₂. Sean n₁=|V₁|≥1, n₂=|V₂|≥1 tal que n₁+n₂=n, luego la hipótesis inductiva vale para H₁=(V₁, X₁) el subgrafo inducido por V₁, y H₂=(V₂, X₂) el subgrafo inducido por V₂, es decir, m₁≤n₁-1 y m₂≤n₂-1. Dado que V₁ y V₂ conforman una partición de H, toda arista de X−e está, o bien en X₁, o bien en X₂. Luego |X−e| = m₁+m₂ ≤ n₁-1+n₂-1 = n₁+n₂-2 = n-2. Luego, dado que |X−e| ≤ n-2, |X| ≤ n-1.
+
+
