@@ -23,7 +23,7 @@
 * Los **nodos internos** de un árbol son aquellos que no son ni hojas ni la raíz.
 
 * Dado un grafo `G`, un **árbol generador** de `G` es un subgrafo de `G` que es un árbol y tiene el mismo conjunto de nodos que `G`.
-	- **Proposición**: Un árbol es conexo sí y sólo sí contiene un árbol generador.
+	- **Proposición**: Un grafo es conexo sí y sólo sí contiene un árbol generador.
 	- **Proposición**: Dado un grafo `G` conexo, todo subgrafo `H⊆G` sin ciclos se encuentra contenido en al menos un Árbol Generador.
 	
 * Sea `T = (V, X)` un árbol y `l : X → R` una función que asigna longitudes (o pesos) a las aristas de `T`. Se define la **longitud** de `T` como `l(T) = ∑{e∈T} l(e)`
@@ -73,7 +73,9 @@ Definición de Árbol
 
 * Lema 3: Todo árbol no trivial tiene al menos dos hojas.
 	
-	Dado que un arbol tiene m=n-1 aristas, la sumatoria de los grados de todos los nodos es 2m = 2n-2. Supongo que no existen hojas, luego todo nodo tiene grado al menos 2, por lo que la sumatoria de los grados de todos los nodos es mayor o igual a 2n, es decir 2n-2≥2n ⟺ 0≥2, absurdo. Supongo que existe una sola hoja, luego la sumatoria de los grados de todos los nodos que no son hojas es mayor o igual a 2(n-1) = 2n-2, por lo que la sumatoria de los grados de todos los nodos es mayor o igual a 2n-2 + 1 = 2n-1, lo cual nuevamenete es absurdo puesto que 2n-2 ≥ 2n-1 ⟺ 0≥1. Luego, la cantidad de hojas de cualquier árbol no trivial es al menos 2.
+	Demostración 1) Dado que un arbol tiene m=n-1 aristas, la sumatoria de los grados de todos los nodos es 2m = 2n-2. Supongo que no existen hojas, luego todo nodo tiene grado al menos 2, por lo que la sumatoria de los grados de todos los nodos es mayor o igual a 2n, es decir 2n-2≥2n ⟺ 0≥2, absurdo. Supongo que existe una sola hoja, luego la sumatoria de los grados de todos los nodos que no son hojas es mayor o igual a 2(n-1) = 2n-2, por lo que la sumatoria de los grados de todos los nodos es mayor o igual a 2n-2 + 1 = 2n-1, lo cual nuevamenete es absurdo puesto que 2n-2 ≥ 2n-1 ⟺ 0≥1. Luego, la cantidad de hojas de cualquier árbol no trivial es al menos 2.
+
+	Demostración 2) Usando la propiedad "todo grafo no trivial tiene al menos dos nodos que son puntos de corte", basta ver que cualquier nodo que no sea una hoja es un punto de corte.
 
 * Lema 4: Sea `G = (V, X)` un árbol. Entonces `m = n − 1`.
 	
@@ -89,6 +91,7 @@ Definición de Árbol (2)
 	* (1) **Árbol**: `G` es un árbol (`G` es conexo y sin circuitos simples).
 	* (5) **Sin circuitos y cantidad de aristas**: `G` es un grafo sin circuitos simples y `m = n − 1`.
 	* (6) **Conexo y cantidad de aristas**: `G` es conexo y `m = n − 1`.
+	* (7) **Sin ciclos y cantidad de aristas**: `G` es acíclico y `m = n − 1`.
 
 	1 => 5) Sea G un árbol. Quiero ver que G no tiene circuitos simples, y que m = n - 1. Que no tiene circuitos simples vale trivialmente.
 
@@ -108,7 +111,12 @@ Cantidad de aristas de un Árbol
 
 Árbol Generador
 ---------------
-* Un árbol es conexo sí y sólo sí contiene un árbol generador.
+* Un grafo es conexo sí y sólo sí contiene un árbol generador.
+
+	=>) Sea G=(V,X) conexo, luego existe al menos un camino entre cada par de nodos. Si G no tiene ciclos, entonces en particular es en sí mismo un árbol generador de G. Si G tiene ciclos, realizo el siguiente proceso: remuevo una arista de algún ciclo de G. El proceso termina, ya que en cada paso remuevo una arista de un conjunto finito de aristas. Eventualmente, me va a quedar grafo T=(V,X') con X'⊆X, conexo y sin ciclos (ya que una arista de un ciclo no puede ser una arista puente), es decir un árbol generador.
+
+	<=) Sea G=(V,X) un grafo que contiene un árbol generador, es decir, existe T=(V,X') un subgrafo de G tal que X'⊆X, y T es conexo y sin ciclos. Dado que G se puede reconstruir agregando a T de forma sucesiva todas las aristas en X-X', y que agregar aristas no puede generar más componentes conexas, entonces G es conexo.
+
 * Dado un grafo `G` conexo, todo subgrafo `H⊆G` sin ciclos se encuentra contenido en al menos un Árbol Generador.
 
 Árboles m-arios
@@ -119,7 +127,6 @@ Cantidad de aristas de un Árbol
 
 Algoritmo de Prim
 -----------------
-
 * Lema: Sea `T = (V, XT)` un árbol generador de `G = (V, X)`. Si `e ∈ X`,
 `e ∉ a XT` y `f ∈ XT` una arista del ciclo de `T + e`. Entonces `T' = (V, XT ∪ {e} \ {f})` es un árbol generador de G.
 
