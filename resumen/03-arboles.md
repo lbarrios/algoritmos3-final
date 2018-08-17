@@ -119,6 +119,8 @@ Cantidad de aristas de un Árbol
 
 * Dado un grafo `G` conexo, todo subgrafo `H⊆G` sin ciclos se encuentra contenido en al menos un Árbol Generador.
 
+	Sea G conexo. Sea H=(Vₕ,Xₕ)⊆G, H sin ciclos. Sea H'=(V, Xₕ)⊆G, el grafo tal que tiene el mismo conjunto de nodos que G, y el mismo conjunto de aristas que H, de lo que se desprende que H⊆H'. Si H' es conexo, en particular es un Árbol Generador, luego la afirmación vale. Si H' no es conexo, existen H'₁, H'₂, ..., H'ₙ ⊆ H' componentes conexas de H', y dado que H' no tiene ciclos en particular cada una de estas es un arbol. Dado que G es conexo, y que H' es subgrafo de G, existe en G para algún par de componentes conexas H'ᵢ H'ⱼ una arista e tal que va de un nodo de H'ᵢ a un nodo de H'ⱼ, de forma tal que el grafo H'ᵢⱼ = H'ᵢ ∪ H'ⱼ + e es un árbol (ya que es un grafo conexo y con m=n-1 aristas). Sea H'' = H'+e, entonces, el grafo surgido de agregar e a H', y tal que H'⊆H''. H'' tiene exactamente una componente conexa menos que H'. Aplico esta misma lógica sucesivamente hasta terminar con una sola componente conexa. El grafo resultante Hⁿ es conexo, no tiene ciclos, y tiene como conjunto de nodos a V, por lo que es un Àrbol Generador. Finalmente, vale que H⊆H'⊆H''⊆...⊆Hⁿ.
+
 Árboles m-arios
 ---------------
 * Un árbol m-ario de altura `h` tiene a lo sumo `m*h` hojas.
