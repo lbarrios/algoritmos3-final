@@ -97,7 +97,11 @@ Definición de Árbol (2)
 
 * Corolario 1: Sea `G = (V, X)` sin circuitos simples y `c` componentes conexas. Entonces `m = n − c`.
 
+	Sean G₁,⋯,Gc⊆G las c componentes conexas de G. Cada componente conexa es un subgrafo conexo sin circuitos simples, es decir, un árbol. Luego, por definición, cada componente conexa i tiene mᵢ=nᵢ−1 aristas. Finalmente, m = ∑c(mᵢ) = ∑c(nᵢ−1) = ∑c(nᵢ) − c = n−c ⟺ m=n−c.
+
 * Corolario 2: Sea `G = (V, X)` con `c` componentes conexas. Entonces `m ≥ n − c`.
+	
+	Sean G₁,⋯,Gc⊆G las c componentes conexas de G. Cada Gᵢ=(Vᵢ,Xᵢ) componente conexa, en particular, es un grafo conexo, por lo que contiene un arbol generador Tᵢ=(Vᵢ, XTᵢ) tal que XTᵢ⊆Xᵢ, por lo que |XTᵢ|≤|Xᵢ|=mᵢ. Dado que la cantidad de aristas de cada Tᵢ es |XTᵢ|=nᵢ−1, vale que mᵢ≥nᵢ−1. Finalmente, m = ∑c(mᵢ) ≥ ∑c(nᵢ−1) = ∑c(nᵢ) − c = n−c ⟺ m≥n−c.
 
 Cantidad de aristas de un Árbol
 -------------------------------
@@ -123,7 +127,7 @@ Cantidad de aristas de un Árbol
 
 Árboles m-arios
 ---------------
-* Un árbol m-ario de altura `h` tiene a lo sumo `m*h` hojas.
+* Un árbol m-ario de altura `h` tiene a lo sumo `mʰ` hojas.
 * Un árbol m-ario con `l` hojas tiene `h ≥ techo[logₘ(l)]`.
 * Si T es un árbol exactamente m-ario balanceado entonces `h = techo[logₘ(l)]`.
 
