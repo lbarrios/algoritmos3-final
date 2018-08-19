@@ -127,9 +127,29 @@ Cantidad de aristas de un Árbol
 
 Árboles m-arios
 ---------------
+* Lema 1: La cantidad de hojas de un árbol m-ario balanceado completo de altura `h` es mayor o igual a la cantidad de hojas de cualquier otro árbol m-ario de altura `h`.
+
+	Por absurdo. Supongo que existe T un árbol de altura h tal que tiene k hojas, y tal que esta cantidad de hojas es mayor que las de un árbol balanceado completo de altura h. Dado que el arbol no es completo, existen hojas cuya altura es menor a h. Para cada una de estas hojas, le agrego m hijos, cada uno de los cuales van a ser hojas en el nuevo arbol. Repito este proceso hasta que no queden hojas de altura menor a h, formando el arbol T'. En particular, el arbol T' formado es un completo de altura h (ya que no puede tener hojas de altura distinta de h), y dado que el arbol T no era completo, la operación descripta se va a realizar al menos una vez, lo que me asegura que T' va a tener al menos (k+m-1)≥k hojas. Es decir, formé un completo de altura h tal que la cantidad de hojas es mayor o igual a k, lo cual es absurdo, y surge de suponer que existe un árbol de altura h cuya cantidad de hojas es mayor a la de un completo de altura h.
+
 * Un árbol m-ario de altura `h` tiene a lo sumo `mʰ` hojas.
-* Un árbol m-ario con `l` hojas tiene `h ≥ techo[logₘ(l)]`.
-* Si T es un árbol exactamente m-ario balanceado entonces `h = techo[logₘ(l)]`.
+
+	Sea T=(V,X) un árbol m-ario de altura h. Por inducción sobre h:
+
+	h=1: la cantidad de hojas es la cantidad de hijos de la raíz, a lo sumo m¹.
+
+	h ⟹ h+1: sea Tₕ₊₁ un arbol de altura h+1. Le saco la raíz, formando a lo sumo k árboles, con k≤m. Cada uno de estos árboles tiene altura h, por lo que aplicando HI tienen a lo sumo mʰ hojas. Vuelvo a agregar la raíz. Luego, la cantidad de hojas es a lo sumo ∑ₖ(mʰ) = k(mʰ), y como k≤m, vale que k(mʰ) ≤ m(mʰ) = mʰ⁺¹, es decir, la cantidad de hojas es a lo sumo mʰ⁺¹.
+
+* Si T es un árbol exactamente m-ario balanceado (completo) con `l` hojas, entonces `h = ⎡logₘ(l)⎤`.
+
+	Por inducción en h.
+
+	Caso base, h=0. 1 hoja, luego logₘ(1)=0.
+
+	Caso inductivo, h⟹h+1. Sea T un arbol completo de altura h y l hojas, para el cual vale la HI, es decir h = ⎡logₘ(l)⎤. Para cada una de estas hojas, agrego m hijos. El arbol resultante es completo y tiene l' = m*l hojas, y altura h+1. Luego, ⎡logₘ(l')⎤ = ⎡logₘ(m*l)⎤ = ⎡logₘ(m)+logₘ(l)⎤ = ⎡1 + logₘ(l)⎤ = 1 + ⎡logₘ(l)⎤ = 1 + h. Finalmente, h+1 = ⎡logₘ(l')⎤.
+
+* Un árbol m-ario con `l` hojas tiene `h ≥ ⎡logₘ(l)⎤`.
+
+	Sea T un árbol m-ario con l hojas, de altura h. Sea T' el arbol completo de altura h, con l' hojas. Por lema 1 vale que l'≥l ⟺ logₘ(l')≥logₘ(l) ⟺ ⎡logₘ(l')⎤≥⎡logₘ(l)⎤. Y dado que en un árbol completo vale h = ⎡logₘ(l')⎤, vale h≥⎡logₘ(l)⎤.
 
 Algoritmo de Prim
 -----------------
