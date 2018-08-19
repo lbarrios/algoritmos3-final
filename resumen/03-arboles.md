@@ -91,9 +91,10 @@ Definición de Árbol (2)
 	* (1) **Árbol**: `G` es un árbol (`G` es conexo y sin circuitos simples).
 	* (5) **Sin circuitos y cantidad de aristas**: `G` es un grafo sin circuitos simples y `m = n − 1`.
 	* (6) **Conexo y cantidad de aristas**: `G` es conexo y `m = n − 1`.
-	* (7) **Sin ciclos y cantidad de aristas**: `G` es acíclico y `m = n − 1`.
 
 	1 => 5) Sea G un árbol. Quiero ver que G no tiene circuitos simples, y que m = n - 1. Que no tiene circuitos simples vale trivialmente.
+
+	TODO:
 
 * Corolario 1: Sea `G = (V, X)` sin circuitos simples y `c` componentes conexas. Entonces `m = n − c`.
 
@@ -111,7 +112,7 @@ Cantidad de aristas de un Árbol
 
 	. n=1: trivial
 
-	. n>1: tomo un arbol de tamaño `n` y le saco una hoja; por HI el árbol resultante tiene `m'=(n-1)-1`, luego vuelvo a agregar la hoja que saqué, `m = (n-1)-1+1 = n-1`
+	. n>1: tomo un arbol de tamaño `n`, por propiedad de árbol tiene al menos dos hojas. Le saco una hoja, por HI el árbol resultante tiene `m'=(n-1)-1`. Luego vuelvo a agregar la hoja que saqué, finalmente `m = (n-1)-1+1 = n-1`.
 
 Árbol Generador
 ---------------
@@ -156,6 +157,8 @@ Algoritmo de Prim
 * Lema: Sea `T = (V, XT)` un árbol generador de `G = (V, X)`. Si `e ∈ X`,
 `e ∉ a XT` y `f ∈ XT` una arista del ciclo de `T + e`. Entonces `T' = (V, XT ∪ {e} \ {f})` es un árbol generador de G.
 
-* Proposición: Sea `G = (V,X)` un grafo conexo. Sea `Tk = (VTₖ , XTₖ)` el árbol que el algoritmo de Prim determina en la iteración `k`, para `0 ≤ k ≤ n − 1`. `Tₖ` es un subárbol de un árbol generador mínimo de `G`.
+	Que T' sea árbol generador de G significa que es un árbol y que el conjunto de nodos es V. Esto último vale, así que resta ver que es un árbol. Para ver que es un árbol basta con ver que es conexo, y que la cantidad de aristas es m=n-1. Que tiene m=n-1 se desprende de que T tiene m=n-1 aristas, y T' surge de agregarle una arista y sacarle otra. Sea Tₑ=T+e, un grafo conexo (puesto que T es conexo) con exactamente un ciclo que pasa por e (por definición de árbol). Finalmente por lema 1, dado que Tₑ es conexo y tiene un ciclo que pasa por f, en particular T' = Tₑ−f es conexo.
+
+* Proposición: Sea `G = (V,X)` un grafo conexo. Sea `Tk = (VTₖ, XTₖ)` el árbol que el algoritmo de Prim determina en la iteración `k`, para `0 ≤ k ≤ n − 1`. `Tₖ` es un subárbol de un árbol generador mínimo de `G`.
 
 * Teorema: El algoritmo de Prim es correcto, es decir dado un grafo `G` conexo determina un árbol generador mínimo de `G`.
