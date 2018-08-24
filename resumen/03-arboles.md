@@ -39,9 +39,12 @@ Recorrido de Árboles
 
 Árbol Generador Mínimo
 ----------------------
+* Dado grafo G=(V,X) y un árbol T⊆G, una **arista frontera** de T es una arista (v,w)∉T, tal que v∈T y w∈G, w∉T.
+
+* **Proposición**: Sea T un árbol, T⊆G=(V,X), y sea e una arista frontera de T, el subgrafo T+e⊆G es un árbol.
+
 ### Generic-MST
 #### CLRS (Greedy)
-TODO: Definir frontera
 
 - Este método mantiene un conjunto de aristas `A`, sobre el cual va agregando de a una a la vez, hasta formar el AGM.
 - **Invariante**: En cada iteración, `A` es un subconjunto de algún AGM.
@@ -236,6 +239,10 @@ Arbol Generador
 
 Árbol Generador Mínimo
 ----------------------
+* **Proposición**: Sea T un árbol, T⊆G=(V,X), y sea e una arista frontera de T, el subgrafo T+e⊆G es un árbol.
+	
+	Agregar una arista e=(u,v) a T no puede formar un ciclo, ya que la arista incide en un nodo v∉T, es decir, es una arista puente. Más aún, existe un camino enter cada par de nodos de T, en particular existe un camino entre u y cada otro nodo. Luego, al agregar e, existe un camino desde v hasta cada otro nodo de T+e, por lo que el grafo resultante es un árbol.
+
 * Teorema: Sea `G=(V,X)` un grafo conexo con función de peso `w`. Sea `A` un subconjunto de `X` que está incluído en algún AGM de `G`. Sea `(S, V−S)` un corte de `G` que respeta `A`, y sea `(u,v)` una arista mínima cruzando `(S, V−S)`. Entonces, la arista `(u,v)` es segura para `A`.
 	
 	Sea T=(V, XT) un AGM tal que A⊆T y (u,v)∈X una arista liviana. Si (u,v)∈XT, entonces la arista es segura. De lo contrario, sea T' tal que AU{(u,v)} ⊆ T', veremos que T' es un AGM, lo cual haría que (u,v) sea una arista segura.
