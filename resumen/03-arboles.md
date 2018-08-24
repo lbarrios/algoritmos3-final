@@ -35,7 +35,11 @@ Recorrido de Árboles
 --------------------
 ### BFS (Breadth-First Search)
 
+TODO:
+
 ### DFS (Depth-First Search)
+
+TODO:
 
 Árbol Generador Mínimo
 ----------------------
@@ -54,6 +58,7 @@ Recorrido de Árboles
 	- Una arista `(u,v) ∈ X` **cruza** un corte `(S, V−S)` si uno de sus nodos está en `S` y el otro está en `V−S`.
 	- Un corte respeta un conjunto de aristas A cuando ninguna arista de A cruza el corte.
 	- Una arista es una **arista liviana** cruzando un corte si su peso es mínimo respecto a todas las aristas cruzando el corte.
+- **Corolario**: Dado `G=(V,X)` un grafo conexo con una función de peso `w:E→ℝ`, sea `A⊆E` tal que `A` está incluído en algún AGM, sea `C=(Vc, Xc)` una componente conexa (un árbol) en el bosque `Gₐ=(V,A)`. Si `(u,v)` es una arista liviana conectando `C` a alguna otra componente de `Gₐ`, entonces `(u,v)` es segura para `A`.
 
 ```
 A = ∅
@@ -64,6 +69,40 @@ return A
 ```
 
 ### Kruskal
+#### CLRS (Greedy)
+- Encuentra una arista segura para agregar en un bosque, eligiendo a partir de todas la aristas que conectan dos árboles cualesquiera de ese bosque, la de menor peso.
+- Sean `T₁` y `T₂` los árboles que son conectados por la arista `(u,v)`. Dado que `T₁` es, en particular, una arista liviana que conecta C₁ con V−C₁, en particular con _algún_ otro árbol, entonces en particular es una arista segura.
+
+```
+MST-Kruskal(G, w)
+A = ∅
+for each vertex v ∈ G.V
+	Make-Set(v)
+sort the edges of G.E into nondecreacing order by weight w
+for each edge (u,v) ∈ G.E, taken in nondecreacing order by weight
+	if Find-Set(u) ≠ Find-Set(v)
+		A = A ∪ {(u,v)}
+		Union(u,v)
+return A
+```
+
+#### Gross (Greedy)
+- Elegir en cada paso el e de menor o el mayor peso, hace que el algoritmo resuelva el AGM de menor o de mayor peso respectivamente.
+
+```
+Input: an hereditary subset system (E, L) and a nonnegative weight function w.
+Output: an independent set I∈L such that ∑{e∈I} w(e) is maximum.
+
+Initialize I := ∅
+Initialize A := E
+
+While A ≠ ∅
+	Choose e∈A of {smallest/largest} weight.
+	A := A − e
+	If I + e ∈ L then I := I + e
+
+return I.
+```
 
 ### Prim
 #### CLRS (Greedy)
@@ -239,7 +278,7 @@ Arbol Generador
 
 Árbol Generador Mínimo
 ----------------------
-* **Proposición**: Sea T un árbol, T⊆G=(V,X), y sea e una arista frontera de T, el subgrafo T+e⊆G es un árbol.
+* **Proposición**: Sea `T` un árbol, `T⊆G=(V,X)`, y sea e una arista frontera de `T`, el subgrafo `T+e⊆G` es un árbol.
 	
 	Agregar una arista e=(u,v) a T no puede formar un ciclo, ya que la arista incide en un nodo v∉T, es decir, es una arista puente. Más aún, existe un camino enter cada par de nodos de T, en particular existe un camino entre u y cada otro nodo. Luego, al agregar e, existe un camino desde v hasta cada otro nodo de T+e, por lo que el grafo resultante es un árbol.
 
@@ -250,6 +289,10 @@ Arbol Generador
 	La arista (u,v) concatenada con el camino Pᵤᵥ ∈ T de u a v forma un ciclo. Dado que la arista (u,v) se encuentra cruzando (S,V−S), podemos decir sin pérdida de generalidad que u∈S, y v∈V−S, por lo que existe alguna arista (x,y) ∈ Pᵤᵥ tal que cruza (S,V−S), y (x,y)∉A. Formo T' = T ∪ {(u,v)} − {(x,y)}. Dado que T es conexo, y T ∪ {(u,v)} es conexo y tiene un ciclo que pasa por {(x,y)}, luego T ∪ {(u,v)} − {(x,y)} es conexo, y tiene la misma cantidad de aristas que T, por lo que en particular es un Árbol.
 
 	Queremos ver que T' es un AGM. Dado que (u,v) es una arista liviana cruzando (S,V−S), vale que para toda arista (u', v') cruzando esta partición w(u,v) ≤ w(u', v'); en particular, esto vale para (x,y). Luego, w(T') = w(T) - w(x,y) + w(u,v) ≤ w(T) - w(x,y) + w(x,y) = w(T) ⟺ w(T') ≤ w(T). Y como T es un AGM, vale para otro arbol que su peso es menor o igual, en particular vale w(T)≤w(T'). Luego, w(T')≤w(T) ∧ w(T)≤w(T') ⟹ w(T)=W(T'), T' es un AGM.
+
+* **Corolario**: Dado `G=(V,X)` un grafo conexo con una función de peso `w:E→ℝ`, sea `A⊆E` tal que `A` está incluído en algún AGM, sea `C=(Vc, Xc)` una componente conexa (un árbol) en el bosque `Gₐ=(V,A)`. Si `(u,v)` es una arista liviana conectando `C` a alguna otra componente de `Gₐ`, entonces `(u,v)` es segura para `A`.
+	
+	El corte (Vc, V−Vc) respeta A, y (u,v) es una arista liviana para este corte. Luego, (u,v) es segura para A.
 
 Algoritmo de Prim
 -----------------
