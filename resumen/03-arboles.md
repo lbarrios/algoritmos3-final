@@ -1,6 +1,7 @@
 Árboles
 =======
-
+Definiciones
+------------
 * Un **bosque** es un grafo sin circuitos simples.
 
 * Un **árbol** es un grafo conexo sin circuitos simples.
@@ -29,6 +30,78 @@
 * Sea `T = (V, X)` un árbol y `l : X → R` una función que asigna longitudes (o pesos) a las aristas de `T`. Se define la **longitud** de `T` como `l(T) = ∑{e∈T} l(e)`
 
 * Dado un grafo `G = (V, X)`, `T` un **árbol generador mínimo** de `G` es un árbol generador de `G` de mínima longitud, es decir, `l(T) ≤ l(T')` para todo `T'` árbol generador de `G`.
+
+Recorrido de Árboles
+--------------------
+### BFS (Breadth-First Search)
+
+### DFS (Depth-First Search)
+
+Árbol Generador Mínimo
+----------------------
+### Generic-MST
+#### CLRS (Greedy)
+TODO: Definir frontera
+
+- Este método mantiene un conjunto de aristas `A`, sobre el cual va agregando de a una a la vez, hasta formar el AGM.
+- **Invariante**: En cada iteración, `A` es un subconjunto de algún AGM.
+- En cada paso se elige la arista `(u,v)` tal que, si `A` cumple el invariante (es decir, es un subconjunto de un AGM), entonces `A ∪ {(u,v)}` también lo es.
+    - **Definición**: La arista `(u,v)` tal que al agregarla a `A` preserva el invariante, se llama **segura**.
+- Un **corte** `(S, V−S)` de un grafo `G=(V,X)` es una partición de V.
+	- Una arista `(u,v) ∈ X` **cruza** un corte `(S, V−S)` si uno de sus nodos está en `S` y el otro está en `V−S`.
+	- Un corte respeta un conjunto de aristas A cuando ninguna arista de A cruza el corte.
+	- Una arista es una **arista liviana** cruzando un corte si su peso es mínimo respecto a todas las aristas cruzando el corte.
+
+```
+A = ∅
+while A does not form a spanning tree
+	find and edge (u,v) that is safe for A
+	A = A ∪ {(u,v)}
+return A
+```
+
+### Kruskal
+
+### Prim
+#### CLRS (Greedy)
+- Q: cola de prioridad (min, según el atributo key)
+
+```
+MST-Prim(G, ω, r)
+
+for each v ∈ G.V
+	v.key = ∞
+	v.π = NIL
+r.key = 0
+Q = G.V
+
+while Q ≠ ∅
+	u = Extract-Min(Q)
+	for each v ∈ G.Adj[u]
+		if v ∈ Q and ω(u,v) < v.key
+			v.π = u
+			v.key = ω(u,v)
+```
+
+#### Gross
+- S: el conjunto de aristas frontera.
+- Prim-nextEdge: devuelve la arista frontera con menor peso.
+
+```
+Input: a weighted connected graph G and starting vertex v.
+Output: a minimum spanning tree T.
+
+Initialize tree T as vertex v.
+Initialize S as the set of proper edges incident on v.
+
+While S ≠ ∅
+	Let e = Prim-nextEdge(G,S)
+	Let w be the non-tree endpoint of edge e.
+	Add edge e and vertex w to tree T.
+	updateFrontier(G,S)
+
+Return tree T
+```
 
 Teoremas sobre árboles
 ======================
@@ -92,9 +165,11 @@ Definición de Árbol (2)
 	* (5) **Sin circuitos y cantidad de aristas**: `G` es un grafo sin circuitos simples y `m = n − 1`.
 	* (6) **Conexo y cantidad de aristas**: `G` es conexo y `m = n − 1`.
 
-	1 => 5) Sea G un árbol. Quiero ver que G no tiene circuitos simples, y que m = n - 1. Que no tiene circuitos simples vale trivialmente.
+	1 => 5) Sea G un árbol. Quiero ver que G no tiene circuitos simples, y que m = n−1. Que no tiene circuitos simples vale trivialmente. Por lema 4, vale que m = n−1.
 
-	TODO:
+	5 => 6) Sea G un grafo sin circuitos simples y con m = n−1. Quiero ver que es conexo y que m = n−1. Que m = n−1 vale trivialmente. Quiero ver que es conexo. Existen (G₁,⋯,Gₖ), k componentes conexas de G, de las cuales cada una es un árbol, por lo que cada Gᵢ tiene mᵢ = nᵢ−1, luego m = ∑ₖ(mᵢ) = ∑ₖ(nᵢ−1) = ∑ₖ(nᵢ) − ∑ₖ(1) = n−k. Pero m=n−1, por lo que n−k=m−1 ⟺ k=1. Luego, dado que existe una sola componente conexa, en particular G es conexo.
+
+	6 => 1) Sea G un grafo conexo y con m=n−1. Quiero ver que G es un árbol. Que G es conexo se desprende trivialmente, resta ver que G no tiene circuitos simples. TODO.
 
 * Corolario 1: Sea `G = (V, X)` sin circuitos simples y `c` componentes conexas. Entonces `m = n − c`.
 
@@ -152,13 +227,25 @@ Cantidad de aristas de un Árbol
 
 	Sea T un árbol m-ario con l hojas, de altura h. Sea T' el arbol completo de altura h, con l' hojas. Por lema 1 vale que l'≥l ⟺ logₘ(l')≥logₘ(l) ⟺ ⎡logₘ(l')⎤≥⎡logₘ(l)⎤. Y dado que en un árbol completo vale h = ⎡logₘ(l')⎤, vale h≥⎡logₘ(l)⎤.
 
-Algoritmo de Prim
------------------
+Arbol Generador
+---------------
 * Lema: Sea `T = (V, XT)` un árbol generador de `G = (V, X)`. Si `e ∈ X`,
 `e ∉ a XT` y `f ∈ XT` una arista del ciclo de `T + e`. Entonces `T' = (V, XT ∪ {e} \ {f})` es un árbol generador de G.
 
 	Que T' sea árbol generador de G significa que es un árbol y que el conjunto de nodos es V. Esto último vale, así que resta ver que es un árbol. Para ver que es un árbol basta con ver que es conexo, y que la cantidad de aristas es m=n-1. Que tiene m=n-1 se desprende de que T tiene m=n-1 aristas, y T' surge de agregarle una arista y sacarle otra. Sea Tₑ=T+e, un grafo conexo (puesto que T es conexo) con exactamente un ciclo que pasa por e (por definición de árbol). Finalmente por lema 1, dado que Tₑ es conexo y tiene un ciclo que pasa por f, en particular T' = Tₑ−f es conexo.
 
+Árbol Generador Mínimo
+----------------------
+* Teorema: Sea `G=(V,X)` un grafo conexo con función de peso `w`. Sea `A` un subconjunto de `X` que está incluído en algún AGM de `G`. Sea `(S, V−S)` un corte de `G` que respeta `A`, y sea `(u,v)` una arista mínima cruzando `(S, V−S)`. Entonces, la arista `(u,v)` es segura para `A`.
+	
+	Sea T=(V, XT) un AGM tal que A⊆T y (u,v)∈X una arista liviana. Si (u,v)∈XT, entonces la arista es segura. De lo contrario, sea T' tal que AU{(u,v)} ⊆ T', veremos que T' es un AGM, lo cual haría que (u,v) sea una arista segura.
+
+	La arista (u,v) concatenada con el camino Pᵤᵥ ∈ T de u a v forma un ciclo. Dado que la arista (u,v) se encuentra cruzando (S,V−S), podemos decir sin pérdida de generalidad que u∈S, y v∈V−S, por lo que existe alguna arista (x,y) ∈ Pᵤᵥ tal que cruza (S,V−S), y (x,y)∉A. Formo T' = T ∪ {(u,v)} − {(x,y)}. Dado que T es conexo, y T ∪ {(u,v)} es conexo y tiene un ciclo que pasa por {(x,y)}, luego T ∪ {(u,v)} − {(x,y)} es conexo, y tiene la misma cantidad de aristas que T, por lo que en particular es un Árbol.
+
+	Queremos ver que T' es un AGM. Dado que (u,v) es una arista liviana cruzando (S,V−S), vale que para toda arista (u', v') cruzando esta partición w(u,v) ≤ w(u', v'); en particular, esto vale para (x,y). Luego, w(T') = w(T) - w(x,y) + w(u,v) ≤ w(T) - w(x,y) + w(x,y) = w(T) ⟺ w(T') ≤ w(T). Y como T es un AGM, vale para otro arbol que su peso es menor o igual, en particular vale w(T)≤w(T'). Luego, w(T')≤w(T) ∧ w(T)≤w(T') ⟹ w(T)=W(T'), T' es un AGM.
+
+Algoritmo de Prim
+-----------------
 * Proposición: Sea `G = (V,X)` un grafo conexo. Sea `Tk = (VTₖ, XTₖ)` el árbol que el algoritmo de Prim determina en la iteración `k`, para `0 ≤ k ≤ n − 1`. `Tₖ` es un subárbol de un árbol generador mínimo de `G`.
 
 * Teorema: El algoritmo de Prim es correcto, es decir dado un grafo `G` conexo determina un árbol generador mínimo de `G`.
