@@ -35,11 +35,84 @@ Recorrido de Árboles
 --------------------
 ### BFS (Breadth-First Search)
 
-TODO:
+* Usa ideas similares a Prim y Dijkstra.
+* Dado un vértice fuente "s" de un grafo G=(V,E), BFS recorre los ejes de G para ir descubriendo cada nodo ques ea alcanzable desde s.
+* Produce un árbol.
+* ∀v∈V, el camino de v a s es el que tiene la menor cantidad de aristas.
+* Funciona en grafos dirigidos y no dirigidos.
+* Descubre primero todos los vértices a distancia k antes de descubrir los de distancia k+1.
+* Tres tipos de nodos
+	- Blancos: no han sido descubiertos
+	- Grises: han sido descubiertos pero tienen vecinos que no han sido descubiertos
+	- Negros: han sido descubiertos y todos sus vecinos también fueron descubiertos.
+
+![Ejemplo BFS](img/03-arboles-bfs-ejemplo.jpg)
+
+```
+for each vertex u ∈ G.V−{s}
+	u.color = WHITE
+	u.d = ∞
+	u.π = NIL
+
+s.color = GRAY
+s.d = 0
+s.π = NIL
+
+Q = ∅
+ENQUEUE(Q, s)
+
+while Q≠∅
+	u = DEQUEUE(Q)
+	for each vertex v ∈ G.Adj[u]
+		if v.color == WHITE
+			v.color = GRAY
+			v.d = u.d + 1
+			v.π = u
+			ENQUEUE(Q, v)
+	u.color = BLACK
+```
+
+
+![Ejemplo BFS Cormen](img/03-arboles-bfs-cormen.png)
+
+- O(V) en inicializar
+- O(E) en recorrer a la suma de todos  os ejes
+- O(V) en encolar/desencolar nodos (a lo sumo una vez cada uno)
+- Total: O(V+E)
 
 ### DFS (Depth-First Search)
 
-TODO:
+* Búsqueda en "profundidad"
+
+==TODO:==
+
+#### DFS(G):
+```
+for each vertex u ∈ G.V
+	u.color = WHITE
+	u.π = NIL
+
+time = 0
+for each vertex u ∈ G.V
+	if u.color == WHITE
+	DFS-VISIT (G, u)
+```
+
+#### DFS-VISIT(G, u):
+```
+time = time + 1 // white vertex u has just been discovered
+u.d = time
+u.color = GRAY
+for each v ∈ G.Adj[u] // explore edge(u,v)
+	if v.color == WHITE
+		v.π = u
+		DFS-VISIT(G, v)
+u.color = BLACK // blacken u; it is finished
+time = time + 1
+u.f = time
+```
+
+![Ejemplo DFS Cormen](img/03-arboles-dfs-cormen.png)
 
 Árbol Generador Mínimo
 ----------------------
