@@ -89,6 +89,46 @@ Algoritmos Golosos
     * **Función de selección**: indica en cada paso cuál de los candidatos pendientes es el siguiente a elegir.
     * **Función objetivo**: indica el "valor" de una solución representada por un conjunto de candidatos. Es este valor el que se busca optimizar (minimizar, maximizar).
 
+### CLRS
+
+    Algorithms for optimization problems typically go through a sequence of
+    steps, with a set of choices at each step. A greedy algorithm always makes
+    the choice that looks best at the moment. That is, it makes a locally
+    optimal choice in the hope that this choice will lead to a globally optimal
+    solution.
+
+    The first key ingredient is the greedy-choice property: we can assemble a
+    globally optimal solution by making locally optimal (greedy) choices. In
+    other words, when we are considering which choice to make, we make the
+    choice that looks best in the current problem, without considering results
+    from subproblems. Here is where greedy algorithms differ from dynamic
+    programming. In dynamic programming, we make a choice at each step, but the
+    choice usually depends on the solutions to subproblems. Consequently, we
+    typically solve dynamic-programming problems in a bottom-up manner,
+    progressing from smaller subproblems to larger subproblems. In a greedy
+    algorithm, we make wathever choice seems best at the moment and then solve
+    the subproblem that remains. Thus, unlikely dynamic programming, which
+    solves the subproblems before making the first choice, a greedy algorithm
+    makes its first choice before solving any subproblems.
+
+    A problem exhibits optimal substructure if an optimal solution to the
+    problem contains within it optimal solutions to subproblems. This property
+    is a key ingredient of assesing the applicability of dynamic programming as
+    well as greedy algorithms. This scheme uses induction on the subproblems to
+    prove that making the gredy choice at every step produces an optimal
+    solution.
+
+    Because both the greedy and dynamic-programming streategies exploit optimal
+    substructure, you might be tempted to generate a dynamic-programming
+    solution to a problem when a greedy solution suffices or, conversely, you
+    might mistakenly think that a greedy solution works when in fact a dynamic-
+    programming solution is required.
+
+### Ejemplos
+
+- Camino mínimo (Dijkstra)
+- Árbol Generador Mínimo (Prim, Kruskal)
+
 Recursividad
 ------------
 Es cuando para resolver un problema, se llama a instancias "más simples" del
