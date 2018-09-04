@@ -32,7 +32,6 @@ Algoritmos
 ----------
 
 ### Algoritmo de Dijkstra
-
 ```
 S := {v}
 π(v) := 0
@@ -58,6 +57,8 @@ fin mientras
 
 retornar π
 ```
+
+- Complejidad: O(n²) standard, O(m + n log n) con priority queue
 
 ### Algoritmo de Dijkstra (retorna camino mínimo)
 ```

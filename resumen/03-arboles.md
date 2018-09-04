@@ -80,39 +80,57 @@ while Q≠∅
 - O(V) en inicializar
 - O(E) en recorrer a la suma de todos  os ejes
 - O(V) en encolar/desencolar nodos (a lo sumo una vez cada uno)
-- Total: O(V+E)
+- Complejidad: O(V+E)
 
 ### DFS (Depth-First Search)
 
 * Búsqueda en "profundidad"
 
-#### CLRS − DFS(G):
+#### CLRS − DFS:
 ```
-for each vertex u ∈ G.V
-	u.color = WHITE
-	u.π = NIL
+DFS(G):
+	for each vertex u ∈ G.V
+		u.color = WHITE
+		u.π = NIL
 
-time = 0
-for each vertex u ∈ G.V
-	if u.color == WHITE
-	DFS-VISIT (G, u)
+	time = 0
+	for each vertex u ∈ G.V
+		if u.color == WHITE
+		DFS-VISIT (G, u)
+
+DFS-VISIT(G, u):
+	time = time + 1 // white vertex u has just been discovered
+	u.d = time
+	u.color = GRAY
+	for each v ∈ G.Adj[u] // explore edge(u,v)
+		if v.color == WHITE
+			v.π = u
+			DFS-VISIT(G, v)
+	u.color = BLACK // blacken u; it is finished
+	time = time + 1
+	u.f = time
 ```
 
-#### CLRS − DFS-VISIT(G, u):
-```
-time = time + 1 // white vertex u has just been discovered
-u.d = time
-u.color = GRAY
-for each v ∈ G.Adj[u] // explore edge(u,v)
-	if v.color == WHITE
-		v.π = u
-		DFS-VISIT(G, v)
-u.color = BLACK // blacken u; it is finished
-time = time + 1
-u.f = time
-```
+- Complejidad: ∑ᵥ|Adj[v]| = θ(m) con m=|X|
 
 ![Ejemplo DFS Cormen](img/03-arboles-dfs-cormen.png)
+
+	Classification of edges
+	1. Tree Edges are edges in the depth-first forest Gπ. Edge (u,v) is a tree
+	edge if v was first discovered by exploring edge (u,v).
+	2. Back edges are those edges (u,v) connecting a vertex u to an ancestor v
+	in a depth-first tree. We consider self-loops, which may occur in directed
+	graphs, to be back edges.
+	3. Forward edges are those nontree edges (u,v) connecting a vertex u to a
+	descendant v in a depth-first tree.
+	4. Cross edges are all other edges. They can go between vertices in the same
+	depth-first tree, as long as one vertex is not an ancestor of the other, or
+	they can go between vertices in different depth-first trees.
+
+	Classification in DFS
+	1. WHITE indicates a tree edge.
+	2. GRAY indicates a back edge.
+	3. BLACK indicates a forward or cross edge.
 
 #### Wikipedia − DFS (recursive)
 ```
@@ -185,6 +203,9 @@ for each edge (u,v) ∈ G.E, taken in nondecreacing order by weight
 return A
 ```
 
+- Complejidad: O(m lg m) = O(m lg n) usando union-find
+- Sin union-find la complejidad es O(m²)
+
 #### Gross (Greedy)
 - Elegir en cada paso el e de menor o el mayor peso, hace que el algoritmo resuelva el AGM de menor o de mayor peso respectivamente.
 
@@ -223,6 +244,9 @@ while Q ≠ ∅
 			v.π = u
 			v.key = ω(u,v)
 ```
+
+- Complejidad: O(m log n)
+- Complejidad con Fibonacci Heaps: O(m + n log n)
 
 #### Gross
 - S: el conjunto de aristas frontera.
