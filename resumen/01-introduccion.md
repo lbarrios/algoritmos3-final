@@ -119,7 +119,7 @@ Divide and Conquer
     - Conquer the subproblems by solving them recursively. If the subproblems sizes are small enough, however, just solve the subproblems in a straightforward manner.
     - Combine the solutions to the subproblems into the solution for the original problem.
 
-#### Ejemplos
+### Ejemplos
 
 - Búsqueda Binaria _(¡Depende cómo se lo mire!)_
 - Mergesort
@@ -158,6 +158,16 @@ Programación Dinámica
 * Es decir, cada subsolución de una solución óptima debe ser solución óptima del subproblema asociado a esa subsolución.
 
 * Es condición necesaria para poder usar programación dinámica.
+
+### CLRS
+
+    Dynamic programming, like the divide-and-conquer method, solves problems by combining the solutions to subproblems. ("Programming" in this context refers to a tabular method, not to writing computer code.) Divide-and-conquer algorithms partition the problem into disjoint subproblems, solve the subproblems recursively, and then combine their solutions to solve the original problem. In contrast, dynamic programming applies when the subproblems overlap − that is, when subproblems share subsubproblems. In this context, a divide-and-conquer algorithm does more work than necessary, repeatedly solving the common subsubproblems. A dynamic-programming algorithm solves earch subsubproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer every time it solves each subsubproblem.
+
+    We typically apply dynamic programming to optimization problems. Such problems can have many possible solutions. Each solution has a value, and we wish to find a solution with the optimal (minimum or maximum) value. We call such a solution an optimal solution to the problem, as opposed to the optimal soluion, since there may be several solutions that achieve the optimal value.
+
+    The first step in solving an optimization problem by dynamic programming is to characterize the structure of an optimal solution. Recall that a problem exhibits optimal substructure if an optimal solution to the problem contains within it optimal solutions to subproblems.
+
+    The second ingredient that an optimization problem must have for dynamic programming to apply is that the space of subproblems must be "small" in the sense that a recursive algorithm for the problem solves the same subproblems over and over, rather than always generating new subproblems. Typically, the total number of distinct subproblems is a polynomial in the input size. When a recursive algorithm revisits the same problem repeatedly, we say that the optimization problem has overlapping subproblems.
 
 Algoritmos probabilísticos
 --------------------------
