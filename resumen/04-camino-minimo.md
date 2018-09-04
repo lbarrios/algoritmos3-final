@@ -114,6 +114,37 @@ fin mientras
 retornar π
 ```
 
+#### CLRS
+    
+    The Bellman-Ford algorithm solves the single-source shortest-path problem in
+    the general case in which edge weight may be negative. Given a weighted,
+    directed graph G = (V,E) with sources and weight function w: E→ℝ, the
+    Bellman-Ford algorithm returns a boolean value indicating whether or not
+    there is a negative-weight cycle that is reachable from the source. If there
+    is such a cycle, the algorithm indicates that no solution exists. If there
+    is no such cycle, the algorithm produces the shortest paths and their
+    weights.
+
+    The algoritm relaxes edges, progressively decreasing an estimate v.d on the
+    weight of a shortest path from the souirce s to each vertex v∈V until it
+    achieves the actual shortest-path weight δ(s, v). The algorithm returns TRUE
+    if and only if the graph contains no negative-weight cycles that are
+    reachable from the source.
+
+```
+BELLMAN-FORD(G, w, s):
+    Initialize-Single-Source(G,s)
+    for i=1 to |G.V|−1
+        for each edge (u,v) ∈ G.X
+            Relax(u,v,w)
+    for each edge (u,v) ∈ G.X
+        if v.d > u.d + w(u,v)
+            return false
+    return true
+```
+
+- Complejidad: O(V⋅E)
+
 Algoritmos Matriciales
 ----------------------
 * Sea `G=({1,..., n}, X)` un digrafo y `l:X→R` una función de longitud/peso para las aristas de `G`.
@@ -160,6 +191,21 @@ fin para
 retornar L
 ```
 
+#### CLRS
+```
+FLOYD-WARSHALL(W):
+    n = W.rows
+    D⁰ = W
+    for k = 1 to n
+        let Dᵏ = (dᵢⱼᵏ) be a new nxn matrix
+        for i = 1 to n
+            for j = 1 to n
+                dᵢⱼᵏ = min(dᵢⱼᵏ⁻¹, dᵢₖᵏ⁻¹, dₖⱼᵏ⁻¹)
+    return Dⁿ
+```
+
+- Complejidad: θ(N³)
+
 ### Algoritmo de Dantzig
 
 ```
@@ -183,6 +229,32 @@ para k desde 1 a n − 1 hacer
 fin para
 
 retornar L
+```
+
+#### SIMPLEX (CLRS)
+```
+SIMPLEX(A,b,c):
+    (N,B,A,b,c,v) = Initialize-Simplex(A,b,c)
+    let ▵ be a new vector of length m
+    while some index j∈N has cⱼ > 0
+        choose an index e∈N for which cₑ > 0
+        for each index i∈B
+            if aᵢₑ > 0
+                ▵ᵢ = bᵢ / aᵢₑ
+            else
+                ▵ᵢ = ∞
+        choose an index l∈B that minimizes ▵ₗ
+        if ▵ₗ == ∞
+            return "unbounded"
+        else
+            (N,B,A,b,c,v) = Pivot(N,B,A,b,c,v,l,e)
+
+    for i = 1 to n
+        if i∈B
+            xᵢ = bᵢ
+        else
+            xᵢ = 0
+    return (x₁, x₂, ⋯, xₙ)
 ```
 
 Teoremas sobre Camino Mínimo
