@@ -36,7 +36,9 @@ Recorrido de Árboles
 ### BFS (Breadth-First Search)
 
 * Usa ideas similares a Prim y Dijkstra.
-* Dado un vértice fuente "s" de un grafo G=(V,E), BFS recorre los ejes de G para ir descubriendo cada nodo ques ea alcanzable desde s.
+* Dado un vértice fuente "s" de un grafo G=(V,E), BFS recorre los ejes de G para ir descubriendo cada nodo que sea alcanzable desde s.
+* Por cada nodo, se descubren todos sus vecinos.
+* Los nodos se van recorriendo en el orden en que se van descubriendo, la estructura interna es una cola.
 * Produce un árbol.
 * ∀v∈V, el camino de v a s es el que tiene la menor cantidad de aristas.
 * Funciona en grafos dirigidos y no dirigidos.
@@ -84,9 +86,7 @@ while Q≠∅
 
 * Búsqueda en "profundidad"
 
-==TODO:==
-
-#### DFS(G):
+#### CLRS − DFS(G):
 ```
 for each vertex u ∈ G.V
 	u.color = WHITE
@@ -98,7 +98,7 @@ for each vertex u ∈ G.V
 	DFS-VISIT (G, u)
 ```
 
-#### DFS-VISIT(G, u):
+#### CLRS − DFS-VISIT(G, u):
 ```
 time = time + 1 // white vertex u has just been discovered
 u.d = time
@@ -113,6 +113,32 @@ u.f = time
 ```
 
 ![Ejemplo DFS Cormen](img/03-arboles-dfs-cormen.png)
+
+#### Wikipedia − DFS (recursive)
+```
+DFS(G,v):
+	label v as discovered
+	for all edges from v to w in G.adjacentEdges(v) do
+	if vertex w is not labeled as discovered then
+		recursively call DFS(G,w)
+```
+
+- The order in which the vertices are discovered by this algorithm is called the lexicographic order.
+
+#### Wikipedia − DFS (iterative)
+    A non-recursive implementation of DFS with worst-case space complexity O(|E|)
+
+```
+DFS-iterative(G,v):
+	let S be a stack
+	S.push(v)
+	while S is not empty
+		v = S.pop()
+		if v is not labeled as discovered:
+			label v as discovered
+			for all edges from v to w in G.adjacentEdges(v) do 
+				S.push(w)
+```
 
 Árbol Generador Mínimo
 ----------------------
