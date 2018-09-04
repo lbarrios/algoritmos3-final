@@ -91,7 +91,8 @@ Algoritmos Golosos
 
 Recursividad
 ------------
-Es cuando para resolver un problema, se llama a instancias "más simples" del mismo problema. Se requiere contar con al menos un caso base.
+Es cuando para resolver un problema, se llama a instancias "más simples" del
+mismo problema. Se requiere contar con al menos un caso base.
 
 Ejemplo:
 * Problema(L) = Problema(L-1) + 1
@@ -111,13 +112,27 @@ Divide and Conquer
 * Ejemplo: `Solucion(L)=Combinar(Solucion(L₁),Solucion(L₂))`, con `L=L₁+L₂`
 
 ### CLRS
-    2.3.1 The Divide-and-conquer approach
-    Many useful algorithms are recursive in structure: to solve a given problem, they call themselves recursively one or more times to deal with closely related subproblems. These algorithms typically follow a divide-and-conquer approach: they break the problem into several subproblems that are similar to the original problem but smaller in size, solve the subproblems recursively, and then combine these solutions to create a solution to the original problem.
-    The divide-and-conquer paradigm involves three steps at each level of the recursion:
 
-    - Divide the problem into a number of subproblems that are smaller instances of the same problem.
-    - Conquer the subproblems by solving them recursively. If the subproblems sizes are small enough, however, just solve the subproblems in a straightforward manner.
-    - Combine the solutions to the subproblems into the solution for the original problem.
+    2.3.1 The Divide-and-conquer approach
+
+    Many useful algorithms are recursive in structure: to solve a given problem,
+    they call themselves recursively one or more times to deal with closely
+    related subproblems. These algorithms typically follow a divide-and-conquer
+    approach: they break the problem into several subproblems that are similar
+    to the original problem but smaller in size, solve the subproblems
+    recursively, and then combine these solutions to create a solution to the
+    original problem. The divide-and-conquer paradigm involves three steps at
+    each level of the recursion:
+
+    - Divide the problem into a number of subproblems that are smaller instances
+    of the same problem.
+
+    - Conquer the subproblems by solving them recursively. If the subproblems
+    sizes are small enough, however, just solve the subproblems in a 
+    straightforward manner.
+    
+    - Combine the solutions to the subproblems into the solution for the 
+    original problem.
 
 ### Ejemplos
 
@@ -153,7 +168,9 @@ Programación Dinámica
 * Se guardan la soluciones de los subproblemas para no calcularlos más de una vez.
 
 ### Principio de optimalidad de Bellman
-    Un problema de optimización satisface el principio de optimalidad de Bellman si en una solución óptima cada subsolución es a su vez óptima del subproblema correspondiente.
+    Un problema de optimización satisface el principio de optimalidad de Bellman
+    si en una solución óptima cada subsolución es a su vez óptima del
+    subproblema correspondiente.
 
 * Es decir, cada subsolución de una solución óptima debe ser solución óptima del subproblema asociado a esa subsolución.
 
@@ -161,13 +178,38 @@ Programación Dinámica
 
 ### CLRS
 
-    Dynamic programming, like the divide-and-conquer method, solves problems by combining the solutions to subproblems. ("Programming" in this context refers to a tabular method, not to writing computer code.) Divide-and-conquer algorithms partition the problem into disjoint subproblems, solve the subproblems recursively, and then combine their solutions to solve the original problem. In contrast, dynamic programming applies when the subproblems overlap − that is, when subproblems share subsubproblems. In this context, a divide-and-conquer algorithm does more work than necessary, repeatedly solving the common subsubproblems. A dynamic-programming algorithm solves earch subsubproblem just once and then saves its answer in a table, thereby avoiding the work of recomputing the answer every time it solves each subsubproblem.
+    Dynamic programming, like the divide-and-conquer method, solves problems by
+    combining the solutions to subproblems. ("Programming" in this context
+    refers to a tabular method, not to writing computer code.) Divide-and-
+    conquer algorithms partition the problem into disjoint subproblems, solve
+    the subproblems recursively, and then combine their solutions to solve the
+    original problem. In contrast, dynamic programming applies when the
+    subproblems overlap − that is, when subproblems share subsubproblems. In
+    this context, a divide-and-conquer algorithm does more work than necessary,
+    repeatedly solving the common subsubproblems. A dynamic-programming
+    algorithm solves earch subsubproblem just once and then saves its answer in
+    a table, thereby avoiding the work of recomputing the answer every time it
+    solves each subsubproblem.
 
-    We typically apply dynamic programming to optimization problems. Such problems can have many possible solutions. Each solution has a value, and we wish to find a solution with the optimal (minimum or maximum) value. We call such a solution an optimal solution to the problem, as opposed to the optimal soluion, since there may be several solutions that achieve the optimal value.
+    We typically apply dynamic programming to optimization problems. Such
+    problems can have many possible solutions. Each solution has a value, and we
+    wish to find a solution with the optimal (minimum or maximum) value. We call
+    such a solution an optimal solution to the problem, as opposed to the
+    optimal soluion, since there may be several solutions that achieve the
+    optimal value.
 
-    The first step in solving an optimization problem by dynamic programming is to characterize the structure of an optimal solution. Recall that a problem exhibits optimal substructure if an optimal solution to the problem contains within it optimal solutions to subproblems.
+    The first step in solving an optimization problem by dynamic programming is
+    to characterize the structure of an optimal solution. Recall that a problem
+    exhibits optimal substructure if an optimal solution to the problem contains
+    within it optimal solutions to subproblems.
 
-    The second ingredient that an optimization problem must have for dynamic programming to apply is that the space of subproblems must be "small" in the sense that a recursive algorithm for the problem solves the same subproblems over and over, rather than always generating new subproblems. Typically, the total number of distinct subproblems is a polynomial in the input size. When a recursive algorithm revisits the same problem repeatedly, we say that the optimization problem has overlapping subproblems.
+    The second ingredient that an optimization problem must have for dynamic
+    programming to apply is that the space of subproblems must be "small" in the
+    sense that a recursive algorithm for the problem solves the same subproblems
+    over and over, rather than always generating new subproblems. Typically, the
+    total number of distinct subproblems is a polynomial in the input size. When
+    a recursive algorithm revisits the same problem repeatedly, we say that the
+    optimization problem has overlapping subproblems.
 
 Algoritmos probabilísticos
 --------------------------
