@@ -91,6 +91,34 @@ fin mientras
 retornar (π, pred)
 ```
 
+#### CLRS
+
+    Dijkstra’s algorithm solves the single-source shortest-paths problem on a
+    weighted, directed graph G= (V,E) for the case in which all edge weights
+    are nonnegative. Therefore, we assume that w.u ≥ 0 for each edge (u,v) ∈
+    E. As we shall see, with a good implementation, the running time of
+    Dijkstra’s algorithm is lower than that of the Bellman-Ford algorithm.
+
+    Dijkstra’s algorithm maintains a set S of vertices whose final shortest-
+    path weights from the source s have already been determined. The algorithm
+    repeatedly selects the vertex u ∈ V−S with the minimum shortest-path
+    estimate, adds u to S, and relaxes all edges leaving u. In the following
+    implementation, we use a min-priority queue Q of vertices, keyed by their
+    d values.
+
+
+```
+DIJKSTRA(G,w,s):
+    Initialize-Single-Source(G,s)
+    S = ∅
+    Q = G.V
+    while Q ≠ ∅
+        u = Extract-Min(Q)
+        S = S ∪ {u}
+        for each vertex v ∈ G.Adj[u]
+            Relax(u,v,w)
+```
+
 ### Algoritmo de Bellman-Ford
 Asumimos que el grafo es orientado y no tiene circuitos de longitud negativa.
 ```
