@@ -32,6 +32,18 @@ Algoritmos
 ----------
 
 ### Algoritmo de Dijkstra
+
+- La versión original encuentra el camino mínimo entre un nodo `s` y otro nodo `d`. La variante más común encuentra el camino mínimo entre un nodo `s`, y todos los otros nodos del grafo.
+    + Esta variante forma un árbol de caminos mínimos, es decir, un árbol generador mínimo en donde todos los caminos entre `s` y el resto de los nodos son mínimos.
+
+- Requiere que el grafo no tenga pesos negativos.
+
+- Invariante: en cada iteración, se marca un nuevo nodo como visitado. Para cada nodo visitado, la distancia a ese nodo es la mínima.
+
+- Complejidad: O(n²) standard, O(m + n log n) con priority queue.
+
+- Asintóticamente, es el algoritmo de camino mínimo a partir de un nodo `s` más rápido.
+
 ```
 S := {v}
 π(v) := 0
@@ -57,8 +69,6 @@ fin mientras
 
 retornar π
 ```
-
-- Complejidad: O(n²) standard, O(m + n log n) con priority queue
 
 ### Algoritmo de Dijkstra (retorna camino mínimo)
 ```
@@ -92,7 +102,8 @@ retornar (π, pred)
 ```
 
 ### Algoritmo de Bellman-Ford
-Asumimos que el grafo es orientado y no tiene circuitos de longitud negativa.
+
+- Asumimos que el grafo es orientado y no tiene circuitos de longitud negativa.
 ```
 π(v) := 0
 
@@ -265,16 +276,34 @@ Teoremas sobre Camino Mínimo
 
 * **Teorema**: Dado un grafo orientado `G` con pesos positivos en las aristas, el algoritmo de Dijkstra determina el camino mínimo entre el nodo `v` y el resto de los nodos de `G`.
 
+* Preguntas típicas:
+    * ¿Qué condiciones debe tener el grafo para poder utilizar Dijsktra?
+        No debe tener aristas de peso negativo, ya que de lo contrario el invariante.
+
+    * ¿Cuál es la complejidad del algoritmo de Dijkstra?
+        O(n²) standard, O(m + n log n) con priority queue
+
 ### Bellman-Ford
 * **Lema**: Dado un grafo orientado `G=(V,X)` sin circuitos de longitud negativa, al finalizar la iteración `k` el algoritmo de Bellman-Ford determina el camino mínimo de a lo sumo `k` aristas entre el nodo `v` y el resto de los nodos de `V`.
 * **Teorema**: Dado un grafo orientado `G=(V,X)` sin circuitos de longitud negativa, el algoritmo de Bellman-Ford determina el camino mínimo entre el nodo `v` y el resto de los nodos de `G`.
 
 * Preguntas típicas:
     * ¿Cuál es la complejidad del algoritmo de Bellman-Ford?
-    * ¿Qué pasa si aplicamos Bellman-Ford a un grafo no orientado?
-    * Mejora del cálculo de `π`
-    * ¿Cómo podemos modificar el algoritmo de Bellman-Ford para detectar si hay circuitos de longitud negativa?
+        O(|V|⋅|X|)
 
+    * ¿Qué pasa si aplicamos Bellman-Ford a un grafo no orientado?
+        Si el grafo es no orientado, entonces no puede tener aristas de peso
+        negativo, ya que eso haría que hayan ciclos de longitud negativa, y en
+        tal caso el algoritmo no funcionaría. Luego, con esta condición sobre
+        los pesos de las aristas, no valdría la pena usar Bellman-Ford en
+        comparación con Dijkstra, que tiene una mejor complejidad asintótica.
+
+    * Mejora del cálculo de `π`
+        TODO: ????
+
+    * ¿Cómo podemos modificar el algoritmo de Bellman-Ford para detectar si hay circuitos de longitud negativa?
+        Correr el algoritmo una última iteración. Si se siguen pudiendo relajar
+        aristas, significa que hay ciclos de longitud negativa.
 
 ### Algoritmo de Dantzig
 
