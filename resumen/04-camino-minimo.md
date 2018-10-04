@@ -270,6 +270,8 @@ fin para
 retornar L
 ```
 
+**Complejidad de Dantzig**: [O(mn^2 log n)](https://users-cs.au.dk/tdh/papers/Dantzig.pdf)
+
 #### SIMPLEX (CLRS)
 ```
 SIMPLEX(A,b,c):
@@ -295,6 +297,8 @@ SIMPLEX(A,b,c):
             xᵢ = 0
     return (x₁, x₂, ⋯, xₙ)
 ```
+
+[**Nota sobre la complejidad de Simplex:**](https://cstheory.stackexchange.com/questions/2373/complexity-of-the-simplex-algorithm/2374) The simplex algorithm indeed visits all 2^n vertices in the worst case (Klee & Minty 1972), and this turns out to be true for any deterministic pivot rule. However Spielman and Teng (2001) proved that when the inputs to the algorithm are slightly randomly perturbed, the expected running time of the simplex algorithm is polynomial for any inputs -- this basically says that for any problem there is a "nearby" one that the simplex method will efficiently solve, and it pretty much covers every real-world linear program you'd like to solve. Afterwards, Kelner and Spielman (2006) introduced a polynomial time randomized simplex algorithm that truley works on any inputs, even the bad ones for the original simplex algorithm.
 
 Teoremas sobre Camino Mínimo
 ============================
