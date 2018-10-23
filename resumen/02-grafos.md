@@ -406,9 +406,9 @@ Teoremas sobre Grafos
 
         2=>1) Supongo que vale 2. Existen puntos u,w ∈ V distintos de v, tales que v se encuentra en todo camino de u a w. Eso significa que no pueden haber caminos entre u y w en G'=G−v. Luego, G' no es conexo, y en particular tiene al menos dos componentes conexas (una en donde esta u, y otra en donde está v). Por lo tanto, v es un nodo de corte de G. Luego, vale 1.
 
-* Todo grafo no trivial tiene al menos dos nodos que son puntos de corte.
+* Todo grafo no trivial tiene al menos dos nodos que **no** son puntos de corte.
     
-    Sean u y v nodos a distancia máxima en G, es decir, d(u,v) = d(G). Sin pérdida de generalidad, sea v un punto de corte. Luego, existe un w∈G−v tal que w se encuentra en una componente conexa distinta que u, entonces, v se encuentra en todo camino entre u y w. Esto significa que d(u,v)+d(v,w) = d(u,w) > d(u,v). Luego, existe un par de nodos cuya distancia es mayor a la de u y v, lo cual es absurdo y surge de suponer que v no es punto de corte. Lo mismo sucede para u.
+    Sean u y v nodos a distancia máxima en G, es decir, d(u,v) = d(G). Sin pérdida de generalidad, asumo que v es un punto de corte. Luego, existe un w∈G−v tal que w se encuentra en una componente conexa distinta que u, entonces, v se encuentra en todo camino entre u y w. Esto significa que d(u,v)+d(v,w) = d(u,w) > d(u,v). Luego, existe un par de nodos cuya distancia es mayor a la de u y v, lo cual es absurdo y surge de suponer que v es punto de corte. Lo mismo sucede para u. Luego, u y v no son puntos de corte.
 
 * Sea `e` una arista de `G=(V,X)` conexo, son equivalentes:
     1. `e` es un puente de `G`.
